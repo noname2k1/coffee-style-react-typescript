@@ -1,4 +1,4 @@
-import images from '../assets';
+import images from '../assets/images';
 import { HeaderNav } from '../types';
 import routes from '../config/routes';
 import { Link, NavLink } from 'react-router-dom';
@@ -67,7 +67,7 @@ const Header = () => {
                 {/* HEADER_NAV_PC */}
                 <nav
                     className={classNames(
-                        'flex items-center max-lg:shadow-md justify-center max-lg:flex-col max-lg:absolute right-0 overflow-hidden top-full left-0 bg-white duration-[300ms]',
+                        'flex items-center z-10 max-lg:shadow-md justify-center max-lg:flex-col max-lg:absolute right-0 overflow-hidden top-full left-0 bg-white duration-[300ms]',
                         {
                             'max-lg:h-0 max-lg:invisible': !isMobileMenuOpen,
                             'max-lg:h-[246px] max-lg:visible max-lg:py-2':
@@ -82,9 +82,10 @@ const Header = () => {
                             to={nav.path}
                             className={({ isActive }) =>
                                 classNames(
-                                    'group whitespace-nowrap max-lg:py-[15px] opacity-60 hover:opacity-100 tracking-widest uppercase text-xs font-semibold text-gray-800 hover:text-gray-900 ml-8 duration-300',
+                                    'group whitespace-nowrap max-lg:py-[15px] hover:opacity-100 tracking-widest uppercase text-xs font-semibold hover:text-gray-900 ml-8 duration-300',
                                     {
                                         'text-gray-900 opacity-100': isActive,
+                                        'text-gray-800 opacity-60': !isActive,
                                     },
                                 )
                             }

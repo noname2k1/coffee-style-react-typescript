@@ -11,3 +11,7 @@
 html {
     font-family: Karla, sans-serif;
 }
+
+.primary-typo {
+    @apply tracking-widest font-semibold opacity-60 text-xs;
+}
