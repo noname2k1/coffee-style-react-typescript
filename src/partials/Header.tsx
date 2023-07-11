@@ -1,11 +1,29 @@
 import images from '../assets';
 import { HeaderNav } from '../types';
 import routes from '../config/routes';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Cart } from '../components/commons';
+import classNames from 'classnames';
 
-interface Props {}
+// interface Props {}
 
-const Header = (props: Props) => {
+const Header = () => {
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
+    const [isCartShow, setIsCartShow] = useState<boolean>(false);
+
+    const handleMobileMenu = () => {
+        setIsMobileMenuOpen(!isMobileMenuOpen);
+    };
+
+    const handleClickNavItem = () => {
+        setIsMobileMenuOpen(false);
+    };
+
+    const handleShowCart = () => {
+        setIsCartShow(true);
+    };
+
     const navs: HeaderNav[] = [
         {
             id: 0,
@@ -33,48 +51,75 @@ const Header = (props: Props) => {
             path: routes.contact,
         },
     ];
+
+    useEffect(() => {}, []);
     return (
-        <header className='h-20 flex justify-center items-center'>
-            <div className='flex items-center justify-between lg:justify-around h-full px-6 w-[940px]'>
+        <header className='h-20 flex justify-center items-center relative'>
+            <div className='flex items-center justify-between lg:justify-around h-full px-12 lg:px-6 max-lg:w-[940px] w-[1110px]'>
                 {/* LOGO */}
-                <div className='h-6'>
+                <Link to={routes.home} className='h-6'>
                     <img
                         src={images.logo}
                         alt='coffeestyle-logo'
                         className='h-full object-contain'
                     />
-                </div>
+                </Link>
                 {/* HEADER_NAV_PC */}
-                <nav className='flex items-center justify-center max-lg:hidden'>
+                <nav
+                    className={classNames(
+                        'flex items-center max-lg:shadow-md justify-center max-lg:flex-col max-lg:absolute right-0 overflow-hidden top-full left-0 bg-white duration-[300ms]',
+                        {
+                            'max-lg:h-0 max-lg:invisible': !isMobileMenuOpen,
+                            'max-lg:h-[246px] max-lg:visible max-lg:py-2':
+                                isMobileMenuOpen,
+                        },
+                    )}
+                >
                     {navs.map((nav) => (
                         <NavLink
+                            onClick={handleClickNavItem}
                             key={nav.id}
                             to={nav.path}
-                            className='whitespace-nowrap opacity-60 hover:opacity-100 tracking-widest uppercase text-xs font-semibold text-gray-500 hover:text-gray-900 ml-8 duration-300'
+                            className={({ isActive }) =>
+                                classNames(
+                                    'group whitespace-nowrap max-lg:py-[15px] opacity-60 hover:opacity-100 tracking-widest uppercase text-xs font-semibold text-gray-800 hover:text-gray-900 ml-8 duration-300',
+                                    {
+                                        'text-gray-900 opacity-100': isActive,
+                                    },
+                                )
+                            }
                         >
                             {nav.name}
+                            <div className='group-hover:w-full w-0 h-0.5 bg-primary duration-75 max-lg:hidden'></div>
                         </NavLink>
                     ))}
                 </nav>
                 <div className='flex items-center justify-center'>
                     {/* CART_BTN */}
-                    <button className='group flex items-center mr-[30px] opacity-60 hover:opacity-100 justify-center whitespace-nowrap uppercase text-xs font-semibold text-gray-500 hover:text-gray-900 ml-8 duration-300'>
+                    <button
+                        onClick={handleShowCart}
+                        className='group flex items-center mr-[30px] opacity-60 hover:opacity-100 justify-center whitespace-nowrap uppercase text-xs font-semibold text-gray-800 hover:text-gray-900 ml-8 duration-300'
+                    >
                         <img
                             src={images.cart_icon}
                             alt='shopping-cart'
-                            className='w-4 h-5 mr-2.5 text-gray-500 mb-0.5'
+                            className='w-4 h-5 mr-2.5 text-gray-800 mb-0.5'
                         />
                         Cart
-                        <span className='bg-gray-500 flex justify-center group-hover:bg-gray-900 text-white px-1.5 py-0.5 rounded-xl ml-2'>
+                        <span className='bg-gray-800 flex justify-center group-hover:bg-gray-900 text-white px-1.5 py-0.5 rounded-xl ml-2'>
                             12
                         </span>
                     </button>
                     {/* MOBILE_MENU_BTN */}
-                    <button className='text-gray-500 hover:text-gray-900 w-5 h-3.5 opacity-60 hover:opacity-100 mx-1 lg:hidden'>
+                    <button
+                        onClick={handleMobileMenu}
+                        className='text-gray-800 hover:text-gray-900 w-5 h-3.5 opacity-60 hover:opacity-100 mx-1 lg:hidden'
+                    >
                         <img src={images.menu_icon} alt='mobile-menu-icon' />
                     </button>
                 </div>
             </div>
+            <Cart showAble={[isCartShow, setIsCartShow]} />
         </header>
     );
 };
