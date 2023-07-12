@@ -40,7 +40,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <div className='px-[30px] text-center flex flex-col items-center justify-center'>
+            <div className='px-[30px] text-center flex flex-col items-center justify-center mb-[100px]'>
                 <div className='w-[70%]'>
                     <h1 className='tracking-widest text-black text-3xl my-5'>
                         Even the all-powerful Pointing has no control about the
@@ -62,6 +62,7 @@ const Home = () => {
                     </Link>
                 </div>
             </div>
+
             <HomeSection
                 type='product'
                 title='featured mugs'

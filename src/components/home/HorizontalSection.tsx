@@ -16,10 +16,13 @@ const HorizontalSection = (props: Props) => {
         navigate(routes.products);
     };
     return (
-        <section className='flex items-center justify-center mb-[100px]'>
+        <section
+            className='flex items-center justify-center mb-[100px]'
+            data-aos='fade-up'
+        >
             <div className='w-primary'>
                 <h2
-                    className='text-center my-[100px] font-semibold
+                    className='text-center mb-[100px] font-semibold
                  uppercase text-xs tracking-widest text-black/30'
                 >
                     {props.title}

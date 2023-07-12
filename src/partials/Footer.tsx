@@ -7,7 +7,10 @@ const Footer = () => {
     return (
         <footer>
             {/* black form */}
-            <div className='bg-gray-900 px-[50px] py-[80px] mx-0 lg:mx-[30px] lg:py-[100px] text-white flex flex-col items-center'>
+            <div
+                data-aos='fade-up'
+                className='bg-gray-900 px-[50px] py-[80px] mx-0 lg:mx-[30px] lg:py-[100px] text-white flex flex-col items-center'
+            >
                 <h3 className='opacity-60 text-xs uppercase tracking-widest font-semibold'>
                     SIGN UP AND GET FREE COFFEE BAGS
                 </h3>
@@ -29,8 +32,11 @@ const Footer = () => {
                 </div>
             </div>
             {/* footer texts */}
-            <div className='my-[100px] flex justify-center px-5 lg:px-0'>
-                <div className='w-primary flex flex-col items-center lg:grid grid-cols-1 lg:grid-rows-3 lg:grid-cols-6 gap-8 lg:gap-5 text-black/50 text-sm tracking-wider'>
+            <div
+                className='my-[100px] flex justify-center px-5 lg:px-0'
+                data-aos='fade-up'
+            >
+                <div className='w-primary flex flex-col items-center lg:items-start lg:grid grid-cols-1 lg:grid-rows-3 lg:grid-cols-6 gap-8 lg:gap-5 text-black/50 text-sm tracking-wider'>
                     <div className='col-span-2'>
                         <img
                             src={images.logo}

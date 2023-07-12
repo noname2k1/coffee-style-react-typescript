@@ -13,9 +13,9 @@ interface Props {
 
 const HomeSection = (props: Props) => {
     return (
-        <section className='flex justify-center mb-[100px]'>
+        <section className='flex justify-center mb-[100px]' data-aos='fade-up'>
             <div className='w-primary'>
-                <h2 className='text-center my-[100px] font-semibold uppercase text-xs tracking-widest text-black/30'>
+                <h2 className='text-center mb-[100px] font-semibold uppercase text-xs tracking-widest text-black/30'>
                     {props.title}
                 </h2>
                 <div
@@ -36,10 +36,12 @@ const HomeSection = (props: Props) => {
                                 index === props.items.length - 1
                             ) {
                                 return (
-                                    <div className='md:col-span-2 lg:col-span-1'>
+                                    <div
+                                        className='item md:col-span-2 lg:col-span-1'
+                                        key={item.id}
+                                    >
                                         <Product
                                             item={item}
-                                            key={item.id}
                                             btnText={'explore mug'}
                                             cols={props.gridCols}
                                         />
@@ -60,10 +62,12 @@ const HomeSection = (props: Props) => {
                             index === props.items.length - 1
                         ) {
                             return (
-                                <div className='md:col-span-2 lg:col-span-1'>
+                                <div
+                                    className='md:col-span-2 lg:col-span-1'
+                                    key={item.id}
+                                >
                                     <Post
                                         item={item}
-                                        key={item.id}
                                         btnText={'read the full story'}
                                         cols={props.gridCols}
                                     />
