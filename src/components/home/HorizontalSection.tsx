@@ -24,7 +24,7 @@ const HorizontalSection = (props: Props) => {
                 >
                     {props.title}
                 </h2>
-                <div className='flex-col flex lg:flex-row items-center justify-center gap-5'>
+                <div className='flex-col flex lg:flex-row items-center justify-center'>
                     <div className='flex items-center justify-center order-2 lg:order-1'>
                         <div className='flex flex-col max-lg:text-center'>
                             <h3 className='tracking-widest text-black/40 font-semibold text-xs mb-5 mt-10 lg:mt-0'>
@@ -49,7 +49,7 @@ const HorizontalSection = (props: Props) => {
                             </div>
                         </div>
                     </div>
-                    <div className='grid grid-cols-3 grid-rows-2 gap-5 h-[280px] order-1 lg:order-2'>
+                    <div className='grid grid-cols-3 grid-rows-2 gap-5 h-[280px] order-1 lg:order-2 px-5'>
                         {props.items.slice(0, 3).map((item, index) => (
                             <div
                                 key={item.id}

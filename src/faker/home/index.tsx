@@ -1,6 +1,36 @@
-import { Blog, Product } from '../../types';
+import { Blog, HeaderNav, Product } from '../../types';
 import images from '../../assets/images';
 import { v4 as uuid } from 'uuid';
+import routes from '../../config/routes';
+
+export const headerNavItems: HeaderNav[] = [
+    {
+        id: 0,
+        name: 'home',
+        path: routes.home,
+    },
+    {
+        id: 1,
+        name: 'our products',
+        path: routes.products,
+    },
+    {
+        id: 2,
+        name: 'blog',
+        path: routes.blog,
+    },
+    {
+        id: 3,
+        name: 'about',
+        path: routes.about,
+    },
+    {
+        id: 4,
+        name: 'contact',
+        path: routes.contact,
+    },
+];
+
 export const fakeDatas1: Product[] = [
     {
         id: uuid(),

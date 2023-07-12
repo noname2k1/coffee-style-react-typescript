@@ -20,7 +20,7 @@ const Home = () => {
                         className={'w-full h-full'}
                         alt='header-picture'
                     />
-                    <div className='absolute bg-opacity-20 text-center mx-20 flex flex-col justify-center items-center bg-black inset-0 text-white dark:text-black'>
+                    <div className='absolute bg-opacity-20 text-center px-20 flex flex-col justify-center items-center bg-black inset-0 text-white dark:text-black'>
                         <h3 className='uppercase primary-typo'>
                             BEST PLACE TO BUY DESIGN
                         </h3>

@@ -29,8 +29,23 @@ const HomeSection = (props: Props) => {
                         },
                     )}
                 >
-                    {props.items.map((item) => {
+                    {props.items.map((item, index) => {
                         if (props.type === 'product') {
+                            if (
+                                props.items.length % 2 !== 0 &&
+                                index === props.items.length - 1
+                            ) {
+                                return (
+                                    <div className='md:col-span-2 lg:col-span-1'>
+                                        <Product
+                                            item={item}
+                                            key={item.id}
+                                            btnText={'explore mug'}
+                                            cols={props.gridCols}
+                                        />
+                                    </div>
+                                );
+                            }
                             return (
                                 <Product
                                     item={item}
@@ -38,6 +53,21 @@ const HomeSection = (props: Props) => {
                                     btnText={'explore mug'}
                                     cols={props.gridCols}
                                 />
+                            );
+                        }
+                        if (
+                            props.items.length % 2 !== 0 &&
+                            index === props.items.length - 1
+                        ) {
+                            return (
+                                <div className='md:col-span-2 lg:col-span-1'>
+                                    <Post
+                                        item={item}
+                                        key={item.id}
+                                        btnText={'read the full story'}
+                                        cols={props.gridCols}
+                                    />
+                                </div>
                             );
                         }
                         return (

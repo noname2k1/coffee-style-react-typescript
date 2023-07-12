@@ -31,7 +31,8 @@ const Input = (props: Props) => {
                             props.isTransparent && props.isDark,
                         'bg-gray-100 text-black hover:border-black/50 focus:border-black/50':
                             !props.isDark && !props.isTransparent,
-                        'py-[16px] px-[24px]': props.size === 'medium',
+                        'py-[16px] px-[24px] min-w-[350px]':
+                            props.size === 'medium',
                         'py-[12px] px-[20px]': props.size === 'small',
                         'py-[20px] px-[28px]': props.size === 'large',
                     },

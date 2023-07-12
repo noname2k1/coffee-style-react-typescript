@@ -1,11 +1,10 @@
 import images from '../assets/images';
-import { HeaderNav } from '../types';
 import routes from '../config/routes';
 import { Link, NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Cart } from '../components/commons';
+import { headerNavItems } from '../faker/home';
 import classNames from 'classnames';
-
 // interface Props {}
 
 const Header = () => {
@@ -24,38 +23,10 @@ const Header = () => {
         setIsCartShow(true);
     };
 
-    const navs: HeaderNav[] = [
-        {
-            id: 0,
-            name: 'home',
-            path: routes.home,
-        },
-        {
-            id: 1,
-            name: 'our products',
-            path: routes.products,
-        },
-        {
-            id: 2,
-            name: 'blog',
-            path: routes.blog,
-        },
-        {
-            id: 3,
-            name: 'about',
-            path: routes.about,
-        },
-        {
-            id: 4,
-            name: 'contact',
-            path: routes.contact,
-        },
-    ];
-
     useEffect(() => {}, []);
     return (
         <header className='h-20 flex justify-center items-center relative'>
-            <div className='flex items-center justify-between lg:justify-around h-full px-12 lg:px-6 max-lg:w-[940px] w-[1110px]'>
+            <div className='flex items-center justify-between lg:justify-around h-full px-12 lg:px-6 max-lg:w-primary w-[1110px]'>
                 {/* LOGO */}
                 <Link to={routes.home} className='h-6'>
                     <img
@@ -75,7 +46,7 @@ const Header = () => {
                         },
                     )}
                 >
-                    {navs.map((nav) => (
+                    {headerNavItems.map((nav) => (
                         <NavLink
                             onClick={handleClickNavItem}
                             key={nav.id}
