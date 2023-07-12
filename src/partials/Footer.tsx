@@ -1,8 +1,6 @@
 import { Input, Button } from '../components/commons';
 
-interface Props {}
-
-const Footer = (props: Props) => {
+const Footer = () => {
     return (
         <footer>
             <div className='bg-gray-900 px-[50px] py-[80px] mx-0 lg:mx-[30px] lg:py-[100px] text-white flex flex-col items-center'>
