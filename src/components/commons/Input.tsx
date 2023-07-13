@@ -10,12 +10,20 @@ interface Props {
     name?: string;
     isDark?: boolean;
     isTransparent?: boolean;
+    min?: number;
+    max?: number;
+    minWidth?: number;
+    maxWidth?: number;
     size?: 'small' | 'medium' | 'large';
 }
 
 const Input = (props: Props) => {
     return (
-        <div className=''>
+        <div
+            className={classNames({
+                'w-full': !props.minWidth && !props.maxWidth,
+            })}
+        >
             {props.label && (
                 <label className='text-sm font-semibold'>{props.label}</label>
             )}
@@ -29,14 +37,17 @@ const Input = (props: Props) => {
                             props.isTransparent && !props.isDark,
                         'bg-transparent text-white hover:border-white/50 focus:border-white/50':
                             props.isTransparent && props.isDark,
-                        'bg-gray-100 text-black hover:border-black/50 focus:border-black/50':
+                        'bg-gray-100 text-black border-border-light hover:border-black/50 focus:border-black/50':
                             !props.isDark && !props.isTransparent,
-                        'py-[16px] px-[24px] min-w-[350px]':
-                            props.size === 'medium',
+                        'py-[15px] px-[24px]': props.size === 'medium',
                         'py-[12px] px-[20px]': props.size === 'small',
                         'py-[20px] px-[28px]': props.size === 'large',
+                        'w-full': !props.minWidth,
                     },
                 )}
+                style={{ minWidth: props.minWidth, maxWidth: props.maxWidth }}
+                min={props.min}
+                max={props.max}
                 type={props.type}
                 placeholder={props.placeholder}
                 value={props.value}

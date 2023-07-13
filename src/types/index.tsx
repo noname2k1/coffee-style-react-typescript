@@ -11,14 +11,17 @@ export interface Product {
     price: number;
     oldPrice?: number;
     image: string;
-    id: number | string;
+    id: string;
     [key: string]: any;
     unit: string;
     slug: string;
+    description?: string;
+    quantity: number;
+    quantityInCart: number;
 }
 
 export interface Blog {
-    id: number | string;
+    id: string;
     title: string;
     image: string;
     description: string;
@@ -26,4 +29,11 @@ export interface Blog {
     [key: string]: any;
     slug: string;
     createdAt: string;
+}
+
+// recoil state
+export interface Cart {
+    items: Product[];
+    isShow: boolean;
+    total: number;
 }

@@ -6,6 +6,7 @@ interface Props {
     onClick?: () => void;
     fit?: boolean;
     hFull?: boolean;
+    wFull?: boolean;
     isDark?: boolean;
 }
 
@@ -20,13 +21,14 @@ const Button = (props: Props) => {
                     'py-[20px] px-[28px]': props.size === 'large',
                     'w-fit': props.fit,
                     'h-full': props.hFull,
+                    'w-full': props.wFull,
                     'bg-black text-white': props.isDark,
                     'bg-white text-black': !props.isDark,
                 },
             )}
             onClick={props.onClick}
         >
-            <span className='uppercase text-xs font-semibold tracking-widest'>
+            <span className='uppercase text-xs font-semibold tracking-widest whitespace-nowrap'>
                 {props.children}
             </span>
         </div>

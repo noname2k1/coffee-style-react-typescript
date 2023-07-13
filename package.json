@@ -18,6 +18,7 @@
     "react-router-dom": "^6.14.1",
     "recoil": "^0.7.7",
     "recoil-persist": "^5.1.0",
+    "recoilize": "^3.2.0",
     "sass": "^1.63.6",
     "uuid": "^9.0.0"
   },

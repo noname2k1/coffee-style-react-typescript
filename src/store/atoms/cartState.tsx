@@ -4,6 +4,7 @@ const { persistAtom } = recoilPersist();
 const cartState = atom({
     key: 'cartState', // unique ID (with respect to other atoms/selectors)
     default: {
+        isShow: false,
         items: [],
         total: 0,
     }, // default value (aka initial value)

@@ -5,11 +5,14 @@ import { useState, useEffect } from 'react';
 import { Cart } from '../components/commons';
 import { headerNavItems } from '../faker/home';
 import classNames from 'classnames';
+import { useRecoilState } from 'recoil';
+import { cartState } from '../store/atoms';
+import { Cart as CartType } from '../types';
 // interface Props {}
 
 const Header = () => {
+    const [cart, setCart] = useRecoilState<CartType>(cartState);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
-    const [isCartShow, setIsCartShow] = useState<boolean>(false);
 
     const handleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -20,7 +23,10 @@ const Header = () => {
     };
 
     const handleShowCart = () => {
-        setIsCartShow(true);
+        setCart((oldCart) => ({
+            ...oldCart,
+            isShow: true,
+        }));
     };
 
     useEffect(() => {}, []);
@@ -79,7 +85,7 @@ const Header = () => {
                         />
                         Cart
                         <span className='bg-gray-800 flex justify-center group-hover:bg-gray-900 text-white px-1.5 py-0.5 rounded-xl ml-2'>
-                            12
+                            {cart.items.length}
                         </span>
                     </button>
                     {/* MOBILE_MENU_BTN */}
@@ -91,7 +97,7 @@ const Header = () => {
                     </button>
                 </div>
             </div>
-            <Cart showAble={[isCartShow, setIsCartShow]} />
+            <Cart />
         </header>
     );
 };
