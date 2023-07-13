@@ -21,7 +21,7 @@ const Input = (props: Props) => {
     return (
         <div
             className={classNames({
-                'w-full': !props.minWidth && !props.maxWidth,
+                'max-sm:w-full': !props.minWidth && !props.maxWidth,
             })}
         >
             {props.label && (
@@ -42,7 +42,7 @@ const Input = (props: Props) => {
                         'py-[15px] px-[24px]': props.size === 'medium',
                         'py-[12px] px-[20px]': props.size === 'small',
                         'py-[20px] px-[28px]': props.size === 'large',
-                        'w-full': !props.minWidth,
+                        'max-sm:w-full': !props.minWidth,
                     },
                 )}
                 style={{ minWidth: props.minWidth, maxWidth: props.maxWidth }}

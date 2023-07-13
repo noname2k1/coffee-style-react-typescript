@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { useRecoilState } from 'recoil';
 import { cartState } from '../store/atoms';
+import { formatCurrency } from '../utils';
 const ProductDetail = () => {
     const products: Product[] = [...fakeDatas1, ...fakeDatas2];
     const { slug } = useParams<{ slug: string }>();
@@ -85,24 +86,20 @@ const ProductDetail = () => {
                             {product.description}
                         </p>
                         {/* price */}
-                        <div className='text-gray-900/50 flex items-center justify-center'>
+                        <div className='text-gray-900/80 flex items-center justify-center'>
                             <div
-                                className={classNames({
-                                    'text-md': !product.oldPrice,
+                                className={classNames('uppercase', {
+                                    'text-2xl text-left max-sm:w-full':
+                                        !product.oldPrice,
                                     'text-3xl text-primary': product.oldPrice,
                                 })}
                             >
-                                {new Intl.NumberFormat('en-US', {
-                                    style: 'currency',
-                                    currency: 'USD',
-                                }).format(product.price)}
+                                {formatCurrency(product.price)}&nbsp;
+                                {product.unit}
                             </div>
                             {product.oldPrice && (
                                 <div className='text-sm line-through ml-4'>
-                                    {new Intl.NumberFormat('en-US', {
-                                        style: 'currency',
-                                        currency: 'USD',
-                                    }).format(product.oldPrice)}
+                                    {formatCurrency(product.oldPrice)}
                                     <span className='uppercase'>
                                         {product.unit}
                                     </span>

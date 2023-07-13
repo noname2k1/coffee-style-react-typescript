@@ -37,27 +37,28 @@ const Footer = () => {
                 className='my-[100px] flex justify-center px-5 lg:px-0'
                 data-aos='fade-up'
             >
-                <div className='w-primary flex flex-col items-center lg:items-start lg:grid grid-cols-1 lg:grid-rows-3 lg:grid-cols-6 gap-8 lg:gap-5 text-black/50 text-sm tracking-wider'>
-                    <div className='col-span-2'>
+                <div className='w-primary flex lg:grid flex-col items-center lg:items-start grid-rows-1 grid-cols-4 gap-8 text-black/50 text-sm tracking-wider'>
+                    <div className='flex justify-center flex-col items-center'>
                         <img
                             src={images.logo}
                             alt='coffee-style-logo'
                             className='w-[111px]'
                         />
+                        <div className='text-center'>
+                            Delivering the best coffee life since 1996. From
+                            coffee geeks to the real ones.
+                        </div>
+                        <div className='flex'>
+                            <span className='hover:text-primary text-xs h-fit block mt-auto mb-5 whitespace-nowrap'>
+                                CoffeeStyle Inc. © 1996
+                            </span>
+                        </div>
                     </div>
-                    <div className='text-center'>
-                        Delivering the best coffee life since 1996. From coffee
-                        geeks to the real ones.
-                    </div>
-                    <div className='flex'>
-                        <span className='hover:text-primary text-xs h-fit block mt-auto mb-5'>
-                            CoffeeStyle Inc. © 1996
-                        </span>
-                    </div>
-                    <div className='col-span-2 tracking-widest text-xs font-semibold'>
-                        MENU
-                    </div>
-                    <div className='col-span-2 flex gap-3 flex-col text-center lg:text-left capitalize'>
+
+                    <div className='flex gap-3 flex-col text-center lg:text-left capitalize items-center'>
+                        <div className='tracking-widest text-xs font-semibold'>
+                            MENU
+                        </div>
                         {headerNavItems.map((item) => (
                             <Link
                                 to={item.path}
@@ -68,10 +69,11 @@ const Footer = () => {
                             </Link>
                         ))}
                     </div>
-                    <div className='tracking-widest text-xs font-semibold'>
-                        FOLLOW US
-                    </div>
+
                     <div className='flex flex-col gap-3 text-center'>
+                        <div className='tracking-widest text-xs font-semibold'>
+                            FOLLOW US
+                        </div>
                         {[
                             'facebook.com',
                             'twitter.com',
@@ -88,10 +90,11 @@ const Footer = () => {
                             </a>
                         ))}
                     </div>
-                    <div className='col-span-2 tracking-widest text-xs font-semibold'>
-                        CONTACT US
-                    </div>
-                    <div className='col-span-2 flex flex-col'>
+
+                    <div className='flex flex-col items-center'>
+                        <div className='tracking-widest text-xs font-semibold'>
+                            CONTACT US
+                        </div>
                         <h3 className='mb-auto mt-5'>
                             We’re Always Happy to Help
                         </h3>
