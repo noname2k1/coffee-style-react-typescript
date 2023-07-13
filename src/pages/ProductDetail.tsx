@@ -18,8 +18,10 @@ const ProductDetail = () => {
 
     const handleAddToCart = (product: Product) => {
         let quantityToAdd =
-            quantity > product.quantity ? product.quantity : quantity;
-
+            quantity > product.quantity ? product.quantity : quantity || 1;
+        if (quantity === 0) {
+            setQuantity(1);
+        }
         const existedProductIndex = cart.items.findIndex(
             (item) =>
                 item.image === product.image && item.name === product.name,
