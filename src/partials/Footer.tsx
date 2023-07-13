@@ -49,7 +49,7 @@ const Footer = () => {
                             coffee geeks to the real ones.
                         </div>
                         <div className='flex'>
-                            <span className='hover:text-primary text-xs h-fit block mt-auto mb-5 whitespace-nowrap'>
+                            <span className='hover:text-primary text-xs h-fit block mt-auto whitespace-nowrap'>
                                 CoffeeStyle Inc. © 1996
                             </span>
                         </div>
@@ -95,7 +95,7 @@ const Footer = () => {
                         <div className='tracking-widest text-xs font-semibold'>
                             CONTACT US
                         </div>
-                        <h3 className='mb-auto mt-5'>
+                        <h3 className='mb-auto mt-3'>
                             We’re Always Happy to Help
                         </h3>
                         <h2 className='text-gray-900 dark:text-white text-2xl mb-5'>
