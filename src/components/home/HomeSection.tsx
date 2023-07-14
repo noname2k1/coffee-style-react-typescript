@@ -4,7 +4,7 @@ import Product from '../commons/Product';
 import classNames from 'classnames';
 
 interface Props {
-    title: string;
+    title?: string;
     items: ProductType[] | Blog[];
     gridCols: 1 | 2 | 3;
     [key: string]: any;
@@ -15,9 +15,11 @@ const HomeSection = (props: Props) => {
     return (
         <section className='flex justify-center mb-[100px]' data-aos='fade-up'>
             <div className='lg:w-primary'>
-                <h2 className='text-center mb-[100px] font-semibold uppercase text-xs tracking-widest text-black/30'>
-                    {props.title}
-                </h2>
+                {props.title && (
+                    <h2 className='text-center mb-[100px] font-semibold uppercase text-xs tracking-widest text-black/30'>
+                        {props.title}
+                    </h2>
+                )}
                 <div
                     className={classNames(
                         'grid gap-[20px] max-md:grid-cols-1 max-md:gap-[30px]',

@@ -20,6 +20,7 @@ export interface Product {
     quantityInCart: number;
     details: string;
     dimensions: number[];
+    category: CATEGORY_VALUES;
 }
 
 export interface Blog {
@@ -33,17 +34,26 @@ export interface Blog {
     createdAt: string;
 }
 
-// recoil state
-export interface Cart {
-    items: Product[];
-    isShow: boolean;
-    total: number;
+export enum CATEGORY_VALUES {
+    ALL_PRODUCTS = 'All Products',
+    COFFEE_MUGS = 'Coffee mugs',
+    OTHERS = 'Others',
+    PREMIUM = 'Premium',
+    TEA_MUGS = 'Tea mugs',
 }
 
 export interface Category {
     id: string;
     name: string;
     title: string;
-    value: string;
+    slogan: string;
+    value: CATEGORY_VALUES;
     [key: string]: any;
+}
+
+// recoil state
+export interface Cart {
+    items: Product[];
+    isShow: boolean;
+    total: number;
 }

@@ -21,6 +21,12 @@ import pic_14 from './pic_14.jpg';
 import pic_15 from './pic_15.jpg';
 import pic_16 from './pic_16.jpg';
 import pic_17 from './pic_17.jpg';
+import pic_18 from './pic_18.jpg';
+import pic_19 from './pic_19.jpg';
+import pic_20 from './pic_20.jpg';
+import pic_21 from './pic_21.jpg';
+import pic_22 from './pic_22.jpg';
+
 import diamond from './diamond.png';
 import light_bulb from './light_bulb.png';
 import premium_image from './premium_image.jpg';
@@ -48,6 +54,11 @@ const images = {
     pic_15,
     pic_16,
     pic_17,
+    pic_18,
+    pic_19,
+    pic_20,
+    pic_21,
+    pic_22,
     diamond,
     light_bulb,
     premium_image,
