@@ -3,7 +3,7 @@ import routes from '../config/routes';
 import { Link, NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Cart } from '../components/commons';
-import { headerNavItems } from '../faker/home';
+import { headerNavItems } from '../faker';
 import classNames from 'classnames';
 import { useRecoilState } from 'recoil';
 import { cartState } from '../store/atoms';

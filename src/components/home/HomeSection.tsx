@@ -14,7 +14,7 @@ interface Props {
 const HomeSection = (props: Props) => {
     return (
         <section className='flex justify-center mb-[100px]' data-aos='fade-up'>
-            <div className='w-primary'>
+            <div className='lg:w-primary'>
                 <h2 className='text-center mb-[100px] font-semibold uppercase text-xs tracking-widest text-black/30'>
                     {props.title}
                 </h2>
@@ -29,7 +29,7 @@ const HomeSection = (props: Props) => {
                         },
                     )}
                 >
-                    {props.items.map((item, index) => {
+                    {props.items.map((item, index: number) => {
                         if (props.type === 'product') {
                             if (
                                 props.items.length % 2 !== 0 &&

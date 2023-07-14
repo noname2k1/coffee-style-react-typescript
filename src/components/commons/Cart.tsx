@@ -133,7 +133,7 @@ const Cart = () => {
                                     size='small'
                                     type='product'
                                 />
-                                <div className='cart-item-detail flex flex-col items-start px-5 flex-1'>
+                                <div className='cart-item-detail flex flex-col items-start px-5 flex-1 w-[224px]'>
                                     <h1 className='text-lg'>{item.name}</h1>
                                     <span>{formatCurrency(item.price)}</span>
                                     <button

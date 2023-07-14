@@ -15,9 +15,11 @@ export interface Product {
     [key: string]: any;
     unit: string;
     slug: string;
-    description?: string;
+    description: string;
     quantity: number;
     quantityInCart: number;
+    details: string;
+    dimensions: number[];
 }
 
 export interface Blog {
@@ -36,4 +38,12 @@ export interface Cart {
     items: Product[];
     isShow: boolean;
     total: number;
+}
+
+export interface Category {
+    id: string;
+    name: string;
+    title: string;
+    value: string;
+    [key: string]: any;
 }

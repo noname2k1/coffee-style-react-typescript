@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import images from '../assets/images';
 import { Input, Button } from '../components/commons';
-import { headerNavItems } from '../faker/home';
+import { headerNavItems } from '../faker';
 
 const Footer = () => {
     return (
@@ -95,7 +95,7 @@ const Footer = () => {
                         <div className='tracking-widest text-xs font-semibold'>
                             CONTACT US
                         </div>
-                        <h3 className='mb-auto mt-3'>
+                        <h3 className='mb-auto mt-5'>
                             We’re Always Happy to Help
                         </h3>
                         <h2 className='text-gray-900 dark:text-white text-2xl mb-5'>

@@ -4,7 +4,7 @@ import { Button } from '../components/commons';
 import routes from '../config/routes';
 import { HomeSection, HorizontalSection } from '../components/home';
 import { ParallaxSection } from '../components/commons';
-import { fakeDatas1, fakeDatas2, fakeDatas3, fakeDatas4 } from '../faker/home';
+import { fakeDatas1, fakeDatas2, fakeDatas3, fakeDatas4 } from '../faker';
 
 const Home = () => {
     const navigate = useNavigate();
@@ -72,7 +72,7 @@ const Home = () => {
             <HomeSection
                 type='product'
                 title='more products'
-                items={fakeDatas2}
+                items={fakeDatas2.slice(0, fakeDatas2.length - 1)}
                 gridCols={3}
             />
             <HorizontalSection

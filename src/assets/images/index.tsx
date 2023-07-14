@@ -21,6 +21,9 @@ import pic_14 from './pic_14.jpg';
 import pic_15 from './pic_15.jpg';
 import pic_16 from './pic_16.jpg';
 import pic_17 from './pic_17.jpg';
+import diamond from './diamond.png';
+import light_bulb from './light_bulb.png';
+import premium_image from './premium_image.jpg';
 const images = {
     logo,
     cart_icon,
@@ -45,6 +48,9 @@ const images = {
     pic_15,
     pic_16,
     pic_17,
+    diamond,
+    light_bulb,
+    premium_image,
 };
 
 export default images;

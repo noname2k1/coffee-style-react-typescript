@@ -15,3 +15,17 @@ html {
 .primary-typo {
     @apply tracking-widest font-semibold opacity-60 text-xs;
 }
+
+// fonts
+
+@font-face {
+    font-family: Karla;
+    src: url('./assets/fonts/karla_normal.woff2');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Karla_italic;
+    src: url('./assets/fonts/karla_italic.woff2');
+    font-weight: 400;
+}
