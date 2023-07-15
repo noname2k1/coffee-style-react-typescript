@@ -5,6 +5,7 @@ const routes = {
     about: '/about',
     contact: '/contact',
     blog: '/blog',
+    blogCategory: '/blog/:category',
     blogDetail: '/post/:slug',
     teamDetail: '/team/:slug',
     team: '/team',

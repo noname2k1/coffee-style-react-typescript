@@ -11,7 +11,7 @@ interface Props {
     type: 'product' | 'blog';
 }
 
-const HomeSection = (props: Props) => {
+const ImageSection = (props: Props) => {
     return (
         <section className='flex justify-center mb-[100px]' data-aos='fade-up'>
             <div className='lg:w-primary'>
@@ -91,4 +91,4 @@ const HomeSection = (props: Props) => {
     );
 };
 
-export default HomeSection;
+export default ImageSection;

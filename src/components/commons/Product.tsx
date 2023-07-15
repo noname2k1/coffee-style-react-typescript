@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Product as ProductType } from '../../types';
-import { Button, ItemImage } from '.';
+import { ItemImage } from '.';
 import classNames from 'classnames';
 import { formatCurrency } from '../../utils';
 
@@ -21,12 +21,12 @@ const Product = (props: Props) => {
                     'min-h-[380px]': props.cols === 3,
                 })}
             >
-                <ItemImage item={props.item} type='product' cols={props.cols} />
-                <div className='absolute invisible inset-0 group-hover:visible duration-300 opacity-0 group-hover:opacity-100 bg-black/10'>
-                    <div className='absolute bottom-4 right-0 left-0 px-4 translate-y-2 group-hover:translate-y-0 duration-150'>
-                        <Button size='medium'>{props.btnText}</Button>
-                    </div>
-                </div>
+                <ItemImage
+                    item={props.item}
+                    type='product'
+                    cols={props.cols}
+                    btnText={props.btnText}
+                />
             </Link>
             <div className='mt-4 text-center flex flex-col items-center'>
                 <Link

@@ -32,6 +32,7 @@ export interface Blog {
     [key: string]: any;
     slug: string;
     createdAt: string;
+    category: CATEGORY_VALUES;
 }
 
 export enum CATEGORY_VALUES {
@@ -40,6 +41,12 @@ export enum CATEGORY_VALUES {
     OTHERS = 'Others',
     PREMIUM = 'Premium',
     TEA_MUGS = 'Tea mugs',
+    // post category
+    ALL_POSTS = '',
+    BARISTA = 'barista',
+    COFFEE = 'coffee',
+    LIFESTYLE = 'lifestyle',
+    MUGS = 'mugs',
 }
 
 export interface Category {
@@ -48,6 +55,14 @@ export interface Category {
     title: string;
     slogan: string;
     value: CATEGORY_VALUES;
+    [key: string]: any;
+}
+
+export interface PostCategory {
+    id: string;
+    name: string;
+    value: CATEGORY_VALUES;
+    slogan: string;
     [key: string]: any;
 }
 

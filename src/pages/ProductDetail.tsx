@@ -1,14 +1,19 @@
 import { useParams } from 'react-router-dom';
 import { fakeDatas2 } from '../faker';
 import { Cart, Product } from '../types';
-import { Button, Input, ItemImage } from '../components/commons';
+import {
+    Button,
+    Input,
+    ItemImage,
+    ImageSection,
+    Banner,
+} from '../components/commons';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { useRecoilState } from 'recoil';
 import { cartState } from '../store/atoms';
 import { formatCurrency } from '../utils';
-import Banner from '../components/commons/Banner';
-import { HomeSection } from '../components/home';
+
 const ProductDetail = () => {
     const products: Product[] = [...fakeDatas2];
     const { slug } = useParams<{ slug: string }>();
@@ -192,7 +197,7 @@ const ProductDetail = () => {
                     {/* banner */}
                     <Banner />
                     {/* list */}
-                    <HomeSection
+                    <ImageSection
                         type='product'
                         gridCols={3}
                         title='YOU MIGHT ALSO LIKE THESE'

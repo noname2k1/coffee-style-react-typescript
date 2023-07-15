@@ -3,7 +3,7 @@ import { categories } from '../faker/category';
 import { CATEGORY_VALUES, Category, Product } from '../types';
 import { fakeDatas2, fakeProducts } from '../faker';
 import classNames from 'classnames';
-import { HomeSection } from '../components/home';
+import { ImageSection } from '../components/commons';
 const Products = () => {
     const [currentCategory, setCurrentCategory] = useState<Category>(
         categories[0],
@@ -52,7 +52,7 @@ const Products = () => {
                         </div>
                     ))}
                 </div>
-                <HomeSection items={products} type='product' gridCols={3} />
+                <ImageSection items={products} type='product' gridCols={3} />
             </div>
         </section>
     );

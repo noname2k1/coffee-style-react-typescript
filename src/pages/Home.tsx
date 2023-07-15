@@ -1,9 +1,8 @@
 import { Link, useNavigate } from 'react-router-dom';
 import images from '../assets/images';
-import { Button } from '../components/commons';
 import routes from '../config/routes';
-import { HomeSection, HorizontalSection } from '../components/home';
-import { ParallaxSection } from '../components/commons';
+import { HorizontalSection } from '../components/home';
+import { ParallaxSection, ImageSection, Button } from '../components/commons';
 import { fakeDatas1, fakeDatas2, fakeDatas3, fakeDatas4 } from '../faker';
 
 const Home = () => {
@@ -63,13 +62,13 @@ const Home = () => {
                 </div>
             </div>
 
-            <HomeSection
+            <ImageSection
                 type='product'
                 title='featured mugs'
                 items={fakeDatas1}
                 gridCols={2}
             />
-            <HomeSection
+            <ImageSection
                 type='product'
                 title='more products'
                 items={fakeDatas2.slice(0, fakeDatas2.length - 1)}
@@ -80,7 +79,7 @@ const Home = () => {
                 items={fakeDatas3}
             />
             <ParallaxSection bgImage={images.pic_14} />
-            <HomeSection
+            <ImageSection
                 type='blog'
                 title='BEHIND THE MUGS, LIFESTYLE STORIES'
                 items={fakeDatas4}

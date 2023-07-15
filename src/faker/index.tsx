@@ -342,6 +342,7 @@ export const fakeDatas4: Blog[] = [
             'It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name.',
         slug: 'health-check-why-do-i-get-a-headache-when-i-havent-had-my-coffee',
         createdAt: '2018-10-09T00:00:00.000Z',
+        category: CATEGORY_VALUES.BARISTA,
     },
     {
         id: uuid(),
@@ -353,6 +354,7 @@ export const fakeDatas4: Blog[] = [
             'It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name.',
         slug: 'health-check-why-do-i-get-a-headache-when-i-havent-had-my-coffee',
         createdAt: '2018-10-09T00:00:00.000Z',
+        category: CATEGORY_VALUES.COFFEE,
     },
     {
         id: uuid(),
@@ -364,5 +366,30 @@ export const fakeDatas4: Blog[] = [
             'It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name.',
         slug: 'health-check-why-do-i-get-a-headache-when-i-havent-had-my-coffee',
         createdAt: '2018-10-09T00:00:00.000Z',
+        category: CATEGORY_VALUES.LIFESTYLE,
+    },
+    {
+        id: uuid(),
+        title: 'More coffee, lower death risk?',
+        image: images.pic_23,
+        description:
+            'Eveniet itaque aperiam qui officia in ducimus. Voluptas culpa ut eligendi in. Minima est dolores dolore aut et et alias p',
+        content:
+            'It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name.',
+        slug: 'more-coffee-lower-death-risk',
+        createdAt: '2018-10-09T00:00:00.000Z',
+        category: CATEGORY_VALUES.MUGS,
+    },
+    {
+        id: uuid(),
+        title: 'Will drinking coffee prolong your life?',
+        image: images.pic_24,
+        description:
+            'Aliquid aperiam accusantium quam ipsam. Velit rerum veniam optio illo dolor delectus et recusandae. Impedit aut cupiditate. Illum eveniet officiis ullam ipsam sed iste eius. Nam at quae ducimus dicta delectus',
+        content:
+            'It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name.',
+        slug: 'will-drinking-coffee-prolong-your-life',
+        createdAt: '2018-10-09T00:00:00.000Z',
+        category: CATEGORY_VALUES.COFFEE,
     },
 ];
