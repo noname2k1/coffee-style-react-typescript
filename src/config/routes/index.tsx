@@ -7,8 +7,7 @@ const routes = {
     blog: '/blog',
     blogCategory: '/blog/:category',
     blogDetail: '/post/:slug',
-    teamDetail: '/team/:slug',
-    team: '/team',
+    author: '/author/:slug',
 };
 
 export default routes;

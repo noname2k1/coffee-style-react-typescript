@@ -343,6 +343,7 @@ export const fakeDatas4: Blog[] = [
         slug: 'health-check-why-do-i-get-a-headache-when-i-havent-had-my-coffee',
         createdAt: '2018-10-09T00:00:00.000Z',
         category: CATEGORY_VALUES.BARISTA,
+        author: 'isabel-hamill',
     },
     {
         id: uuid(),
@@ -355,6 +356,7 @@ export const fakeDatas4: Blog[] = [
         slug: 'health-check-why-do-i-get-a-headache-when-i-havent-had-my-coffee',
         createdAt: '2018-10-09T00:00:00.000Z',
         category: CATEGORY_VALUES.COFFEE,
+        author: 'maurice-herman',
     },
     {
         id: uuid(),
@@ -367,6 +369,7 @@ export const fakeDatas4: Blog[] = [
         slug: 'health-check-why-do-i-get-a-headache-when-i-havent-had-my-coffee',
         createdAt: '2018-10-09T00:00:00.000Z',
         category: CATEGORY_VALUES.LIFESTYLE,
+        author: 'fred-gleason',
     },
     {
         id: uuid(),
@@ -379,6 +382,7 @@ export const fakeDatas4: Blog[] = [
         slug: 'more-coffee-lower-death-risk',
         createdAt: '2018-10-09T00:00:00.000Z',
         category: CATEGORY_VALUES.MUGS,
+        author: 'fred-gleason',
     },
     {
         id: uuid(),
@@ -391,5 +395,6 @@ export const fakeDatas4: Blog[] = [
         slug: 'will-drinking-coffee-prolong-your-life',
         createdAt: '2018-10-09T00:00:00.000Z',
         category: CATEGORY_VALUES.COFFEE,
+        author: 'isabel-hamill',
     },
 ];

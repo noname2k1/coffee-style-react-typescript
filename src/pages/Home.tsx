@@ -82,7 +82,7 @@ const Home = () => {
             <ImageSection
                 type='blog'
                 title='BEHIND THE MUGS, LIFESTYLE STORIES'
-                items={fakeDatas4}
+                items={fakeDatas4.slice(0, 3)}
                 gridCols={3}
             />
         </section>

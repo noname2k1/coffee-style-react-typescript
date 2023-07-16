@@ -28,6 +28,9 @@ import pic_21 from './pic_21.jpg';
 import pic_22 from './pic_22.jpg';
 import pic_23 from './pic_23.jpg';
 import pic_24 from './pic_24.jpg';
+import author_1 from './authors/author_1.jpg';
+import author_2 from './authors/author_2.jpg';
+import author_3 from './authors/author_3.jpg';
 
 import diamond from './diamond.png';
 import light_bulb from './light_bulb.png';
@@ -66,6 +69,9 @@ const images = {
     diamond,
     light_bulb,
     premium_image,
+    author_1,
+    author_2,
+    author_3,
 };
 
 export default images;

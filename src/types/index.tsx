@@ -33,6 +33,7 @@ export interface Blog {
     slug: string;
     createdAt: string;
     category: CATEGORY_VALUES;
+    author: string;
 }
 
 export enum CATEGORY_VALUES {
@@ -64,6 +65,16 @@ export interface PostCategory {
     value: CATEGORY_VALUES;
     slogan: string;
     [key: string]: any;
+}
+
+export interface Author {
+    id: string;
+    name: string;
+    avatar: string;
+    [key: string]: any;
+    job: string;
+    description: string;
+    slug: string;
 }
 
 // recoil state

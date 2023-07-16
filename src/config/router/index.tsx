@@ -40,6 +40,10 @@ const router = createBrowserRouter([
                 element: <Blog />,
             },
             {
+                path: routes.author,
+                element: <Blog />,
+            },
+            {
                 path: routes.about,
                 element: <About />,
             },
