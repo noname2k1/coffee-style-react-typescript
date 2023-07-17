@@ -31,6 +31,10 @@ import pic_24 from './pic_24.jpg';
 import author_1 from './authors/author_1.jpg';
 import author_2 from './authors/author_2.jpg';
 import author_3 from './authors/author_3.jpg';
+import about_image_1 from './about_image_1.jpg';
+import about_image_2 from './about_image_2.jpg';
+import about_image_3 from './about_image_3.jpg';
+import paralax_image_2 from './paralax_image_2.jpg';
 import not_found from './not_found.svg';
 
 import diamond from './diamond.png';
@@ -73,6 +77,10 @@ const images = {
     author_1,
     author_2,
     author_3,
+    about_image_1,
+    about_image_2,
+    about_image_3,
+    paralax_image_2,
     not_found,
 };
 

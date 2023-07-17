@@ -8,6 +8,7 @@ export default {
                 'border-light': '#d9d9d9',
                 'border-color': '#d2d2d51a',
                 'border-color-lighter': '#a25f4b33',
+                'bg-secondary': '#f6f6f6',
             },
 
             width: {

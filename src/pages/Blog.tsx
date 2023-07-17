@@ -84,6 +84,7 @@ const Blog = () => {
                         <div className='flex flex-col gap-y-[50px]'>
                             {posts.map((item) => (
                                 <HorizontalPost
+                                    key={item.id}
                                     link={`/post/${item.slug}`}
                                     item={item}
                                 />
