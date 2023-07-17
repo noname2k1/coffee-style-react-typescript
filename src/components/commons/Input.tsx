@@ -1,11 +1,12 @@
 import classNames from 'classnames';
+import React from 'react';
 
 interface Props {
     label?: string;
     type: string;
     placeholder?: string;
     value?: string;
-    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange?: (e: React.ChangeEvent) => void;
     [key: string]: any;
     name?: string;
     isDark?: boolean;
@@ -18,18 +19,21 @@ interface Props {
 }
 
 const Input = (props: Props) => {
+    const InputComponent = props.type === 'textarea' ? 'textarea' : 'input';
     return (
         <div
-            className={classNames({
+            className={classNames('flex flex-col', {
                 'max-sm:w-full': !props.minWidth && !props.maxWidth,
             })}
         >
             {props.label && (
-                <label className='text-sm font-semibold'>{props.label}</label>
+                <label className='text-sm uppercase tracking-widest text-black/50 font-semibold mb-2.5'>
+                    {props.label}
+                </label>
             )}
-            <input
+            <InputComponent
                 className={classNames(
-                    'outline-none border border-border-color',
+                    'outline-none border border-border-light duration-150',
                     {
                         'bg-black text-white hover:border-white/50 focus:border-white/50':
                             props.isDark && !props.isTransparent,

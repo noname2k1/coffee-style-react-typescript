@@ -35,6 +35,8 @@ import about_image_1 from './about_image_1.jpg';
 import about_image_2 from './about_image_2.jpg';
 import about_image_3 from './about_image_3.jpg';
 import paralax_image_2 from './paralax_image_2.jpg';
+import contact_image_1 from './contact_image_1.jpg';
+import contact_image_2 from './contact_image_2.jpg';
 import not_found from './not_found.svg';
 
 import diamond from './diamond.png';
@@ -82,6 +84,8 @@ const images = {
     about_image_3,
     paralax_image_2,
     not_found,
+    contact_image_1,
+    contact_image_2,
 };
 
 export default images;

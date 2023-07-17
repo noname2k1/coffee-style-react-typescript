@@ -13,7 +13,10 @@ const InTernalWrapper = ({
 }) => {
     return (
         <div className='text-center mb-[100px]'>
-            <div className='text-sm text-black/50 tracking-widest uppercase font-semibold mb-[100px]'>
+            <div
+                className='text-sm text-black/50 tracking-widest uppercase font-semibold mb-[100px]'
+                data-aos='fade-up'
+            >
                 {label}
             </div>
             {children}
@@ -24,7 +27,7 @@ const InTernalWrapper = ({
 const About = () => {
     return (
         <section className='flex flex-col items-center'>
-            <div className='bg-bg-secondary text-center relative p-[30px] md:p-[100px] md:mx-[30px]'>
+            <div className='bg-bg-secondary text-center relative p-[30px] pb-[200px] md:pt-[100px] md:mx-[30px]'>
                 <h1 className='text-4xl mb-5'>About</h1>
                 <p className='text-lg tracking-wider text-black/50 lg:px-[200px]'>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -32,7 +35,7 @@ const About = () => {
                     cursus, mi quis viverra ornare, eros dolor interdum nulla,
                     ut commodo diam libero vitae erat.
                 </p>
-                <div className='absolute left-[50%] -translate-x-[50%] top-full w-full px-[30px] lg:px-0 lg:w-primary'>
+                <div className='absolute left-[50%] -translate-x-[50%] top-[80%] w-full px-[30px] lg:px-0 lg:w-primary'>
                     <img
                         src={images.about_image_1}
                         alt='about-image-1'
@@ -53,7 +56,10 @@ const About = () => {
                 Grammar.
             </ContentWrapper>
             <div className='flex flex-col lg:w-primary max-lg:px-[30px]'>
-                <div className='flex items-center mb-32 gap-5 text-center flex-col lg:flex-row'>
+                <div
+                    className='flex items-center mb-32 gap-5 text-center flex-col lg:flex-row'
+                    data-aos='fade-up'
+                >
                     <div className='max-lg:order-2'>
                         <h3 className='text-[24px] mb-[50px] lg:mb-5'>
                             Overlaid the jeepers uselessly much excluding
@@ -75,7 +81,10 @@ const About = () => {
                         className='w-full max-lg:order-1 lg:w-[460px] max-lg:h-[380px] object-cover'
                     />
                 </div>
-                <div className='flex items-center gap-5 text-center flex-col lg:flex-row mb-[100px]'>
+                <div
+                    className='flex items-center gap-5 text-center flex-col lg:flex-row mb-[100px]'
+                    data-aos='fade-left'
+                >
                     <img
                         src={images.about_image_3}
                         alt='about-image-3'
@@ -98,7 +107,10 @@ const About = () => {
                     </div>
                 </div>
                 <InTernalWrapper label='INTRODUCTIONS'>
-                    <div className='flex items-center justify-center gap-10 lg:gap-5 max-lg:flex-col'>
+                    <div
+                        className='flex items-center justify-center gap-10 lg:gap-5 max-lg:flex-col'
+                        data-aos='fade-right'
+                    >
                         {authors.map((author) => (
                             <div className='flex flex-col' key={author.id}>
                                 <img
@@ -122,7 +134,7 @@ const About = () => {
             </div>
             <div className='lg:w-primary max-lg:px-[30px]'>
                 <InTernalWrapper label='HISTORY TIMELINE'>
-                    <div>
+                    <div data-aos='fade-up'>
                         <div className='text-black/60 text-xs tracking-widest uppercase font-semibold'>
                             OCTOBER 2018
                         </div>
@@ -141,7 +153,7 @@ const About = () => {
                             </div>
                         </div>
                     </div>
-                    <div>
+                    <div data-aos='fade-up'>
                         <div className='text-black/60 text-xs tracking-widest uppercase font-semibold'>
                             August 2018
                         </div>
@@ -162,7 +174,7 @@ const About = () => {
                             </div>
                         </div>
                     </div>
-                    <div>
+                    <div data-aos='fade-up'>
                         <div className='text-black/60 text-xs tracking-widest uppercase font-semibold'>
                             June 2018
                         </div>
@@ -183,7 +195,7 @@ const About = () => {
                             </div>
                         </div>
                     </div>
-                    <div>
+                    <div data-aos='fade-up'>
                         <div className='text-black/60 text-xs tracking-widest uppercase font-semibold'>
                             november 2017
                         </div>
