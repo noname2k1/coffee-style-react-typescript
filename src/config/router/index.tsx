@@ -10,6 +10,7 @@ import {
     Blog,
     About,
 } from '../../pages';
+import NotFound from '../../pages/NotFound';
 const router = createBrowserRouter([
     {
         path: routes.home,
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
                 <App />
             </DefaultLayout>
         ),
+        errorElement: <NotFound />,
         children: [
             {
                 path: routes.home,

@@ -1,4 +1,4 @@
-import { Blog, CATEGORY_VALUES, HeaderNav, Product } from '../types';
+import { Post, CATEGORY_VALUES, HeaderNav, Product } from '../types';
 import images from '../assets/images';
 import { v4 as uuid } from 'uuid';
 import routes from '../config/routes';
@@ -331,7 +331,7 @@ export const fakeDatas3: any[] = [
     },
 ];
 
-export const fakeDatas4: Blog[] = [
+export const fakeDatas4: Post[] = [
     {
         id: uuid(),
         title: 'Health Check: why do I get a headache when I haven’t had my coffee?',

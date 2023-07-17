@@ -23,7 +23,7 @@ export interface Product {
     category: CATEGORY_VALUES;
 }
 
-export interface Blog {
+export interface Post {
     id: string;
     title: string;
     image: string;

@@ -1,4 +1,4 @@
-import { Blog, Product } from '../../types';
+import { Post, Product } from '../../types';
 import classNames from 'classnames';
 import { Button } from '.';
 
@@ -6,7 +6,7 @@ interface Props {
     size?: 'small' | 'medium' | 'large';
     [key: string]: any;
     type: 'product' | 'blog';
-    item: Product | Blog;
+    item: Product | Post;
     cols?: 1 | 2 | 3;
     btnText?: string;
 }

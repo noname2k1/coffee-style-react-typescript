@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
-import { Blog } from '../../types';
+import { Post as PostType } from '../../types';
 import { ItemImage } from '.';
 import classNames from 'classnames';
 import moment from 'moment';
 
 interface Props {
     [key: string]: any;
-    item: Blog;
+    item: PostType;
     btnText: string;
     cols: 1 | 2 | 3;
 }
@@ -38,7 +38,7 @@ const Post = (props: Props) => {
                 <p className='text-gray-900/50 flex items-center justify-center'>
                     {props.item.description}
                 </p>
-                <div className='text-gray-900/50 flex mt-5 w-full uppercase text-xs font-semibold tracking-widest items-center'>
+                <div className='text-gray-900/50 max-lg:justify-center flex mt-5 w-full uppercase text-xs font-semibold tracking-widest items-center'>
                     {moment(props.item.createdAt).format('MMMM D, YYYY')}
                 </div>
             </div>

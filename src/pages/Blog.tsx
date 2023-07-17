@@ -1,5 +1,3 @@
-import moment from 'moment';
-import { ItemImage } from '../components/commons';
 import { ImageSection } from '../components/commons';
 import { fakeDatas4 } from '../faker';
 import images from '../assets/images';
@@ -10,6 +8,7 @@ import { authors } from '../faker/person';
 import classNames from 'classnames';
 import BreadCrumb from '../components/commons/BreadCrumb';
 import { useEffect } from 'react';
+import HorizontalPost from '../components/blog/HorizontalPost';
 const Blog = () => {
     const { category: categoryParam, slug } = useParams<{
         category?: string;
@@ -31,14 +30,15 @@ const Blog = () => {
     }, [categoryParam, slug]);
     return (
         <section className='flex justify-center mt-[100px]'>
-            <div className='flex lg:w-primary flex-col items-center'>
+            <div className='flex lg:w-primary flex-col items-center max-lg:text-center'>
                 {/* Bread crumb */}
                 {(categoryParam || slug) && (
                     <BreadCrumb firstPage={slug ? 'blog' : ''} />
                 )}
                 <header
                     className={classNames('pb-20 w-full', {
-                        'text-center px-40': !categoryParam && !slug,
+                        'text-center px-[30px] lg:px-40':
+                            !categoryParam && !slug,
                     })}
                 >
                     <h1 className='text-4xl'>
@@ -76,58 +76,32 @@ const Blog = () => {
                         title='featured posts'
                     />
                 )}
-                <div className='flex mb-[100px]'>
-                    <div className='mr-10'>
+                <div className='flex mb-[100px] flex-col lg:flex-row gap-10'>
+                    <div className='lg:mr-10 max-lg:px-[30px]'>
                         <h2 className='text-[22px] capitalize flex-1 mb-10 border-b pb-4 border-border-light'>
                             Latest posts
                         </h2>
                         <div className='flex flex-col gap-y-[50px]'>
                             {posts.map((item) => (
-                                <Link
-                                    to={`/post/${item.slug}`}
-                                    className='flex'
-                                    key={item.id}
-                                >
-                                    <ItemImage
-                                        type='blog'
-                                        size='medium'
-                                        item={item}
-                                        key={item.id}
-                                        btnText='Read the full story'
-                                    />
-                                    <div className='flex flex-col pl-10 pr-5'>
-                                        <h3 className='mb-2.5 text-xl'>
-                                            {item.title}
-                                        </h3>
-                                        <p
-                                            className='mb-2.5 text-black/60 cursor-default'
-                                            onClick={(e) => e.preventDefault()}
-                                        >
-                                            {item.description}
-                                        </p>
-                                        <span
-                                            onClick={(e) => e.preventDefault()}
-                                            className='text-black/60 uppercase cursor-default tracking-widest text-xs font-xs'
-                                        >
-                                            {moment(item.createdAt).format(
-                                                'MMMM D, YYYY',
-                                            )}
-                                        </span>
-                                    </div>
-                                </Link>
+                                <HorizontalPost
+                                    link={`/post/${item.slug}`}
+                                    item={item}
+                                />
                             ))}
                         </div>
                     </div>
-                    <div className=''>
+                    <div className='lg:mr-10 max-lg:px-[30px]'>
                         <h2 className='text-[22px] capitalize mb-10 lg:w-[300px] first-line pb-4 border-b border-border-light'>
                             About us
                         </h2>
-                        <div className=''>
-                            <img
-                                src={images.logo}
-                                alt='logo'
-                                className='mb-[15px] h-[24px]'
-                            />
+                        <div>
+                            <div className='flex max-lg:justify-center'>
+                                <img
+                                    src={images.logo}
+                                    alt='logo'
+                                    className='mb-[15px] h-[24px]'
+                                />
+                            </div>
                             <p className='text-black/60 mb-[15px]'>
                                 Lorem ipsum dolor sit amet, consectetur
                                 adipiscing elit. Suspendisse varius enim in eros
@@ -207,7 +181,7 @@ const Blog = () => {
                 {/* block quote */}
                 {!categoryParam && !slug && (
                     <>
-                        <div className='blog-quote my-[30px] p-[30px] text-xl text-center border-primary border-l-2 border-b-2 text-primary/80'>
+                        <div className='max-lg:mx-[30px] blog-quote my-[30px] p-[30px] text-xl text-center border-primary border-l-2 border-b-2 text-primary/80'>
                             <p>
                                 "I wake up some mornings and sit and have my
                                 coffee and look out at my beautiful garden, and

@@ -31,6 +31,7 @@ import pic_24 from './pic_24.jpg';
 import author_1 from './authors/author_1.jpg';
 import author_2 from './authors/author_2.jpg';
 import author_3 from './authors/author_3.jpg';
+import not_found from './not_found.svg';
 
 import diamond from './diamond.png';
 import light_bulb from './light_bulb.png';
@@ -72,6 +73,7 @@ const images = {
     author_1,
     author_2,
     author_3,
+    not_found,
 };
 
 export default images;
