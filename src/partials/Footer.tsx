@@ -1,9 +1,19 @@
 import { Link } from 'react-router-dom';
 import images from '../assets/images';
-import { Input, Button } from '../components/commons';
+import { Input, Button, SuccessMessage } from '../components/commons';
 import { headerNavItems } from '../faker';
+import { useState } from 'react';
 
 const Footer = () => {
+    const [isPending, setIsPending] = useState(false);
+    const [sended, setSended] = useState(false);
+
+    const handleSend = () => {
+        setIsPending(true);
+        setTimeout(() => {
+            setSended(true);
+        }, 1000);
+    };
     return (
         <footer>
             {/* black form */}
@@ -16,19 +26,25 @@ const Footer = () => {
                 </h3>
                 <h1 className='text-4xl py-5'>Coffee Updates</h1>
                 <div className='flex items-center flex-col sm:flex-row'>
-                    <Input
-                        type='text'
-                        isDark
-                        size='medium'
-                        placeholder='helloAnhEm'
-                        isTransparent
-                        minWidth={350}
-                    />
+                    {!sended && (
+                        <Input
+                            type='text'
+                            isDark
+                            size='medium'
+                            placeholder='helloAnhEm'
+                            isTransparent
+                            minWidth={350}
+                        />
+                    )}
                     <span className='mt-4 sm:ml-4'></span>
                     <div className='w-full'>
-                        <Button size='medium' hFull>
-                            subcribe
-                        </Button>
+                        {sended ? (
+                            <SuccessMessage isTransparent isDark />
+                        ) : (
+                            <Button size='medium' hFull onClick={handleSend}>
+                                {isPending ? 'please wait...' : 'subcribe'}
+                            </Button>
+                        )}
                     </div>
                 </div>
             </div>

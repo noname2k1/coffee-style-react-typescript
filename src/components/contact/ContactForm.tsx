@@ -1,8 +1,7 @@
 import { Button, Input } from '../commons';
+import { SuccessMessage } from '../commons';
 
-interface Props {}
-
-const ContactForm = (props: Props) => {
+const ContactForm = () => {
     return (
         <div className='border border-border-light lg:w-primary max-lg:text-center'>
             <div className='flex p-10 gap-10 flex-col lg:flex-row'>
@@ -23,7 +22,7 @@ const ContactForm = (props: Props) => {
                         placeholder='James Coffee'
                     />
                     <Input
-                        type='text'
+                        type='email'
                         label='email address'
                         size='medium'
                         isDark={false}
@@ -43,6 +42,7 @@ const ContactForm = (props: Props) => {
                             Send Message
                         </Button>
                     </div>
+                    <SuccessMessage direction='col' border />
                 </div>
                 <div className='flex flex-col lg:pl-10 lg:border-l border-border-light'>
                     <div className='text-sm uppercase tracking-widest text-black/50 font-semibold'>

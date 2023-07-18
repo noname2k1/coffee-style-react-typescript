@@ -6,3 +6,4 @@ export { default as Input } from './Input';
 export { default as ItemImage } from './ItemImage';
 export { default as ImageSection } from './ImageSection';
 export { default as Banner } from './Banner';
+export { default as SuccessMessage } from './SuccessMessage';
