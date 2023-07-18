@@ -1,12 +1,11 @@
 import classNames from 'classnames';
-import React from 'react';
 
 interface Props {
     label?: string;
     type: string;
     placeholder?: string;
     value?: string;
-    onChange?: (e: React.ChangeEvent) => void;
+    onChange?: () => void;
     [key: string]: any;
     name?: string;
     isDark?: boolean;
