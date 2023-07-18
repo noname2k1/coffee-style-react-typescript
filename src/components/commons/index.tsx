@@ -3,6 +3,7 @@ export { default as Button } from './Button';
 export { default as Post } from './Post';
 export { default as ParallaxSection } from './ParallaxSection';
 export { default as Input } from './Input';
+export { default as TextArea } from './TextArea';
 export { default as ItemImage } from './ItemImage';
 export { default as ImageSection } from './ImageSection';
 export { default as Banner } from './Banner';

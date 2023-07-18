@@ -5,6 +5,7 @@ import { cartState } from '../../store/atoms';
 import { Cart as CastType, Product } from '../../types';
 import { Button, Input, ItemImage } from '.';
 import { formatCurrency } from '../../utils';
+import React from 'react';
 
 const Cart = () => {
     const [cart, setCart] = useRecoilState<CastType>(cartState);
@@ -150,9 +151,9 @@ const Cart = () => {
                                     value={
                                         item.quantityInCart?.toString() || '1'
                                     }
-                                    onChange={(e) =>
-                                        handleChangeQuantity(e, item)
-                                    }
+                                    onChange={(
+                                        e: React.ChangeEvent<HTMLInputElement>,
+                                    ) => handleChangeQuantity(e, item)}
                                     max={item.quantity}
                                     maxWidth={100}
                                     size='medium'

@@ -3,16 +3,13 @@ import React from 'react';
 
 interface Props {
     label?: string;
-    type: string;
     placeholder?: string;
     value?: string;
-    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
     [key: string]: any;
     name?: string;
     isDark?: boolean;
     isTransparent?: boolean;
-    min?: number;
-    max?: number;
     minWidth?: number;
     maxWidth?: number;
     size?: 'small' | 'medium' | 'large';
@@ -30,7 +27,7 @@ const Input = (props: Props) => {
                     {props.label}
                 </label>
             )}
-            <input
+            <textarea
                 className={classNames(
                     'outline-none border border-border-light duration-150',
                     {
@@ -49,9 +46,6 @@ const Input = (props: Props) => {
                     },
                 )}
                 style={{ minWidth: props.minWidth, maxWidth: props.maxWidth }}
-                min={props.min}
-                max={props.max}
-                type={props.type}
                 placeholder={props.placeholder}
                 value={props.value}
                 onChange={props.onChange}
