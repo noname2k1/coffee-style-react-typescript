@@ -77,6 +77,11 @@ export interface Author {
     slug: string;
 }
 
+export interface Crumb {
+    name?: string;
+    path?: string;
+}
+
 // recoil state
 export interface Cart {
     items: Product[];

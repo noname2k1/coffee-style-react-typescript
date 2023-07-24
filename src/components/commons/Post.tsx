@@ -15,11 +15,11 @@ const Post = (props: Props) => {
     return (
         <div className='flex flex-col max-md:px-[30px]'>
             <Link
-                to={'/'}
-                className={classNames('relative group inline-block', {
-                    'min-h-[540px]': props.cols === 2,
-                    'min-h-[380px]': props.cols === 3,
-                })}
+                to={`/post/${props.item.slug}`}
+                className={classNames(
+                    'relative group inline-block h-[300px]',
+                    {},
+                )}
             >
                 <ItemImage
                     type='blog'

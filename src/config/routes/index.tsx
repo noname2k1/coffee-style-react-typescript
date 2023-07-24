@@ -6,8 +6,10 @@ const routes = {
     contact: '/contact',
     blog: '/blog',
     blogCategory: '/blog/:category',
-    blogDetail: '/post/:slug',
+    postDetail: '/post/:slug',
     author: '/author/:slug',
+    login: '/login',
+    register: '/register',
 };
 
 export default routes;

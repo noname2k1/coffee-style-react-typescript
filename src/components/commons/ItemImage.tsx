@@ -15,8 +15,11 @@ const ItemImage = (props: Props) => {
     return (
         <div
             className={classNames('relative group', {
-                'h-[540px] w-full': props.cols === 2,
-                'h-[380px] w-full': props.cols === 3,
+                'h-[540px] w-full': props.cols === 2 && props.type !== 'blog',
+                'h-[380px] w-full': props.cols === 3 && props.type !== 'blog',
+                'h-[300px] w-full':
+                    (props.cols === 2 || props.cols === 3) &&
+                    props.type === 'blog',
                 'h-[80px] w-[80px]': props.size === 'small',
                 'h-[460px] lg:w-[460px] w-full':
                     props.type === 'product' && props.size === 'medium',

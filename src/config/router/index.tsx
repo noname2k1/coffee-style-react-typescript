@@ -11,6 +11,7 @@ import {
     About,
 } from '../../pages';
 import NotFound from '../../pages/NotFound';
+import PostDetail from '../../pages/PostDetail';
 const router = createBrowserRouter([
     {
         path: routes.home,
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
             {
                 path: routes.author,
                 element: <Blog />,
+            },
+            {
+                path: routes.postDetail,
+                element: <PostDetail />,
             },
             {
                 path: routes.about,
