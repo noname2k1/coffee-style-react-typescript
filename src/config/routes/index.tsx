@@ -8,8 +8,9 @@ const routes = {
     blogCategory: '/blog/:category',
     postDetail: '/post/:slug',
     author: '/author/:slug',
-    login: '/login',
-    register: '/register',
+
+    auth: '/auth',
+    signUp: '/auth/sign-up',
 };
 
 export default routes;

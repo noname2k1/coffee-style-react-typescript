@@ -5,7 +5,7 @@ import { authors } from '../faker/person';
 import moment from 'moment';
 const PostDetail = () => {
     const { slug } = useParams();
-    console.log(slug);
+    // console.log(slug);
     const currentPost = fakeDatas4.find((item) => item.slug === slug);
     const category = currentPost?.category ?? '';
     const author = authors.find((item) => item.slug === currentPost?.author);
@@ -37,8 +37,8 @@ const PostDetail = () => {
                         className='object-cover mt-[30px]'
                     />
                     <div className='min-h-[400px] border border-t-0 mb-[100px] flex max-lg:flex-col'>
-                        <div className=''>
-                            <div className='border p-10'>
+                        <div className='max-lg:order-2'>
+                            <div className='border p-10 max-lg:flex-col flex items-center'>
                                 <h2 className='text-sm mb-6 font-semibold text-black/30 uppercase tracking-widest'>
                                     Written by
                                 </h2>

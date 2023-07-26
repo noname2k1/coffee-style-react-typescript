@@ -9,7 +9,9 @@ import {
     Contact,
     Blog,
     About,
+    Auth,
 } from '../../pages';
+import { SignIn, SignUp } from '../../components/auth';
 import NotFound from '../../pages/NotFound';
 import PostDetail from '../../pages/PostDetail';
 const router = createBrowserRouter([
@@ -23,7 +25,7 @@ const router = createBrowserRouter([
         errorElement: <NotFound />,
         children: [
             {
-                path: routes.home,
+                index: true,
                 element: <Home />,
             },
             {
@@ -57,6 +59,20 @@ const router = createBrowserRouter([
             {
                 path: routes.contact,
                 element: <Contact />,
+            },
+        ],
+    },
+    {
+        path: routes.auth,
+        element: <Auth />,
+        children: [
+            {
+                index: true,
+                element: <SignIn />,
+            },
+            {
+                path: routes.signUp,
+                element: <SignUp />,
             },
         ],
     },

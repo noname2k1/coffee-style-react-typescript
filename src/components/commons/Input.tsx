@@ -16,6 +16,7 @@ interface Props {
     minWidth?: number;
     maxWidth?: number;
     size?: 'small' | 'medium' | 'large';
+    autoComplete?: string;
 }
 
 const Input = (props: Props) => {
@@ -56,6 +57,7 @@ const Input = (props: Props) => {
                 value={props.value}
                 onChange={props.onChange}
                 name={props.name}
+                autoComplete={props.autoComplete}
             />
         </div>
     );
