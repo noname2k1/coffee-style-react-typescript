@@ -1,4 +1,4 @@
-import { updateProfile, updateEmail, updatePassword } from 'firebase/auth';
+import { updateProfile, updateEmail } from 'firebase/auth';
 import { useState, useRef } from 'react';
 import { Button, Input, Loading } from '../commons';
 import { storage } from '../../config/firebase';
