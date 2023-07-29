@@ -5,7 +5,7 @@ import {
 } from '../../config/firebase';
 import { signInWithPopup, signInWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import routes from '../../config/routes';
 import { firebaseErrorCatching } from '../../utils';
 import { Loading } from '../commons';
@@ -18,6 +18,7 @@ const SignIn = () => {
     const [isHidePassword, setIsHidePassword] = useState(true);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
+    const navigate = useNavigate();
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -25,15 +26,13 @@ const SignIn = () => {
     };
 
     const handleSignIn = async () => {
-        setIsLoading(true);
         setError('');
+        if (!value.email || !value.password)
+            return setError('Please enter your email and password');
+        setIsLoading(true);
         try {
-            const signIn = await signInWithEmailAndPassword(
-                auth,
-                value.email,
-                value.password,
-            );
-            console.log(signIn);
+            await signInWithEmailAndPassword(auth, value.email, value.password);
+            navigate(routes.home, { replace: true });
         } catch (err) {
             setError(firebaseErrorCatching(err));
         } finally {
@@ -44,8 +43,8 @@ const SignIn = () => {
     const signInWithGoogle = async () => {
         setError('');
         try {
-            const signIn = await signInWithPopup(auth, googleProvider);
-            console.log(signIn);
+            await signInWithPopup(auth, googleProvider);
+            navigate(routes.home, { replace: true });
         } catch (err) {
             setError(firebaseErrorCatching(err));
         }
@@ -227,6 +226,7 @@ const SignIn = () => {
                     </div>
                 </div>
             </div>
+            {/* Error */}
             {error && (
                 <p
                     role='alert'

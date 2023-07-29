@@ -10,10 +10,12 @@ import {
     Blog,
     About,
     Auth,
+    Settings,
 } from '../../pages';
 import { SignIn, SignUp } from '../../components/auth';
 import NotFound from '../../pages/NotFound';
 import PostDetail from '../../pages/PostDetail';
+
 const router = createBrowserRouter([
     {
         path: routes.home,
@@ -75,6 +77,14 @@ const router = createBrowserRouter([
                 element: <SignUp />,
             },
         ],
+    },
+    {
+        path: routes.settings,
+        element: <Settings />,
+    },
+    {
+        path: '*',
+        element: <NotFound />,
     },
 ]);
 

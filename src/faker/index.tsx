@@ -29,6 +29,11 @@ export const headerNavItems: HeaderNav[] = [
         name: 'contact',
         path: routes.contact,
     },
+    {
+        id: 'login',
+        name: 'login',
+        path: routes.auth,
+    },
 ];
 
 export const fakeDatas1: Product[] = [

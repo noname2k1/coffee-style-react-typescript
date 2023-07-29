@@ -6,3 +6,4 @@ export { default as About } from './About';
 export { default as Blog } from './Blog';
 export { default as PostDetail } from './PostDetail';
 export { default as Auth } from './Auth';
+export { default as Settings } from './Settings';

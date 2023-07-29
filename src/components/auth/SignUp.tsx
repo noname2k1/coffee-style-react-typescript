@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import routes from '../../config/routes';
 import { firebaseErrorCatching } from '../../utils';
+import { Loading } from '../commons';
 
 const Signup = () => {
     const [value, setValue] = useState({
@@ -16,6 +17,8 @@ const Signup = () => {
     });
     const navigate = useNavigate();
     const [isHidePassword, setIsHidePassword] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState('');
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -27,6 +30,15 @@ const Signup = () => {
     };
 
     const handleSignUp = async () => {
+        setError('');
+        if (!value.email || !value.password || !value['confirm-password']) {
+            setError('Please fill all fields');
+            return;
+        }
+        if (value.password !== value['confirm-password']) {
+            setError('Password and confirm password must be the same');
+            return;
+        }
         try {
             const userCredential = await createUserWithEmailAndPassword(
                 auth,
@@ -36,7 +48,9 @@ const Signup = () => {
             console.log(userCredential);
             navigate(routes.home, { replace: true });
         } catch (err) {
-            console.log('error: ', firebaseErrorCatching(err));
+            setError(firebaseErrorCatching(err));
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -177,6 +191,16 @@ const Signup = () => {
                     </div>
                 </div>
             </div>
+            {/* Error */}
+            {error && (
+                <p
+                    role='alert'
+                    aria-label='error'
+                    className='text-xs font-medium leading-none text-red-500 mt-8'
+                >
+                    {error}
+                </p>
+            )}
             <div className='mt-8'>
                 <button
                     role='button'
@@ -184,7 +208,7 @@ const Signup = () => {
                     className='focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none text-white focus:outline-none bg-indigo-700 border rounded hover:bg-indigo-600 py-4 w-full'
                     onClick={handleSignUp}
                 >
-                    Sign Up
+                    {isLoading ? <Loading className='ml-1.5' /> : 'Sign Up'}
                 </button>
             </div>
         </div>

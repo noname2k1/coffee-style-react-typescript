@@ -40,6 +40,7 @@ import contact_image_2 from './contact_image_2.jpg';
 import check_col from './check_col.png';
 import check_row from './check_row.png';
 import not_found from './not_found.svg';
+import no_image from './no_image.png';
 
 import diamond from './diamond.png';
 import light_bulb from './light_bulb.png';
@@ -90,6 +91,7 @@ const images = {
     contact_image_2,
     check_col,
     check_row,
+    no_image,
 };
 
 export default images;

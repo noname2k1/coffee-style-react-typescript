@@ -9,3 +9,4 @@ export { default as ImageSection } from './ImageSection';
 export { default as Banner } from './Banner';
 export { default as SuccessMessage } from './SuccessMessage';
 export { default as Loading } from './Loading';
+export { default as TippyComponent } from './TippyComponent';

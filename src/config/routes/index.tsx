@@ -8,7 +8,7 @@ const routes = {
     blogCategory: '/blog/:category',
     postDetail: '/post/:slug',
     author: '/author/:slug',
-
+    settings: '/settings',
     auth: '/auth',
     signUp: '/auth/sign-up',
 };

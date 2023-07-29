@@ -82,6 +82,16 @@ export interface Crumb {
     path?: string;
 }
 
+export interface DropdownItem {
+    id: string;
+    text: string;
+    onClick?: () => void;
+    danger?: boolean;
+    separator?: boolean;
+    link?: string;
+    [key: string]: any;
+}
+
 // recoil state
 export interface Cart {
     items: Product[];
