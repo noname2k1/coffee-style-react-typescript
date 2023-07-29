@@ -10,3 +10,4 @@ export { default as Banner } from './Banner';
 export { default as SuccessMessage } from './SuccessMessage';
 export { default as Loading } from './Loading';
 export { default as TippyComponent } from './TippyComponent';
+export { default as Modal } from './Modal';

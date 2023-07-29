@@ -172,6 +172,7 @@ const SignIn = () => {
                     onChange={(e) => handleInputChange(e)}
                     onFocus={() => setError('')}
                     value={value.email}
+                    autoComplete='on'
                     className='bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2'
                 />
             </div>

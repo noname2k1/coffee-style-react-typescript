@@ -85,10 +85,13 @@ const Settings = () => {
                     {!isPending && (
                         <div className='w-full'>
                             {(searchParams.get('tab') === 'user' ||
-                                !searchParams.get('tab')) && (
-                                <UserSettings data={user} />
-                            )}
-                            {searchParams.get('tab') === 'theme' && (
+                                !searchParams.get('tab')) &&
+                                Object.keys(user).length > 0 && (
+                                    <UserSettings data={user} />
+                                )}
+                            {(searchParams.get('tab') === 'theme' ||
+                                (!searchParams.get('tab') &&
+                                    Object.keys(user).length === 0)) && (
                                 <ThemeSettings />
                             )}
                         </div>

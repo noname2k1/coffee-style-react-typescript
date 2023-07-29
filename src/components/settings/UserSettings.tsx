@@ -5,6 +5,8 @@ import { storage } from '../../config/firebase';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import images from '../../assets/images';
 import classNames from 'classnames';
+import Modal from '../commons/Modal';
+import ChangePassword from './ChangePassword';
 
 interface Props {
     data: any;
@@ -12,7 +14,7 @@ interface Props {
 
 const UserSettings = ({ data }: Props) => {
     const inputRef = useRef<HTMLInputElement>(null);
-    const [avatar, setAvatar] = useState<string>(data.photoURL);
+    const [avatar, setAvatar] = useState<string>(data.photoURL ?? '');
     const [preview, setPreview] = useState<string>('');
     const [isPending, setIsPending] = useState<boolean>(false);
     const [isAvatarPending, setIsAvatarPending] = useState<boolean>(true);
@@ -23,6 +25,8 @@ const UserSettings = ({ data }: Props) => {
         name: '',
         email: '',
     });
+    const [isChangePwdModalOpen, setIsChangePwdModalOpen] =
+        useState<boolean>(false);
 
     const handleInputImage = (e: any) => {
         if (preview) {
@@ -91,6 +95,10 @@ const UserSettings = ({ data }: Props) => {
         });
     };
 
+    const handleSetIsChangePwdModalOpen = (state: boolean) => {
+        setIsChangePwdModalOpen(state);
+    };
+
     return (
         <div>
             <h1 className='text-2xl font-semibold mb-4'>User Settings</h1>
@@ -109,7 +117,10 @@ const UserSettings = ({ data }: Props) => {
                             hidden: isAvatarPending,
                         })}
                         onLoad={() => setIsAvatarPending(false)}
-                        onError={(e: any) => (e.target.src = images.no_image)}
+                        onError={(e: any) => {
+                            // console.log('error');
+                            e.target.src = images.no_image;
+                        }}
                     />
                     {preview && (
                         <div className='flex items-center'>
@@ -144,7 +155,7 @@ const UserSettings = ({ data }: Props) => {
                 size='medium'
                 name='name'
                 type='text'
-                placeholder={data.displayName}
+                placeholder={data.displayName ?? 'Enter your name'}
                 onChange={handleInputChange}
                 value={values.name}
                 autoComplete='off'
@@ -161,9 +172,32 @@ const UserSettings = ({ data }: Props) => {
                 autoComplete='off'
             />
             <div className='mt-5 flex items-center justify-around max-lg:flex-col'>
-                <Button size='medium' isDark>
-                    Change Password
-                </Button>
+                {isChangePwdModalOpen &&
+                    data.providerData.find(
+                        (provider) => provider.providerId === 'password',
+                    ) && (
+                        <Modal
+                            title='change password'
+                            onClose={() => handleSetIsChangePwdModalOpen(false)}
+                        >
+                            <ChangePassword
+                                onCancel={() =>
+                                    handleSetIsChangePwdModalOpen(false)
+                                }
+                            />
+                        </Modal>
+                    )}
+                {data.providerData.find(
+                    (provider) => provider.providerId === 'password',
+                ) && (
+                    <Button
+                        size='medium'
+                        isDark
+                        onClick={() => handleSetIsChangePwdModalOpen(true)}
+                    >
+                        Change Password
+                    </Button>
+                )}
                 <div className='mt-4'></div>
                 <Button
                     size='medium'

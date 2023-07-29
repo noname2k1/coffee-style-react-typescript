@@ -5,8 +5,11 @@ import { RouterProvider } from 'react-router-dom';
 import AOS from 'aos';
 import { RecoilRoot } from 'recoil';
 import RecoilizeDebugger from 'recoilize';
+import { ToastContainer } from 'react-toastify';
 import 'aos/dist/aos.css';
 import './index.scss';
+import 'react-toastify/dist/ReactToastify.css';
+
 AOS.init({
     // Global settings:
     disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
@@ -31,6 +34,7 @@ AOS.init({
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
         <RecoilRoot>
+            <ToastContainer />
             <RecoilizeDebugger />
             <RouterProvider router={router}></RouterProvider>
         </RecoilRoot>
