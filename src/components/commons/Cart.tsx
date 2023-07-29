@@ -9,7 +9,7 @@ import React from 'react';
 
 const Cart = () => {
     const [cart, setCart] = useRecoilState<CastType>(cartState);
-    console.log(cart);
+    // console.log(cart);
     const handleHideCart = () => {
         setCart((oldCart) => ({
             ...oldCart,
