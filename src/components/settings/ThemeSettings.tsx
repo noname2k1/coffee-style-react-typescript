@@ -1,6 +1,4 @@
-interface Props {}
-
-const UserSettings = (props: Props) => {
+const UserSettings = () => {
     return <div>Theme Settings</div>;
 };
 
