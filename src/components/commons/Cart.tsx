@@ -9,7 +9,7 @@ import React from 'react';
 
 const Cart = () => {
     const [cart, setCart] = useRecoilState<CastType>(cartState);
-
+    console.log(cart);
     const handleHideCart = () => {
         setCart((oldCart) => ({
             ...oldCart,
@@ -24,8 +24,12 @@ const Cart = () => {
         let restValue: number = 0;
         let total = 0;
         const value = parseInt(e.target.value);
+        if (isNaN(value)) return;
+        if (value > item.quantity) return;
         const action = value > item.quantityInCart ? 'increase' : 'decrease';
-        if (action === 'increase') {
+        if (value === 0) {
+            return;
+        } else if (action === 'increase') {
             restValue = value - item.quantityInCart;
             if (restValue > item.quantity) {
                 restValue = item.quantity;
@@ -126,7 +130,7 @@ const Cart = () => {
                     {cart.items.length > 0 &&
                         cart.items.map((item) => (
                             <div
-                                className='flex items-center text-white'
+                                className='flex flex-col sm:flex-row items-center justify-center text-white'
                                 key={item.id}
                             >
                                 <ItemImage
@@ -134,7 +138,7 @@ const Cart = () => {
                                     size='small'
                                     type='product'
                                 />
-                                <div className='cart-item-detail flex flex-col items-start px-5 flex-1 w-[224px]'>
+                                <div className='cart-item-detail flex flex-col justify-center items-center sm:items-start px-5 flex-1 md:w-[224px]'>
                                     <h1 className='text-lg'>{item.name}</h1>
                                     <span>{formatCurrency(item.price)}</span>
                                     <button

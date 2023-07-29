@@ -33,7 +33,7 @@ const Footer = () => {
                             size='medium'
                             placeholder='helloAnhEm'
                             isTransparent
-                            minWidth={350}
+                            minWidth={250}
                         />
                     )}
                     <span className='mt-4 sm:ml-4'></span>

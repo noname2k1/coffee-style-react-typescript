@@ -30,7 +30,7 @@ const Post = (props: Props) => {
             </Link>
             <div className='mt-4 flex flex-col items-center'>
                 <Link
-                    to={'/'}
+                    to={`/post/${props.item.slug}`}
                     className='text-black text-xl font-thin mt-3.5 mb-1.5'
                 >
                     {props.item.title}

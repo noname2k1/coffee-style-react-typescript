@@ -13,11 +13,11 @@ interface Props {
 
 const Product = (props: Props) => {
     return (
-        <div className='flex flex-col max-md:px-[30px]'>
+        <div className='flex flex-col max-md:px-[10px]'>
             <Link
                 to={'/product/' + props.item.slug}
                 className={classNames('relative group inline-block', {
-                    'min-h-[540px]': props.cols === 2,
+                    'min-h-[300px] md:min-h-[540px]': props.cols === 2,
                     'min-h-[380px]': props.cols === 3,
                 })}
             >

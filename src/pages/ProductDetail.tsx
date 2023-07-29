@@ -151,7 +151,7 @@ const ProductDetail = () => {
                             <h3 className='primary-typo uppercase mb-5'>
                                 Details
                             </h3>
-                            <p className='font-thin text-black/50 space-y-3 tracking-wide px-[30px]'>
+                            <p className='font-thin text-black/50 space-y-3 tracking-wide lg:px-[30px]'>
                                 {product.details}
                             </p>
                         </div>
