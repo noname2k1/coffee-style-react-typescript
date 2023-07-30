@@ -19,7 +19,7 @@ const Footer = () => {
             {/* black form */}
             <div
                 data-aos='fade-up'
-                className='bg-gray-900 px-[50px] py-[80px] mx-0 lg:mx-[30px] lg:py-[100px] text-white flex flex-col items-center'
+                className='bg-gray-900 px-[50px] py-[80px] mx-0 lg:mx-[30px] lg:py-[100px] text-white flex flex-col items-center dark:border-y border-border-color'
             >
                 <h3 className='opacity-60 text-xs uppercase tracking-widest font-semibold'>
                     SIGN UP AND GET FREE COFFEE BAGS

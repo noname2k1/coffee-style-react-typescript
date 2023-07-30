@@ -35,7 +35,7 @@ const Header = () => {
     };
 
     return (
-        <header className='h-20 flex justify-center items-center relative dark:text-white'>
+        <header className='h-20 flex justify-center items-center relative dark:text-white dark:border-y border-border-color'>
             <div className='flex items-center justify-between lg:justify-around h-full px-6 max-lg:w-primary w-[1110px]'>
                 {/* LOGO */}
                 <Link to={routes.home} className='h-6'>

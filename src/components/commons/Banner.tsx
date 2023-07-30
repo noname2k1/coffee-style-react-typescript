@@ -2,7 +2,7 @@ import images from '../../assets/images';
 
 const Banner = () => {
     return (
-        <section className='mb-[100px] flex lg:h-[460px] items-center justify-center flex-col lg:flex-row w-full'>
+        <section className='mb-[100px] flex dark:border-y border-border-color lg:h-[460px] items-center justify-center flex-col lg:flex-row w-full'>
             <img
                 src={images.premium_image}
                 alt='premium-image'

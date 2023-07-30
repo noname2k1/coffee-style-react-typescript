@@ -82,7 +82,7 @@ const Cart = () => {
             )}
             <aside
                 className={classnames(
-                    'fixed flex flex-col right-0 z-10 top-0 h-screen bg-gray-900 max-w-[480px] duration-200',
+                    'fixed flex flex-col right-0 z-10 top-0 h-screen bg-gray-900 max-w-[480px] duration-200 dark:border-l border-border-color',
                     {
                         'translate-x-full': !cart.isShow,
                     },

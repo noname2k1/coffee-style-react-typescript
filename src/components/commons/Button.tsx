@@ -15,14 +15,14 @@ interface Props {
 const Button = (props: Props) => {
     return (
         <div
-            className={classNames('text-center', {
+            className={classNames('text-center duration-150', {
                 'py-[16px] px-[24px]': props.size === 'medium',
                 'py-[12px] px-[20px]': props.size === 'small',
                 'py-[20px] px-[28px]': props.size === 'large',
                 'w-fit': props.fit,
                 'h-full': props.hFull,
                 'w-full': props.wFull,
-                'bg-black text-white': props.isDark,
+                'bg-black text-white hover:bg-white/5': props.isDark,
                 'bg-white text-black': !props.isDark,
                 'opacity-50 cursor-not-allowed': props.disabled,
                 'hover:bg-opacity-80 dark:hover:brightness-110 cursor-pointer':
