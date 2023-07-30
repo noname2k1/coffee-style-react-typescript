@@ -35,6 +35,7 @@ const Settings = () => {
         { id: uuid(), text: 'user', isShow: Object.keys(user).length > 0 },
         { id: uuid(), text: 'theme', isShow: true },
     ];
+
     return (
         <div className='min-h-screen lg:p-4 pb-0 flex flex-col'>
             <header className='pb-4 pt-4 lg:pt-0 pl-4 lg:pl-0 border-b border-border-light'>
@@ -59,25 +60,31 @@ const Settings = () => {
             <div className='flex flex-1'>
                 <aside className='py-1 px-1 lg:px-4 border-r border-border-light'>
                     <ul className='pt-4'>
-                        {SIDEBAR_LIST.map((item, index) => (
-                            <li
-                                onClick={() => handleTabChange(item.text)}
-                                className={classNames(
-                                    'py-2 capitalize px-2 lg:px-10 hover:bg-black/10 bg-white duration-100 cursor-pointer',
-                                    {
-                                        'font-semibold':
-                                            searchParams.get('tab') ===
-                                                item.text ||
-                                            (!searchParams.get('tab') &&
-                                                index === 0),
-                                        hidden: !item.isShow,
-                                    },
-                                )}
-                                key={item.id}
-                            >
-                                {item.text}
-                            </li>
-                        ))}
+                        {SIDEBAR_LIST.map((item, index) => {
+                            return (
+                                <li
+                                    onClick={() => handleTabChange(item.text)}
+                                    className={classNames(
+                                        'py-2 capitalize px-2 lg:px-10 hover:bg-black/10 bg-white duration-100 cursor-pointer',
+                                        {
+                                            'font-semibold':
+                                                searchParams.get('tab') ===
+                                                    item.text ||
+                                                (!searchParams.get('tab') &&
+                                                    index === 0) ||
+                                                (!searchParams.get('tab') &&
+                                                    index === 1 &&
+                                                    Object.keys(user).length ===
+                                                        0),
+                                            hidden: !item.isShow,
+                                        },
+                                    )}
+                                    key={item.id}
+                                >
+                                    {item.text}
+                                </li>
+                            );
+                        })}
                     </ul>
                 </aside>
                 <section className='flex-1 flex items-center justify-center px-4 lg:pl-8'>
