@@ -137,6 +137,7 @@ const ThemeSettings = () => {
                 'bg-no-repeat',
                 'bg-center',
                 'bg-cover',
+                'text-white',
             );
         }
         if (theme.type === 'dark') {
