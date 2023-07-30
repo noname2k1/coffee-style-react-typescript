@@ -40,7 +40,7 @@ const TippyComponent = ({
 
     const renderContent = () => {
         return (
-            <div className='text-sm bg-white shadow-lg py-1.5 rounded-sm min-w-full border border-border-light'>
+            <div className='text-sm bg-white dark:bg-gray-800 shadow-lg py-1.5 rounded-sm min-w-full border border-border-light'>
                 <ul className='flex flex-col'>
                     {items?.map((item) => {
                         const ItemComponent = item.link ? NavLink : 'li';
@@ -53,10 +53,10 @@ const TippyComponent = ({
                                 key={item.id}
                                 onClick={item.onClick}
                                 className={classNames(
-                                    'hover:bg-black/5 inline-block bg-white duration-100 cursor-pointer px-10 py-4',
+                                    'hover:bg-black/5 dark:hover:bg-white/5 inline-block bg-white dark:bg-gray-900 duration-100 cursor-pointer px-10 py-4',
                                     {
                                         'text-red-700': item.danger,
-                                        'border-t border-border-light hover:bg-red-600 hover:text-white':
+                                        'border-t border-border-light hover:bg-red-600 dark:hover:bg-red-600 hover:text-white':
                                             item.separator,
                                     },
                                 )}

@@ -18,12 +18,12 @@ interface Props {
 const Input = (props: Props) => {
     return (
         <div
-            className={classNames('flex flex-col', {
+            className={classNames('flex flex-col dark:text-white', {
                 'max-sm:w-full': !props.minWidth && !props.maxWidth,
             })}
         >
             {props.label && (
-                <label className='text-sm uppercase tracking-widest text-black/50 font-semibold mb-2.5'>
+                <label className='text-sm uppercase tracking-widest text-black/50 dark:text-white/50 font-semibold mb-2.5'>
                     {props.label}
                 </label>
             )}
@@ -33,11 +33,11 @@ const Input = (props: Props) => {
                     {
                         'bg-black text-white hover:border-white/50 focus:border-white/50':
                             props.isDark && !props.isTransparent,
-                        'bg-transparent text-black hover:border-black/50 focus:border-black/50':
+                        'bg-transparent text-black dark:text-white hover:border-black/50 focus:border-black/50 dark:hover:border-white/50 dark:focus:border-white/50':
                             props.isTransparent && !props.isDark,
                         'bg-transparent text-white hover:border-white/50 focus:border-white/50':
                             props.isTransparent && props.isDark,
-                        'bg-gray-100 text-black border-border-light hover:border-black/50 focus:border-black/50':
+                        'bg-gray-100 text-black dark:text-white border-border-light hover:border-black/50 focus:border-black/50 dark:hover:border-white/50 dark:focus:border-white/50':
                             !props.isDark && !props.isTransparent,
                         'py-[15px] px-[24px]': props.size === 'medium',
                         'py-[12px] px-[20px]': props.size === 'small',

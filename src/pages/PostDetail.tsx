@@ -10,7 +10,7 @@ const PostDetail = () => {
     const category = currentPost?.category ?? '';
     const author = authors.find((item) => item.slug === currentPost?.author);
     return (
-        <section className='flex justify-center'>
+        <section className='flex justify-center dark:text-white'>
             {currentPost && (
                 <div className='lg:w-primary max-lg:px-[30px]'>
                     <BreadCrumb
@@ -28,7 +28,7 @@ const PostDetail = () => {
                     <h1 className='text-4xl lg:text-[44px]'>
                         {currentPost.title}
                     </h1>
-                    <p className='text-lg tracking-wider text-black/50'>
+                    <p className='text-lg tracking-wider text-black/50 dark:text-white/50'>
                         {currentPost.description}
                     </p>
                     <img
@@ -39,7 +39,7 @@ const PostDetail = () => {
                     <div className='min-h-[400px] border border-t-0 mb-[100px] flex max-lg:flex-col'>
                         <div className='max-lg:order-2'>
                             <div className='border p-10 flex-col flex items-center'>
-                                <h2 className='text-sm mb-6 font-semibold text-black/30 uppercase tracking-widest'>
+                                <h2 className='text-sm mb-6 font-semibold text-black/30 dark:text-white/30 uppercase tracking-widest'>
                                     Written by
                                 </h2>
                                 <img
@@ -50,7 +50,7 @@ const PostDetail = () => {
                                 <h3 className='text-base my-5'>
                                     {author?.name}
                                 </h3>
-                                <p className='text-sm tracking-wider text-black/50 w-[140px]'>
+                                <p className='text-sm tracking-wider text-center text-black/50 dark:text-white/50 w-[140px]'>
                                     {author?.description}
                                 </p>
 
@@ -64,7 +64,7 @@ const PostDetail = () => {
                         </div>
                         <div className='flex-1 flex flex-col p-10'>
                             <div className='flex items-center mb-[50px]'>
-                                <div className='text-gray-900/50 max-lg:justify-center whitespace-nowrap flex uppercase text-xs font-semibold tracking-[0.2em] items-center'>
+                                <div className='text-gray-900/50 dark:text-white/50 max-lg:justify-center whitespace-nowrap flex uppercase text-xs font-semibold tracking-[0.2em] items-center'>
                                     {moment(currentPost.createdAt).format(
                                         'MMMM D, YYYY',
                                     )}

@@ -19,7 +19,7 @@ const Home = () => {
                         className={'w-full h-full'}
                         alt='header-picture'
                     />
-                    <div className='absolute bg-opacity-20 text-center px-20 flex flex-col justify-center items-center bg-black inset-0 text-white dark:text-black'>
+                    <div className='absolute bg-opacity-20 text-center px-20 flex flex-col justify-center items-center bg-black inset-0 text-white'>
                         <h3 className='uppercase primary-typo'>
                             BEST PLACE TO BUY DESIGN
                         </h3>
@@ -41,11 +41,11 @@ const Home = () => {
             </div>
             <div className='px-[30px] text-center flex flex-col items-center justify-center mb-[100px]'>
                 <div className='w-[70%]'>
-                    <h1 className='tracking-widest text-black text-3xl my-5'>
+                    <h1 className='tracking-widest text-black dark:text-white text-3xl my-5'>
                         Even the all-powerful Pointing has no control about the
                         blind texts.
                     </h1>
-                    <p className='font-thin text-black/40 tracking-widest'>
+                    <p className='font-thin text-black/40 dark:text-white/40 tracking-widest'>
                         It is a paradisematic country, in which roasted parts of
                         sentences fly into your mouth. Even the all-powerful
                         Pointing has no control about the blind texts it is an

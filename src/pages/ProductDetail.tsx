@@ -78,7 +78,7 @@ const ProductDetail = () => {
     };
 
     return (
-        <section className=''>
+        <section className='dark:text-white'>
             {product && (
                 <div className='flex flex-col items-center'>
                     <div className='product-wrapper w-full lg:w-primary px-5 lg:px-0 flex flex-col lg:flex-row my-[100px]'>
@@ -93,11 +93,11 @@ const ProductDetail = () => {
                             <h1 className='text-4xl mt-[50px]'>
                                 {product.name}
                             </h1>
-                            <p className='text-lg text-black/30 mt-5 mb-6'>
+                            <p className='text-lg text-black/30 dark:text-white/30 mt-5 mb-6'>
                                 {product.description}
                             </p>
                             {/* price */}
-                            <div className='text-gray-900/80 flex items-center justify-center'>
+                            <div className='text-gray-900/80 dark:text-gray-200/80 flex items-center justify-center'>
                                 <div
                                     className={classNames('uppercase', {
                                         'text-2xl text-left max-sm:w-full':
@@ -151,7 +151,7 @@ const ProductDetail = () => {
                             <h3 className='primary-typo uppercase mb-5'>
                                 Details
                             </h3>
-                            <p className='font-thin text-black/50 space-y-3 tracking-wide lg:px-[30px]'>
+                            <p className='font-thin text-black/50 dark:text-white/50 space-y-3 tracking-wide lg:px-[30px]'>
                                 {product.details}
                             </p>
                         </div>
@@ -167,22 +167,22 @@ const ProductDetail = () => {
                                         className='font-thin space-y-3 whitespace-nowrap'
                                     >
                                         {index === 0 && (
-                                            <span className='font-thin text-black/50'>
+                                            <span className='font-thin text-black/50 dark:text-white/50'>
                                                 Lenght (in):&nbsp;
                                             </span>
                                         )}
                                         {index === 1 && (
-                                            <span className='font-thin text-black/50'>
+                                            <span className='font-thin text-black/50 dark:text-white/50'>
                                                 Height (in):&nbsp;
                                             </span>
                                         )}{' '}
                                         {index === 2 && (
-                                            <span className='font-thin text-black/50'>
+                                            <span className='font-thin text-black/50 dark:text-white/50'>
                                                 Width (in):&nbsp;
                                             </span>
                                         )}{' '}
                                         {index === 3 && (
-                                            <span className='font-thin text-black/50'>
+                                            <span className='font-thin text-black/50 dark:text-white/50'>
                                                 Weight (oz):&nbsp;
                                             </span>
                                         )}

@@ -100,11 +100,13 @@ const UserSettings = ({ data }: Props) => {
     };
 
     return (
-        <div>
+        <div className='dark:text-white'>
             <h1 className='text-2xl font-semibold mb-4'>User Settings</h1>
             <div className='mb-5 flex items-center flex-col lg:flex-row'>
                 <span>User ID: </span>
-                <span className='italic text-black/60'> {data.uid}</span>
+                <span className='italic text-black/60 ml-1 dark:text-white/60'>
+                    {data.uid}
+                </span>
             </div>
             {/* avatar */}
             <div className='mb-5 flex flex-col items-center'>
@@ -124,7 +126,7 @@ const UserSettings = ({ data }: Props) => {
                     />
                     {preview && (
                         <div className='flex items-center'>
-                            <span> {'<==>'} </span>
+                            <span className='mx-2'> {' <==> '} </span>
                             <img
                                 src={preview}
                                 alt='preview-avatar'
@@ -171,7 +173,19 @@ const UserSettings = ({ data }: Props) => {
                 value={values.email}
                 autoComplete='off'
             />
-            <div className='mt-5 flex items-center justify-around max-lg:flex-col'>
+            <div
+                className={classNames(
+                    'mt-5 flex items-center max-lg:flex-col',
+                    {
+                        'justify-center': !data.providerData.find(
+                            (provider) => provider.providerId === 'password',
+                        ),
+                        'justify-around': data.providerData.find(
+                            (provider) => provider.providerId === 'password',
+                        ),
+                    },
+                )}
+            >
                 {isChangePwdModalOpen &&
                     data.providerData.find(
                         (provider) => provider.providerId === 'password',

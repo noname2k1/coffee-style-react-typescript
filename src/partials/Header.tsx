@@ -35,20 +35,20 @@ const Header = () => {
     };
 
     return (
-        <header className='h-20 flex justify-center items-center relative'>
+        <header className='h-20 flex justify-center items-center relative dark:text-white'>
             <div className='flex items-center justify-between lg:justify-around h-full px-6 max-lg:w-primary w-[1110px]'>
                 {/* LOGO */}
                 <Link to={routes.home} className='h-6'>
                     <img
                         src={images.logo}
                         alt='coffeestyle-logo'
-                        className='h-full object-contain'
+                        className='h-full object-contain dark:invert'
                     />
                 </Link>
                 {/* HEADER_NAV */}
                 <nav
                     className={classNames(
-                        'flex items-center z-10 max-lg:shadow-md justify-center max-lg:flex-col max-lg:absolute right-0 overflow-hidden top-full left-0 duration-[300ms]',
+                        'flex items-center z-10 max-lg:shadow-md max-lg:bg-white justify-center max-lg:flex-col max-lg:absolute right-0 overflow-hidden top-full left-0 duration-[300ms]',
                         {
                             'max-lg:h-0 max-lg:invisible': !isMobileMenuOpen,
                             'max-lg:h-[292px] max-lg:visible max-lg:py-2':
@@ -63,7 +63,7 @@ const Header = () => {
                             to={nav.path}
                             className={({ isActive }) =>
                                 classNames(
-                                    'group whitespace-nowrap max-lg:py-[15px] hover:opacity-100 tracking-widest uppercase text-xs font-semibold hover:text-gray-900 ml-8 duration-300',
+                                    'group whitespace-nowrap max-lg:py-[15px] lg:dark:text-white hover:opacity-100 tracking-widest uppercase text-xs font-semibold hover:text-gray-900 ml-8 duration-300',
                                     {
                                         'text-gray-900 opacity-100': isActive,
                                         'text-gray-800 opacity-60': !isActive,
@@ -73,7 +73,7 @@ const Header = () => {
                             }
                         >
                             {nav.name}
-                            <div className='group-hover:w-full w-0 h-0.5 bg-primary duration-75 max-lg:hidden'></div>
+                            <div className='group-hover:w-full w-0 h-0.5 bg-primary dark:bg-orange-800 duration-75 max-lg:hidden'></div>
                         </NavLink>
                     ))}
                 </nav>
@@ -81,12 +81,12 @@ const Header = () => {
                     {/* CART_BTN */}
                     <button
                         onClick={handleShowCart}
-                        className='group flex items-center mr-[15px] opacity-60 hover:opacity-100 justify-center whitespace-nowrap uppercase text-xs font-semibold text-gray-800 hover:text-gray-900 ml-8 duration-300'
+                        className='group flex items-center mr-[15px] opacity-60 hover:opacity-100 justify-center whitespace-nowrap uppercase text-xs font-semibold text-gray-800 dark:text-gray-200 hover:text-gray-900 ml-8 duration-300'
                     >
                         <img
                             src={images.cart_icon}
                             alt='shopping-cart'
-                            className='w-4 h-5 mr-2.5 text-gray-800 mb-0.5'
+                            className='w-4 h-5 mr-2.5 text-gray-800 mb-0.5 dark:invert'
                         />
                         Cart
                         <span className='bg-gray-800 flex justify-center group-hover:bg-gray-900 text-white px-1.5 py-0.5 rounded-xl ml-2'>
@@ -98,13 +98,17 @@ const Header = () => {
                         onClick={handleMobileMenu}
                         className='text-gray-800 hover:text-gray-900 mr-[15px] w-5 h-3.5 opacity-60 hover:opacity-100 mx-1 lg:hidden'
                     >
-                        <img src={images.menu_icon} alt='mobile-menu-icon' />
+                        <img
+                            src={images.menu_icon}
+                            alt='mobile-menu-icon'
+                            className='dark:invert'
+                        />
                     </button>
                     {/* user */}
                     {Object.keys(user).length > 0 && !isPending && (
                         <TippyComponent role='dropdown' items={userDropdown}>
                             <div className='flex items-center cursor-pointer'>
-                                <span className='text-gray-800 text-xs font-semibold mr-2 hidden lg:block'>
+                                <span className='text-gray-800 dark:text-gray-200 text-xs font-semibold mr-2 hidden lg:block'>
                                     {user.displayName ||
                                         user.email.split('@')[0]}
                                 </span>
@@ -132,7 +136,7 @@ const Header = () => {
                             <div className='flex items-center'>
                                 <Link
                                     to={routes.auth}
-                                    className='text-gray-800 block mr-[15px] hover:text-gray-900 opacity-60 hover:opacity-100 mx-1 tracking-widest font-semibold max-lg:hidden'
+                                    className='text-gray-800 dark:text-white block mr-[15px] hover:text-gray-900 opacity-60 hover:opacity-100 mx-1 tracking-widest font-semibold max-lg:hidden'
                                 >
                                     Login
                                 </Link>
@@ -142,7 +146,7 @@ const Header = () => {
                                     state={{
                                         returnURL: pathname,
                                     }}
-                                    className='hover:text-gray-900 duration-150'
+                                    className='hover:text-gray-900 text-gray-400 dark:hover:text-gray-200 duration-150'
                                 >
                                     <svg
                                         fill='currentColor'

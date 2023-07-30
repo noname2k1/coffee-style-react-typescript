@@ -23,20 +23,20 @@ const HorizontalSection = (props: Props) => {
             <div className='w-primary'>
                 <h2
                     className='text-center mb-[100px] font-semibold
-                 uppercase text-xs tracking-widest text-black/30'
+                 uppercase text-xs tracking-widest text-black/30 dark:text-white/30'
                 >
                     {props.title}
                 </h2>
                 <div className='flex-col flex lg:flex-row items-center justify-center'>
                     <div className='flex items-center justify-center order-2 lg:order-1'>
                         <div className='flex flex-col max-lg:text-center'>
-                            <h3 className='tracking-widest text-black/40 font-semibold text-xs mb-5 mt-10 lg:mt-0'>
+                            <h3 className='tracking-widest text-black/40 dark:text-white/40 font-semibold text-xs mb-5 mt-10 lg:mt-0'>
                                 PREMIUM OFFER
                             </h3>
                             <h1 className='text-4xl font-medium'>
                                 Get our Coffee Magazine
                             </h1>
-                            <p className='text-black/50 mt-3.5 mb-5'>
+                            <p className='text-black/50 dark:text-white/50 mt-3.5 mb-5'>
                                 The most versatile furniture system ever
                                 created. Designed to fit your life.
                             </p>

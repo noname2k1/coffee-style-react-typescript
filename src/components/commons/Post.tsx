@@ -31,14 +31,14 @@ const Post = (props: Props) => {
             <div className='mt-4 flex flex-col items-center'>
                 <Link
                     to={`/post/${props.item.slug}`}
-                    className='text-black text-xl font-thin mt-3.5 mb-1.5'
+                    className='text-black dark:text-white text-xl font-thin mt-3.5 mb-1.5'
                 >
                     {props.item.title}
                 </Link>
-                <p className='text-gray-900/50 flex items-center justify-center'>
+                <p className='text-gray-900/50 dark:text-gray-200/50 flex items-center justify-center'>
                     {props.item.description}
                 </p>
-                <div className='text-gray-900/50 max-lg:justify-center flex mt-5 w-full uppercase text-xs font-semibold tracking-widest items-center'>
+                <div className='text-gray-900/50 dark:text-gray-200/50 max-lg:justify-center flex mt-5 w-full uppercase text-xs font-semibold tracking-widest items-center'>
                     {moment(props.item.createdAt).format('MMMM D, YYYY')}
                 </div>
             </div>

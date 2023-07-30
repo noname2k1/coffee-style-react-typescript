@@ -37,7 +37,7 @@ const Settings = () => {
     ];
 
     return (
-        <div className='min-h-screen lg:p-4 pb-0 flex flex-col'>
+        <div className='min-h-screen lg:p-4 pb-0 flex flex-col dark:text-white'>
             <header className='pb-4 pt-4 lg:pt-0 pl-4 lg:pl-0 border-b border-border-light'>
                 <button
                     onClick={handleGoBack}
@@ -66,7 +66,7 @@ const Settings = () => {
                                 <li
                                     onClick={() => handleTabChange(item.text)}
                                     className={classNames(
-                                        'py-2 capitalize px-2 lg:px-10 duration-100 cursor-pointer hover:bg-black/10',
+                                        'py-2 capitalize px-2 lg:px-10 duration-100 cursor-pointer hover:bg-black/10 dark:hover:bg-white/10',
                                         {
                                             'font-semibold':
                                                 searchParams.get('tab') ===

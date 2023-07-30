@@ -31,11 +31,11 @@ const Product = (props: Props) => {
             <div className='mt-4 text-center flex flex-col items-center'>
                 <Link
                     to={'/product/' + props.item.slug}
-                    className='text-black text-xl font-thin mt-3.5 mb-1.5 capitalize'
+                    className='text-black dark:text-white text-xl font-thin mt-3.5 mb-1.5 capitalize'
                 >
                     {props.item.name}
                 </Link>
-                <div className='text-gray-900/50 flex items-center justify-center'>
+                <div className='text-gray-900/50 dark:text-gray-200/50 flex items-center justify-center'>
                     <div
                         className={classNames({
                             'text-sm': !props.item.oldPrice,

@@ -15,12 +15,12 @@ const ImageSection = (props: Props) => {
     return (
         <section className='flex justify-center mb-[100px]' data-aos='fade-up'>
             <div
-                className={classNames('lg:w-primary', {
+                className={classNames('lg:w-primary max-lg:px-7', {
                     'max-lg:px-[30px]': props.gridCols === 2,
                 })}
             >
                 {props.title && (
-                    <h2 className='text-center mb-[100px] font-semibold uppercase text-xs tracking-widest text-black/30'>
+                    <h2 className='text-center mb-[100px] font-semibold uppercase text-xs tracking-widest text-black/30 dark:text-white/30'>
                         {props.title}
                     </h2>
                 )}

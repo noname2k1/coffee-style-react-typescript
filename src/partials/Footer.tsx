@@ -53,12 +53,12 @@ const Footer = () => {
                 className='my-[100px] flex justify-center px-5 lg:px-0'
                 data-aos='fade-up'
             >
-                <div className='w-primary flex lg:grid flex-col items-center lg:items-start grid-rows-1 grid-cols-4 gap-8 text-black/50 text-sm tracking-wider'>
+                <div className='w-primary flex lg:grid flex-col items-center lg:items-start grid-rows-1 grid-cols-4 gap-8 text-black/50 dark:text-white/50 text-sm tracking-wider'>
                     <div className='flex justify-center flex-col items-center'>
                         <img
                             src={images.logo}
                             alt='coffee-style-logo'
-                            className='w-[111px]'
+                            className='w-[111px] mb-2 dark:invert'
                         />
                         <div className='text-center'>
                             Delivering the best coffee life since 1996. From

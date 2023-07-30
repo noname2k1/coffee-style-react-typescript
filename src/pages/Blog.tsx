@@ -41,7 +41,7 @@ const Blog = () => {
                             !categoryParam && !slug,
                     })}
                 >
-                    <h1 className='text-4xl'>
+                    <h1 className='text-4xl dark:text-white'>
                         {matchedCategory
                             ? matchedCategory.name
                             : matchedAuthor
@@ -49,13 +49,13 @@ const Blog = () => {
                             : 'Read coffee stories on our Blog'}
                     </h1>
                     {matchedAuthor && (
-                        <span className='mt-[30px] inline-block text-xs font-semibold tracking-[0.2rem] text-black/40 uppercase'>
+                        <span className='mt-[30px] inline-block text-xs font-semibold tracking-[0.2rem] text-black/40 dark:text-white/40 uppercase'>
                             {matchedAuthor.job}
                         </span>
                     )}
                     <p
                         className={classNames(
-                            'text-md text-black/60 mt-4 max-md:text-center',
+                            'text-md text-black/60 dark:text-white/60 mt-4 max-md:text-center',
                             {
                                 'px-20': !categoryParam && !slug,
                             },
@@ -78,7 +78,7 @@ const Blog = () => {
                 )}
                 <div className='flex mb-[100px] flex-col lg:flex-row gap-10'>
                     <div className='lg:mr-10 max-lg:px-[30px]'>
-                        <h2 className='text-[22px] capitalize flex-1 mb-10 border-b pb-4 border-border-light'>
+                        <h2 className='text-[22px] capitalize flex-1 mb-10 border-b pb-4 border-border-light dark:text-white'>
                             Latest posts
                         </h2>
                         <div className='flex flex-col gap-y-[50px]'>
@@ -92,7 +92,7 @@ const Blog = () => {
                         </div>
                     </div>
                     <div className='lg:mr-10 max-lg:px-[30px]'>
-                        <h2 className='text-[22px] capitalize mb-10 lg:w-[300px] first-line pb-4 border-b border-border-light'>
+                        <h2 className='text-[22px] capitalize mb-10 lg:w-[300px] first-line pb-4 border-b border-border-light dark:text-white'>
                             About us
                         </h2>
                         <div>
@@ -100,10 +100,10 @@ const Blog = () => {
                                 <img
                                     src={images.logo}
                                     alt='logo'
-                                    className='mb-[15px] h-[24px]'
+                                    className='mb-[15px] h-[24px] dark:invert'
                                 />
                             </div>
-                            <p className='text-black/60 mb-[15px]'>
+                            <p className='text-black/60 dark:text-white/60 mb-[15px]'>
                                 Lorem ipsum dolor sit amet, consectetur
                                 adipiscing elit. Suspendisse varius enim in eros
                                 elementum tristique.
@@ -114,7 +114,7 @@ const Blog = () => {
                             >
                                 Read the full story
                             </Link>
-                            <h2 className='text-[22px] capitalize mb-10 lg:w-[300px] mt-10 pt-2.5 pb-4 border-b border-border-light'>
+                            <h2 className='text-[22px] capitalize mb-10 lg:w-[300px] mt-10 pt-2.5 pb-4 border-b border-border-light dark:text-white'>
                                 Categories
                             </h2>
                             <div className='flex flex-col gap-4'>
@@ -128,10 +128,10 @@ const Blog = () => {
                                             className={classNames(
                                                 'border-l-2 duration-200 pl-5 py-2',
                                                 {
-                                                    'cursor-pointer group-hover:border-primary border-border-color-lighter text-black/70 group-hover:text-black':
+                                                    'cursor-pointer group-hover:border-primary border-border-color-lighter text-black/70 dark:text-white/70 group-hover:text-black dark:group-hover:text-white':
                                                         categoryParam !==
                                                         postCategory.value,
-                                                    'cursor-default border-primary text-black':
+                                                    'cursor-default border-primary text-black dark:text-white':
                                                         categoryParam ===
                                                             postCategory.value ||
                                                         (!categoryParam &&
@@ -145,7 +145,7 @@ const Blog = () => {
                                 ))}
                             </div>
 
-                            <h2 className='text-[22px] capitalize mb-10 lg:w-[300px] mt-10 pt-2.5 pb-4 border-b border-border-light'>
+                            <h2 className='text-[22px] capitalize mb-10 lg:w-[300px] mt-10 pt-2.5 pb-4 border-b border-border-light dark:text-white'>
                                 Authors
                             </h2>
                             <div className='flex flex-col gap-4'>
@@ -159,9 +159,9 @@ const Blog = () => {
                                             className={classNames(
                                                 'border-l-2 duration-200 pl-5 py-2 flex items-center gap-5',
                                                 {
-                                                    'cursor-pointer group-hover:border-primary border-border-color-lighter text-black/70 group-hover:text-black':
+                                                    'cursor-pointer group-hover:border-primary border-border-color-lighter text-black/70 dark:text-white/70 group-hover:text-black dark:group-hover:text-white':
                                                         slug !== author.slug,
-                                                    'cursor-default border-primary text-black':
+                                                    'cursor-default border-primary text-black dark:text-white':
                                                         slug === author.slug,
                                                 },
                                             )}
@@ -190,7 +190,7 @@ const Blog = () => {
                                 can lose it."
                             </p>
                         </div>
-                        <span className='text-black/30 text-sm uppercase tracking-widest font-semibold block mb-[100px]'>
+                        <span className='text-black/30 dark:text-white/30 text-sm uppercase tracking-widest font-semibold block mb-[100px]'>
                             JASON JOHNSON - OWNER OF COFFEESTYLE
                         </span>
                     </>
