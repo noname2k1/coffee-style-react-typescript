@@ -9,6 +9,7 @@ import { ToastContainer } from 'react-toastify';
 import 'aos/dist/aos.css';
 import './index.scss';
 import 'react-toastify/dist/ReactToastify.css';
+import { themeLoader } from './utils';
 
 AOS.init({
     // Global settings:
@@ -30,6 +31,8 @@ AOS.init({
     mirror: false, // whether elements should animate out while scrolling past them
     anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
 });
+
+themeLoader();
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>

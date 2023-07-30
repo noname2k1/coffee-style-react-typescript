@@ -10,9 +10,14 @@ export default {
                 'border-color-lighter': '#a25f4b33',
                 'bg-secondary': '#f6f6f6',
             },
-
             width: {
                 primary: '940px',
+            },
+            backgroundImage: {
+                flutter: "url('/src/assets/images/flutter_bg.png')",
+                nextjs: "url('/src/assets/images/nextjs_bg.jpg')",
+                nuxtjs: "url('/src/assets/images/nuxtjs_bg.jpg')",
+                remixjs: "url('/src/assets/images/remixjs_bg.jpg')",
             },
         },
     },

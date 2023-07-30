@@ -41,10 +41,15 @@ import check_col from './check_col.png';
 import check_row from './check_row.png';
 import not_found from './not_found.svg';
 import no_image from './no_image.png';
-
 import diamond from './diamond.png';
 import light_bulb from './light_bulb.png';
 import premium_image from './premium_image.jpg';
+// themes
+import flutter_bg from './flutter_bg.png';
+import nextjs_bg from './nextjs_bg.jpg';
+import nuxtjs_bg from './nuxtjs_bg.jpg';
+import remixjs_bg from './remixjs_bg.jpg';
+
 const images = {
     logo,
     cart_icon,
@@ -92,6 +97,13 @@ const images = {
     check_col,
     check_row,
     no_image,
+    // themes
+    flutter_bg,
+    nextjs_bg,
+    nuxtjs_bg,
+    remixjs_bg,
 };
+
+export const theme_backgrounds = {};
 
 export default images;

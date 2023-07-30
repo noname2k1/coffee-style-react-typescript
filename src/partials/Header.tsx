@@ -48,7 +48,7 @@ const Header = () => {
                 {/* HEADER_NAV */}
                 <nav
                     className={classNames(
-                        'flex items-center z-10 max-lg:shadow-md justify-center max-lg:flex-col max-lg:absolute right-0 overflow-hidden top-full left-0 bg-white duration-[300ms]',
+                        'flex items-center z-10 max-lg:shadow-md justify-center max-lg:flex-col max-lg:absolute right-0 overflow-hidden top-full left-0 duration-[300ms]',
                         {
                             'max-lg:h-0 max-lg:invisible': !isMobileMenuOpen,
                             'max-lg:h-[292px] max-lg:visible max-lg:py-2':
@@ -142,7 +142,7 @@ const Header = () => {
                                     state={{
                                         returnURL: pathname,
                                     }}
-                                    className='text-gray-500 hover:text-gray-900 duration-150'
+                                    className='hover:text-gray-900 duration-150'
                                 >
                                     <svg
                                         fill='currentColor'

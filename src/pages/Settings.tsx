@@ -50,10 +50,11 @@ const Settings = () => {
                         version='1.1'
                         viewBox='0 0 512 512'
                         xmlSpace='preserve'
+                        fill='currentColor'
                         xmlns='http://www.w3.org/2000/svg'
                         xmlnsXlink='http://www.w3.org/1999/xlink'
                     >
-                        <polygon points='352,128.4 319.7,96 160,256 160,256 160,256 319.7,416 352,383.6 224.7,256 ' />
+                        <polygon points='352,128.4 319.7,96 160,256 160,256 160,256 319.7,416 352,383.6 224.7,256' />
                     </svg>
                 </button>
             </header>
@@ -65,7 +66,7 @@ const Settings = () => {
                                 <li
                                     onClick={() => handleTabChange(item.text)}
                                     className={classNames(
-                                        'py-2 capitalize px-2 lg:px-10 hover:bg-black/10 bg-white duration-100 cursor-pointer',
+                                        'py-2 capitalize px-2 lg:px-10 duration-100 cursor-pointer hover:bg-black/10',
                                         {
                                             'font-semibold':
                                                 searchParams.get('tab') ===
