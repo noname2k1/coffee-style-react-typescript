@@ -38,7 +38,7 @@ const PostDetail = () => {
                     />
                     <div className='min-h-[400px] border border-t-0 mb-[100px] flex max-lg:flex-col'>
                         <div className='max-lg:order-2'>
-                            <div className='border p-10 max-lg:flex-col flex items-center'>
+                            <div className='border p-10 flex-col flex items-center'>
                                 <h2 className='text-sm mb-6 font-semibold text-black/30 uppercase tracking-widest'>
                                     Written by
                                 </h2>

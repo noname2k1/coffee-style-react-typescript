@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { fakeDatas2 } from '../faker';
+import { fakeDatas2, fakeProducts } from '../faker';
 import { Cart, Product } from '../types';
 import {
     Button,
@@ -15,7 +15,7 @@ import { cartState } from '../store/atoms';
 import { formatCurrency } from '../utils';
 
 const ProductDetail = () => {
-    const products: Product[] = [...fakeDatas2];
+    const products: Product[] = [...fakeDatas2, ...fakeProducts];
     const { slug } = useParams<{ slug: string }>();
 
     const product = products.find((item) => item.slug === slug);
