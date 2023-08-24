@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
+import payment_images from '../assets/images/payments';
 const DETAILS = [
     {
         id: 0,
@@ -118,14 +119,11 @@ const MomoPayment = () => {
                         Quét Mã QR để thanh toán
                     </h2>
                     <div className='bg-white relative w-[280px] h-[280px] rounded-lg flex items-center justify-center'>
-                        <div className='bg-[url("/src/assets/images/payments/border-qrcode.svg")] w-full h-full bg-no-repeat bg-center p-4'>
-                            <img
-                                src='/src/assets/images/payments/my-qr.png'
-                                alt='my-momo-qr'
-                            />
+                        <div className='bg-border-qrcode w-full h-full bg-no-repeat bg-center p-4'>
+                            <img src={payment_images.my_qr} alt='my-momo-qr' />
                             <div className='absolute top-3 left-3 right-3 w-[256px] h-[256px] overflow-hidden'>
                                 <img
-                                    src='/src/assets/images/payments/qrcode-gradient.png'
+                                    src={payment_images.qrcode_gradient}
                                     alt='qr-gradient'
                                     className='absolute bottom-full animate-down'
                                 />

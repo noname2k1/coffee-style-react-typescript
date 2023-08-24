@@ -6,22 +6,23 @@ import { Link, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 import { Button } from '../components/commons';
 import routes from '../config/routes';
+import payment_images from '../assets/images/payments/';
 
 const METHODS = [
     {
         name: 'Momo',
         value: 'momo',
-        img: '/src/assets/images/payments/momo.svg',
+        img: payment_images.momo,
     },
     {
         name: 'VISA',
         value: 'visa',
-        img: '/src/assets/images/payments/visa.svg',
+        img: payment_images.visa,
     },
     {
         name: 'DEBIT CARD',
         value: 'debit_card',
-        img: '/src/assets/images/payments/debit_card.svg',
+        img: payment_images.debit_card,
     },
 ];
 

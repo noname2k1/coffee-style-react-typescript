@@ -18,6 +18,8 @@ export default {
                 nextjs: "url('/src/assets/images/nextjs_bg.jpg')",
                 nuxtjs: "url('/src/assets/images/nuxtjs_bg.jpg')",
                 remixjs: "url('/src/assets/images/remixjs_bg.jpg')",
+                'border-qrcode':
+                    "url('/src/assets/images/payments/border-qrcode.svg')",
             },
         },
         animation: {
