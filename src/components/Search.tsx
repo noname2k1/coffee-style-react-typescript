@@ -3,9 +3,8 @@ import { fakeProducts, fakeDatas2 } from '../faker';
 import searchIcon from '../assets/images/search.svg';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
-interface Props {}
 
-const Search = (props: Props) => {
+const Search = () => {
     const [searchBar, setSearchBar] = useState(false);
     const [searchInput, setSearchInput] = useState('');
     const [searchResults, setSearchResults] = useState<any[]>([]);
