@@ -1,7 +1,7 @@
 import { useRecoilState } from 'recoil';
 import { Cart, Product } from '../types';
 import { cartState } from '../store/atoms';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 import { Button } from '../components/commons';
@@ -27,7 +27,7 @@ const METHODS = [
 
 const Checkout = () => {
     const navigate = useNavigate();
-    const [cart, setCart] = useRecoilState<Cart>(cartState);
+    const [cart] = useRecoilState<Cart>(cartState);
     const [currentMethod, setCurrentMethod] = useState(METHODS[0].value);
     const [cloneCart, setCloneCart] = useState([...cart.items]);
 
