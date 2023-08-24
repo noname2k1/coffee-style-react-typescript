@@ -20,6 +20,19 @@ export default {
                 remixjs: "url('/src/assets/images/remixjs_bg.jpg')",
             },
         },
+        animation: {
+            down: 'down 3s linear infinite',
+        },
+        keyframes: {
+            down: {
+                '0%': {
+                    transform: 'translateY(0)',
+                },
+                '100%': {
+                    transform: 'translateY(100%)',
+                },
+            },
+        },
     },
     plugins: [],
     darkMode: 'class',

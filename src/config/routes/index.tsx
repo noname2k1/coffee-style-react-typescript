@@ -11,6 +11,8 @@ const routes = {
     settings: '/settings',
     auth: '/auth',
     signUp: '/auth/sign-up',
+    checkOut: '/check-out',
+    momo: '/momo-payment',
 };
 
 export default routes;

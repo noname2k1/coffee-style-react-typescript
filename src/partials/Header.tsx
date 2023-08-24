@@ -1,7 +1,7 @@
 import images from '../assets/images';
 import routes from '../config/routes';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Cart, Loading, TippyComponent } from '../components/commons';
 import { headerNavItems } from '../faker';
 import classNames from 'classnames';
@@ -33,6 +33,15 @@ const Header = () => {
             isShow: true,
         }));
     };
+
+    useEffect(() => {
+        setCart((prevCart) => {
+            return {
+                ...prevCart,
+                isShow: false,
+            };
+        });
+    }, [pathname]);
 
     return (
         <header className='h-20 flex justify-center items-center relative dark:text-white dark:border-y border-border-color'>

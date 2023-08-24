@@ -22,7 +22,7 @@ const Button = (props: Props) => {
                 'w-fit': props.fit,
                 'h-full': props.hFull,
                 'w-full': props.wFull,
-                'bg-black text-white hover:bg-white/5': props.isDark,
+                'bg-black text-white hover:bg-black/50': props.isDark,
                 'bg-white text-black': !props.isDark,
                 'opacity-50 cursor-not-allowed': props.disabled,
                 'hover:bg-opacity-80 dark:hover:brightness-110 cursor-pointer':
@@ -30,7 +30,7 @@ const Button = (props: Props) => {
             })}
             onClick={props.onClick}
         >
-            <span className='uppercase text-xs font-semibold tracking-widest whitespace-nowrap flex items-center'>
+            <span className='uppercase justify-center text-xs font-semibold tracking-widest whitespace-nowrap flex items-center'>
                 {props.children}
                 {props.aferIcon && (
                     <span className='ml-2'>{props.aferIcon}</span>

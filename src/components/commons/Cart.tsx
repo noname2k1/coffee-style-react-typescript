@@ -2,14 +2,17 @@ import classnames from 'classnames';
 import images from '../../assets/images';
 import { useRecoilState } from 'recoil';
 import { cartState } from '../../store/atoms';
-import { Cart as CastType, Product } from '../../types';
+import { Cart as CartType, Product } from '../../types';
 import { Button, Input, ItemImage } from '.';
 import { formatCurrency } from '../../utils';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import routes from '../../config/routes';
 
 const Cart = () => {
-    const [cart, setCart] = useRecoilState<CastType>(cartState);
-    // console.log(cart);
+    const navigate = useNavigate();
+    const [cart, setCart] = useRecoilState<CartType>(cartState);
+
     const handleHideCart = () => {
         setCart((oldCart) => ({
             ...oldCart,
@@ -82,7 +85,7 @@ const Cart = () => {
             )}
             <aside
                 className={classnames(
-                    'fixed flex flex-col right-0 z-10 top-0 h-screen bg-gray-900 max-w-[480px] duration-200 dark:border-l border-border-color',
+                    'fixed flex flex-col right-0 z-10 top-0 bottom-0 h-screen bg-gray-900 max-w-[480px] duration-200 dark:border-l border-border-color',
                     {
                         'translate-x-full': !cart.isShow,
                     },
@@ -101,7 +104,7 @@ const Cart = () => {
                 </header>
                 <div
                     className={classnames(
-                        'flex flex-col flex-1 items-center p-8 pb-0',
+                        'flex flex-col flex-1 items-center p-8 pb-0 m-h-[480px] overflow-y-auto overflow-x-hidden',
                         {
                             'justify-center': cart.items.length === 0,
                             'gap-8': cart.items.length > 0,
@@ -176,7 +179,14 @@ const Cart = () => {
                                     : '--'}
                             </span>
                         </div>
-                        <Button size='medium'>continue to checkout</Button>
+                        <Button
+                            size='medium'
+                            onClick={() => {
+                                navigate(routes.checkOut);
+                            }}
+                        >
+                            continue to checkout
+                        </Button>
                     </footer>
                 )}
             </aside>
