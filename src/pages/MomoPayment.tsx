@@ -46,6 +46,16 @@ const MomoPayment = () => {
             clearInterval(timer);
         };
     }, [minute]);
+    useEffect(() => {
+        const favicon: (Element & { href: string }) | null =
+            document.querySelector('[rel=icon]');
+        if (favicon) favicon.href = payment_images.favicon_momo;
+        document.title = 'Cổng thanh toán điện tử MoMo';
+        return () => {
+            if (favicon) favicon.href = '/favicon.png';
+            document.title = 'Coffee Style';
+        };
+    }, []);
     return (
         <div className=''>
             <header className='flex items-center py-3 shadow-lg px-6 lg:px-64'>
@@ -63,49 +73,17 @@ const MomoPayment = () => {
                 </span>
                 <span className='ml-4'>Cổng thanh toán MoMo</span>
             </header>
-            <div className='flex mt-[30px] px-6 lg:px-64'>
-                <div className='flex text-xl flex-col'>
-                    <div className='border border-black/25 py-4 px-8 rounded-xl'>
-                        <h2 className='font-semibold'>Thông tin đơn hàng</h2>
-                        {DETAILS.map((item) => (
-                            <div className='border-b border-black/30 py-4 last:border-none last:pb-0'>
-                                <h3 className='font-thin text-[15px] text-black/80'>
-                                    {item.label}
-                                </h3>
-                                <span
-                                    className={classNames(
-                                        'font-semibold line-clamp-2',
-                                        {
-                                            'text-2xl': item.id === 3,
-                                        },
-                                    )}
-                                    title={item.content}
-                                >
-                                    {item.content}
-                                </span>
-                            </div>
-                        ))}
-                    </div>
-                    <div className='flex flex-col items-center w-full my-4'>
-                        <div className='text-[#d82d8b] bg-[#fff0f6] w-full px-4 rounded-lg'>
-                            <p className='text-center mt-4 text-base whitespace-nowrap'>
-                                Đơn hàng sẽ hết hạn sau:
-                            </p>
-                            <div className='flex items-center gap-x-4 justify-center py-4 text-base'>
-                                <div className='bg-[#f3b4e6] flex flex-col items-center p-2 rounded-xl'>
-                                    <span className='font-semibold'>
-                                        {'0' + minute}
-                                    </span>
-                                    Phút
-                                </div>
-                                <div className='bg-[#f3b4e6] flex flex-col items-center p-2 rounded-xl'>
-                                    <span className='font-semibold'>
-                                        {second}
-                                    </span>
-                                    Giây
-                                </div>
-                            </div>
-                        </div>
+            <div className=''>
+                {minute === 0 ? (
+                    <div className='flex flex-col mx-auto w-fit items-center mt-36'>
+                        <img
+                            src={payment_images.momo_notfound}
+                            alt='expired'
+                            className='h-[250px] w-[250px]'
+                        />
+                        <span className='font-semibold text-xl mt-4'>
+                            Giao dịch đã hết hạn.
+                        </span>
                         <button
                             className='font-semibold text-[#d82d8b] hover:text-black mt-2'
                             onClick={() => navigate(-1)}
@@ -113,49 +91,107 @@ const MomoPayment = () => {
                             Quay về
                         </button>
                     </div>
-                </div>
-                <div className='bg-gradient-to-t flex flex-col items-center h-fit from-[#c1177c] to-[#e11b90] text-white py-6 px-24 ml-8 rounded-lg'>
-                    <h2 className='font-semibold text-xl whitespace-nowrap mb-8 text-center'>
-                        Quét Mã QR để thanh toán
-                    </h2>
-                    <div className='bg-white relative w-[280px] h-[280px] rounded-lg flex items-center justify-center'>
-                        <div className='bg-border-qrcode w-full h-full bg-no-repeat bg-center p-4'>
-                            <img src={payment_images.my_qr} alt='my-momo-qr' />
-                            <div className='absolute top-3 left-3 right-3 w-[256px] h-[256px] overflow-hidden'>
-                                <img
-                                    src={payment_images.qrcode_gradient}
-                                    alt='qr-gradient'
-                                    className='absolute bottom-full animate-down'
-                                />
+                ) : (
+                    <div className='flex mt-[30px] px-6 lg:px-64 max-lg:flex-col justify-center'>
+                        <div className='flex text-xl flex-col'>
+                            <div className='border border-black/25 py-4 px-8 rounded-xl'>
+                                <h2 className='font-semibold'>
+                                    Thông tin đơn hàng
+                                </h2>
+                                {DETAILS.map((item) => (
+                                    <div className='border-b border-black/30 py-4 last:border-none last:pb-0'>
+                                        <h3 className='font-thin text-[15px] text-black/80'>
+                                            {item.label}
+                                        </h3>
+                                        <span
+                                            className={classNames(
+                                                'font-semibold line-clamp-2',
+                                                {
+                                                    'text-2xl': item.id === 3,
+                                                },
+                                            )}
+                                            title={item.content}
+                                        >
+                                            {item.content}
+                                        </span>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className='flex flex-col items-center w-full my-4'>
+                                <div className='text-[#d82d8b] bg-[#fff0f6] w-full px-4 rounded-lg'>
+                                    <p className='text-center mt-4 text-base whitespace-nowrap'>
+                                        Đơn hàng sẽ hết hạn sau:
+                                    </p>
+                                    <div className='flex items-center gap-x-4 justify-center py-4 text-base'>
+                                        <div className='bg-[#f3b4e6] flex flex-col items-center p-2 rounded-xl'>
+                                            <span className='font-semibold'>
+                                                {'0' + minute}
+                                            </span>
+                                            Phút
+                                        </div>
+                                        <div className='bg-[#f3b4e6] flex flex-col items-center p-2 rounded-xl'>
+                                            <span className='font-semibold'>
+                                                {second}
+                                            </span>
+                                            Giây
+                                        </div>
+                                    </div>
+                                </div>
+                                <button
+                                    className='font-semibold text-[#d82d8b] hover:text-black mt-2'
+                                    onClick={() => navigate(-1)}
+                                >
+                                    Quay về
+                                </button>
                             </div>
                         </div>
+                        <div className='bg-gradient-to-t flex flex-col items-center h-fit from-[#c1177c] to-[#e11b90] text-white py-6 px-24 lg:ml-8 rounded-lg'>
+                            <h2 className='font-semibold text-xl whitespace-nowrap mb-8 text-center'>
+                                Quét Mã QR để thanh toán
+                            </h2>
+                            <div className='bg-white relative w-[280px] h-[280px] rounded-lg flex items-center justify-center'>
+                                <div className='bg-border-qrcode w-full h-full bg-no-repeat bg-center p-4'>
+                                    <img
+                                        src={payment_images.my_qr}
+                                        alt='my-momo-qr'
+                                    />
+                                    <div className='absolute top-3 left-3 right-3 w-[256px] h-[256px] overflow-hidden'>
+                                        <img
+                                            src={payment_images.qrcode_gradient}
+                                            alt='qr-gradient'
+                                            className='absolute bottom-full animate-down'
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <p className='my-6 text-center text-sm'>
+                                <svg
+                                    xmlns='http://www.w3.org/2000/svg'
+                                    fill='none'
+                                    viewBox='0 0 24 24'
+                                    stroke='currentColor'
+                                    className='jsx-d22f6bd0771ae323 mr-1 inline h-6 w-6'
+                                >
+                                    <path
+                                        stroke-linecap='round'
+                                        stroke-linejoin='round'
+                                        stroke-width='2'
+                                        d='M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z'
+                                        className='jsx-d22f6bd0771ae323'
+                                    ></path>
+                                </svg>
+                                Sử dụng <strong>App MoMo</strong> hoặc ứng dụng
+                                camera hỗ trợ QR code để quét mã
+                            </p>
+                            <p className='whitespace-nowrap pb-2'>
+                                Gặp khó khăn khi thanh toán?{' '}
+                                <button className='text-yellow-400 hover:text-black'>
+                                    Xem Hướng dẫn
+                                </button>
+                            </p>
+                        </div>
                     </div>
-                    <p className='my-6 text-center text-sm'>
-                        <svg
-                            xmlns='http://www.w3.org/2000/svg'
-                            fill='none'
-                            viewBox='0 0 24 24'
-                            stroke='currentColor'
-                            className='jsx-d22f6bd0771ae323 mr-1 inline h-6 w-6'
-                        >
-                            <path
-                                stroke-linecap='round'
-                                stroke-linejoin='round'
-                                stroke-width='2'
-                                d='M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z'
-                                className='jsx-d22f6bd0771ae323'
-                            ></path>
-                        </svg>
-                        Sử dụng <strong>App MoMo</strong> hoặc ứng dụng camera
-                        hỗ trợ QR code để quét mã
-                    </p>
-                    <p className='whitespace-nowrap pb-2'>
-                        Gặp khó khăn khi thanh toán?{' '}
-                        <button className='text-yellow-400 hover:text-black'>
-                            Xem Hướng dẫn
-                        </button>
-                    </p>
-                </div>
+                )}
             </div>
         </div>
     );

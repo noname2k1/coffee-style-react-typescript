@@ -10,6 +10,7 @@ import { cartState } from '../store/atoms';
 import { Cart as CartType } from '../types';
 import { useFirebaseAuth } from '../hooks';
 import { userDropdown } from '../faker/dropdownArrays';
+import { Search } from '../components';
 
 const Header = () => {
     const { pathname } = useLocation();
@@ -60,7 +61,7 @@ const Header = () => {
                         'flex items-center z-10 max-lg:shadow-md max-lg:bg-white justify-center max-lg:flex-col max-lg:absolute right-0 overflow-hidden top-full left-0 duration-[300ms]',
                         {
                             'max-lg:h-0 max-lg:invisible': !isMobileMenuOpen,
-                            'max-lg:h-[292px] max-lg:visible max-lg:py-2':
+                            'max-lg:h-[340px] max-lg:visible max-lg:py-2':
                                 isMobileMenuOpen,
                         },
                     )}
@@ -85,6 +86,7 @@ const Header = () => {
                             <div className='group-hover:w-full w-0 h-0.5 bg-primary dark:bg-orange-800 duration-75 max-lg:hidden'></div>
                         </NavLink>
                     ))}
+                    <Search />
                 </nav>
                 <div className='flex items-center justify-center'>
                     {/* CART_BTN */}
