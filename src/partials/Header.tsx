@@ -9,8 +9,11 @@ import { useRecoilState } from 'recoil';
 import { cartState } from '../store/atoms';
 import { Cart as CartType } from '../types';
 import { useFirebaseAuth } from '../hooks';
-import { userDropdown } from '../faker/dropdownArrays';
+import { v4 as uuid } from 'uuid';
+import { auth } from '../config/firebase';
+import { DropdownItem } from '../types';
 import { Search } from '../components';
+import { updateCart } from '../services/cartService';
 
 const Header = () => {
     const { pathname } = useLocation();
@@ -34,6 +37,31 @@ const Header = () => {
             isShow: true,
         }));
     };
+
+    const handleLogout = async () => {
+        auth.signOut();
+        // console.log(user);
+        try {
+            await updateCart(
+                user.uid,
+                cart.items.map((item) => item._id + '*' + item.quantityInCart),
+            );
+            setCart({ isShow: false, items: [], total: 0 });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const userDropdown: DropdownItem[] = [
+        { id: uuid(), text: 'Settings', link: '/settings' },
+        {
+            id: uuid(),
+            text: 'Logout',
+            onClick: handleLogout,
+            danger: true,
+            separator: true,
+        },
+    ];
 
     useEffect(() => {
         setCart((prevCart) => {

@@ -6,21 +6,21 @@ export interface HeaderNav {
 }
 
 export interface Product {
-    onSale?: boolean;
+    id: string;
     name: string;
     price: number;
-    oldPrice?: number;
     image: string;
-    id: string;
-    [key: string]: any;
     unit: string;
-    slug: string;
     description: string;
     quantity: number;
-    quantityInCart: number;
     details: string;
     dimensions: number[];
     category: CATEGORY_VALUES;
+    slug: string;
+    oldPrice?: number;
+    onSale?: boolean;
+    quantityInCart: number;
+    [key: string]: any;
 }
 
 export interface Post {
@@ -97,4 +97,10 @@ export interface Cart {
     items: Product[];
     isShow: boolean;
     total: number;
+}
+
+// response
+export interface ResponseSuccess {
+    success: boolean;
+    data: any;
 }

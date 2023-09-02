@@ -50,7 +50,7 @@ const Cart = () => {
             return {
                 ...oldCart,
                 items: oldCart.items.map((product) => {
-                    if (product.id === item.id) {
+                    if (product._id === item._id) {
                         return {
                             ...product,
                             quantityInCart: value,
@@ -67,7 +67,7 @@ const Cart = () => {
         setCart((oldCart) => ({
             ...oldCart,
             items: oldCart.items.filter(
-                (item) => item.id !== productToRemove.id,
+                (item) => item._id !== productToRemove._id,
             ),
             total:
                 oldCart.total -
@@ -134,7 +134,7 @@ const Cart = () => {
                         cart.items.map((item) => (
                             <div
                                 className='flex flex-col sm:flex-row items-center justify-center text-white'
-                                key={item.id}
+                                key={item._id}
                             >
                                 <ItemImage
                                     item={item}
@@ -143,7 +143,13 @@ const Cart = () => {
                                 />
                                 <div className='cart-item-detail flex flex-col justify-center items-center sm:items-start px-5 flex-1 md:w-[224px]'>
                                     <h1 className='text-lg'>{item.name}</h1>
-                                    <span>{formatCurrency(item.price)}</span>
+                                    <span>
+                                        {formatCurrency(
+                                            item.price,
+                                            item.unit,
+                                            'de-DE',
+                                        )}
+                                    </span>
                                     <button
                                         onClick={() => handleRemoveItem(item)}
                                         className='uppercase my-2 tracking-widest text-white/60 hover:text-white text-xs font-semibold'
@@ -175,7 +181,11 @@ const Cart = () => {
                             <h2 className='text-white text-xl'>Subtotal</h2>
                             <span className='text-white text-xl'>
                                 {cart.total > 0
-                                    ? formatCurrency(cart.total)
+                                    ? formatCurrency(
+                                          cart.total,
+                                          cart.items[0].unit,
+                                          'de-DE',
+                                      )
                                     : '--'}
                             </span>
                         </div>

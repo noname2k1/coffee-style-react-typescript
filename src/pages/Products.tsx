@@ -1,30 +1,40 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { categories } from '../faker/category';
 import { CATEGORY_VALUES, Category, Product } from '../types';
-import { fakeDatas2, fakeProducts } from '../faker';
 import classNames from 'classnames';
 import { ImageSection } from '../components/commons';
+import { getProducts } from '../services/productService';
 const Products = () => {
     const [currentCategory, setCurrentCategory] = useState<Category>(
         categories[0],
     );
 
-    const [products, setProducts] = useState<Product[]>([
-        ...fakeDatas2,
-        ...fakeProducts,
-    ]);
+    const [products, setProducts] = useState<Product[]>([]);
+    const [productsFiltered, setProductsFiltered] = useState<Product[]>([]);
 
     const handleChangeCategory = (category: Category) => {
         setCurrentCategory(category);
-        setProducts(() => {
+        setProductsFiltered(() => {
             if (category.value !== CATEGORY_VALUES.ALL_PRODUCTS) {
-                return [...fakeDatas2, ...fakeProducts].filter(
+                return products.filter(
                     (product) => product.category === category.value,
                 );
             }
-            return [...fakeDatas2, ...fakeProducts];
+            return products;
         });
     };
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const data = await getProducts();
+                setProducts(data.data);
+                setProductsFiltered(data.data);
+            } catch (error) {
+                console.log(error);
+            }
+        })();
+    }, []);
 
     return (
         <section className='flex justify-center'>
@@ -54,7 +64,11 @@ const Products = () => {
                         </div>
                     ))}
                 </div>
-                <ImageSection items={products} type='product' gridCols={3} />
+                <ImageSection
+                    items={productsFiltered}
+                    type='product'
+                    gridCols={3}
+                />
             </div>
         </section>
     );

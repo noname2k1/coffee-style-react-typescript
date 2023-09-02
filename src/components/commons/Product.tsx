@@ -42,15 +42,19 @@ const Product = (props: Props) => {
                             'text-lg text-primary': props.item.oldPrice,
                         })}
                     >
-                        {formatCurrency(props.item.price)}
-                        <span className='uppercase pl-1.5'>
-                            {props.item.unit}
-                        </span>
+                        {formatCurrency(
+                            props.item.price,
+                            props.item.unit,
+                            'de-DE',
+                        )}
                     </div>
-                    {props.item.oldPrice && (
+                    {props.item.onSale && (
                         <div className='text-sm line-through ml-4'>
-                            {formatCurrency(props.item.oldPrice)}
-                            <span className='uppercase'>{props.item.unit}</span>
+                            {formatCurrency(
+                                props.item.oldPrice!,
+                                props.item.unit,
+                                'de-DE',
+                            )}
                         </div>
                     )}
                 </div>

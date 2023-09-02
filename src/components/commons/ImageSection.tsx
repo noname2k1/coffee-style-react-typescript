@@ -44,9 +44,10 @@ const ImageSection = (props: Props) => {
                                 return (
                                     <div
                                         className='item md:col-span-2 lg:col-span-1'
-                                        key={item.id}
+                                        key={item._id}
                                     >
                                         <Product
+                                            key={item._id}
                                             item={item}
                                             btnText={'explore mug'}
                                             cols={props.gridCols}
@@ -57,7 +58,7 @@ const ImageSection = (props: Props) => {
                             return (
                                 <Product
                                     item={item}
-                                    key={item.id}
+                                    key={item._id}
                                     btnText={'explore mug'}
                                     cols={props.gridCols}
                                 />
@@ -70,9 +71,10 @@ const ImageSection = (props: Props) => {
                             return (
                                 <div
                                     className='md:col-span-2 lg:col-span-1'
-                                    key={item.id}
+                                    key={item._id}
                                 >
                                     <Post
+                                        key={item._id}
                                         item={item}
                                         btnText={'read the full story'}
                                         cols={props.gridCols}
@@ -83,7 +85,7 @@ const ImageSection = (props: Props) => {
                         return (
                             <Post
                                 item={item}
-                                key={item.id}
+                                key={item._id}
                                 btnText={'read the full story'}
                                 cols={props.gridCols}
                             />

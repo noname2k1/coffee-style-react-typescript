@@ -1,5 +1,4 @@
-import { useParams } from 'react-router-dom';
-import { fakeDatas2, fakeProducts } from '../faker';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Cart, Product } from '../types';
 import {
     Button,
@@ -13,19 +12,39 @@ import classNames from 'classnames';
 import { useRecoilState } from 'recoil';
 import { cartState } from '../store/atoms';
 import { formatCurrency } from '../utils';
+import { getProducts, showProduct } from '../services/productService';
+import { useFirebaseAuth } from '../hooks';
+import routes from '../config/routes';
 
 const ProductDetail = () => {
-    const products: Product[] = [...fakeDatas2, ...fakeProducts];
+    const navigate = useNavigate();
     const { slug } = useParams<{ slug: string }>();
-
-    const product = products.find((item) => item.slug === slug);
+    const [product, setProduct] = useState<Product>();
+    const [moreProducts, setMoreProducts] = useState<Product[]>([]);
     const [cart, setCart] = useRecoilState<Cart>(cartState);
     const [isAdding, setIsAdding] = useState(false);
     const [quantity, setQuantity] = useState(1);
+    const { user } = useFirebaseAuth();
 
-    useEffect(() => window.scrollTo(0, 0), [slug]);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        (async () => {
+            try {
+                const moreProds = await getProducts(0, 0, '', '', `${slug}*3`);
+                const getPro = await showProduct(slug!);
+                setProduct(getPro.data);
+                setMoreProducts(moreProds.data);
+            } catch (error) {
+                console.log(error);
+            }
+        })();
+    }, [slug]);
 
     const handleAddToCart = (product: Product) => {
+        if (Object.keys(user).length < 1) {
+            navigate(routes.auth);
+            return;
+        }
         let quantityToAdd =
             quantity > product.quantity ? product.quantity : quantity || 1;
         if (quantity === 0) {
@@ -106,15 +125,19 @@ const ProductDetail = () => {
                                             product.oldPrice,
                                     })}
                                 >
-                                    {formatCurrency(product.price)}&nbsp;
-                                    {product.unit}
+                                    {formatCurrency(
+                                        product.price,
+                                        product.unit,
+                                        'de-DE',
+                                    )}
                                 </div>
-                                {product.oldPrice && (
+                                {product.onSale && (
                                     <div className='text-sm line-through ml-4'>
-                                        {formatCurrency(product.oldPrice)}
-                                        <span className='uppercase'>
-                                            {product.unit}
-                                        </span>
+                                        {formatCurrency(
+                                            product.oldPrice!,
+                                            product.unit,
+                                            'de-DE',
+                                        )}
                                     </div>
                                 )}
                             </div>
@@ -201,9 +224,7 @@ const ProductDetail = () => {
                         type='product'
                         gridCols={3}
                         title='YOU MIGHT ALSO LIKE THESE'
-                        items={products
-                            .filter((item) => item.slug !== product.slug)
-                            .slice(0, 3)}
+                        items={moreProducts}
                     />
                 </div>
             )}

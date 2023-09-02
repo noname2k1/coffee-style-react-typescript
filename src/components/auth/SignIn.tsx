@@ -9,8 +9,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import routes from '../../config/routes';
 import { firebaseErrorCatching } from '../../utils';
 import { Loading } from '../commons';
+import { getCart } from '../../services/cartService';
+import { Cart, ResponseSuccess, Product } from '../../types';
+import { useRecoilState } from 'recoil';
+import { cartState } from '../../store/atoms';
+import { showProducts } from '../../services/productService';
 
 const SignIn = () => {
+    const [cart, setCart] = useRecoilState<Cart>(cartState);
     const [value, setValue] = useState({
         email: '',
         password: '',
@@ -25,6 +31,29 @@ const SignIn = () => {
         setValue((prev) => ({ ...prev, [name]: value }));
     };
 
+    const getOwnCart = async (userid: string) => {
+        try {
+            const res: ResponseSuccess = await getCart(userid);
+            const products: string[] = res.data.products;
+            let ids = '';
+            products.forEach((product: string) => (ids += product + ','));
+            try {
+                const res = await showProducts(ids);
+                const total: number = res.data.reduce(
+                    (acc: number, product: Product) => {
+                        return acc + product.price * product.quantityInCart;
+                    },
+                    0,
+                );
+                setCart({ ...cart, items: res.data, total });
+            } catch (error) {
+                console.log(error);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     const handleSignIn = async () => {
         setError('');
         if (!value.email || !value.password)
@@ -32,6 +61,7 @@ const SignIn = () => {
         setIsLoading(true);
         try {
             await signInWithEmailAndPassword(auth, value.email, value.password);
+
             navigate(routes.home, { replace: true });
         } catch (err) {
             setError(firebaseErrorCatching(err));
@@ -43,7 +73,8 @@ const SignIn = () => {
     const signInWithGoogle = async () => {
         setError('');
         try {
-            await signInWithPopup(auth, googleProvider);
+            const res: any = await signInWithPopup(auth, googleProvider);
+            getOwnCart(res.user.uid);
             navigate(routes.home, { replace: true });
         } catch (err) {
             setError(firebaseErrorCatching(err));

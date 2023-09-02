@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
-import { fakeProducts, fakeDatas2 } from '../faker';
 import searchIcon from '../assets/images/search.svg';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
+import { getProducts } from '../services/productService';
+import { useDebounceValue } from '../hooks';
 
 const Search = () => {
     const [searchBar, setSearchBar] = useState(false);
     const [searchInput, setSearchInput] = useState('');
+    const debouncedValue = useDebounceValue(searchInput, 500);
     const [searchResults, setSearchResults] = useState<any[]>([]);
-    const products = [...fakeDatas2, ...fakeProducts];
+
     const handleSearchBar = (state?: boolean) => {
         if (state) {
             setSearchBar(state);
@@ -19,14 +21,20 @@ const Search = () => {
 
     useEffect(() => {
         if (searchInput.trim()) {
-            setSearchResults(
-                products.filter((product) =>
-                    product.name
-                        .toLowerCase()
-                        .includes(searchInput.toLowerCase()),
-                ),
-            );
+            (async () => {
+                try {
+                    const data = await getProducts(0, 10, searchInput);
+                    setSearchResults(data.data);
+                } catch (error) {
+                    console.log(error);
+                }
+            })();
         } else {
+            setSearchResults([]);
+        }
+    }, [debouncedValue]);
+    useEffect(() => {
+        if (!searchInput.trim()) {
             setSearchResults([]);
         }
     }, [searchInput]);
@@ -90,7 +98,10 @@ const Search = () => {
                     <div className='absolute bg-red top-[calc(100%+10px)] bg-white dark:bg-gray-900 w-full'>
                         <ul className='py-2 max-h-[70vh] overflow-y-auto'>
                             {searchResults.map((searchResult) => (
-                                <li className='py-2 px-4 font-semibold hover:italic duration-100'>
+                                <li
+                                    className='py-2 px-4 font-semibold hover:italic duration-100'
+                                    key={searchResult._id}
+                                >
                                     <Link
                                         to={`/product/${searchResult.slug}`}
                                         onClick={() => {

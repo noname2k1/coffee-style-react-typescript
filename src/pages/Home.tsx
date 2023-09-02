@@ -1,15 +1,30 @@
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import images from '../assets/images';
 import routes from '../config/routes';
 import { HorizontalSection } from '../components/home';
 import { ParallaxSection, ImageSection, Button } from '../components/commons';
-import { fakeDatas1, fakeDatas2, fakeDatas3, fakeDatas4 } from '../faker';
+import { fakeDatas3, fakeDatas4 } from '../faker';
+import { getProducts } from '../services/productService';
+import { CATEGORY_VALUES, Product } from '../types';
 
 const Home = () => {
     const navigate = useNavigate();
+    const [products, setProducts] = useState<Product[]>([]);
+
     const handleRedirectToProducts = () => {
         navigate(routes.products);
     };
+    useEffect(() => {
+        (async () => {
+            try {
+                const data = await getProducts();
+                setProducts(data.data);
+            } catch (error) {
+                console.log(error);
+            }
+        })();
+    }, []);
     return (
         <section>
             <div className='flex lg:px-[30px] justify-center mb-[100px]'>
@@ -65,13 +80,18 @@ const Home = () => {
             <ImageSection
                 type='product'
                 title='featured mugs'
-                items={fakeDatas1}
+                items={products
+                    .filter(
+                        (product) =>
+                            product.category === CATEGORY_VALUES.PREMIUM,
+                    )
+                    .slice(0, 2)}
                 gridCols={2}
             />
             <ImageSection
                 type='product'
                 title='more products'
-                items={fakeDatas2.slice(0, fakeDatas2.length - 1)}
+                items={products}
                 gridCols={3}
             />
             <HorizontalSection
