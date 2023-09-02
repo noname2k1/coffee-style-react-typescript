@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import { CATEGORY_VALUES, Cart, Product } from '../types';
+import { Cart, Product } from '../types';
 import {
     Button,
     Input,
