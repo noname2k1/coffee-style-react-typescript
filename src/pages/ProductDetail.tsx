@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import { Cart, Product } from '../types';
+import { CATEGORY_VALUES, Cart, Product } from '../types';
 import {
     Button,
     Input,
@@ -26,7 +26,6 @@ const ProductDetail = () => {
     const [isAdding, setIsAdding] = useState(false);
     const [quantity, setQuantity] = useState(1);
     const { user } = useFirebaseAuth();
-    const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -38,8 +37,6 @@ const ProductDetail = () => {
                 setMoreProducts(moreProds.data);
             } catch (error) {
                 console.log(error);
-            } finally {
-                setLoading(false);
             }
         })();
     }, [slug]);
@@ -105,9 +102,9 @@ const ProductDetail = () => {
             <div className='flex flex-col items-center'>
                 <div className='product-wrapper w-full lg:w-primary px-5 lg:px-0 flex flex-col lg:flex-row my-[100px]'>
                     <div className='product-image w-full h-full'>
-                        {!loading ? (
+                        {product ? (
                             <ItemImage
-                                item={product!}
+                                item={product}
                                 type='product'
                                 size='medium'
                             />
