@@ -9,6 +9,7 @@ import { ToastContainer } from 'react-toastify';
 import 'aos/dist/aos.css';
 import './index.scss';
 import 'react-toastify/dist/ReactToastify.css';
+import 'react-loading-skeleton/dist/skeleton.css';
 import { themeLoader } from './utils';
 
 AOS.init({

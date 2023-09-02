@@ -48,7 +48,7 @@ const Search = () => {
         >
             <div
                 className={classNames(
-                    'flex items-center h-fit relative bg-white focus-within:border-blue-600 border border-transparent ',
+                    'flex items-center h-fit relative bg-transparent focus-within:border-blue-600 border border-transparent ',
                     {
                         'mt-10': searchBar,
                     },

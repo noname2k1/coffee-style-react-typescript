@@ -53,7 +53,7 @@ const Checkout = () => {
                             {cart.items.map((item) => {
                                 return (
                                     <div
-                                        key={item.id}
+                                        key={item._id}
                                         className='flex relative items-center bg-black/10 p-4 rounded-md w-full'
                                     >
                                         <input
