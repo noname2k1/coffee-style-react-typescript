@@ -4,6 +4,8 @@ import { CATEGORY_VALUES, Category, Product } from '../types';
 import classNames from 'classnames';
 import { ImageSection } from '../components/commons';
 import { getProducts } from '../services/productService';
+import Skeleton from 'react-loading-skeleton';
+
 const Products = () => {
     const [currentCategory, setCurrentCategory] = useState<Category>(
         categories[0],
@@ -64,11 +66,15 @@ const Products = () => {
                         </div>
                     ))}
                 </div>
-                <ImageSection
-                    items={productsFiltered}
-                    type='product'
-                    gridCols={3}
-                />
+                {productsFiltered ? (
+                    <ImageSection
+                        items={productsFiltered}
+                        type='product'
+                        gridCols={3}
+                    />
+                ) : (
+                    <Skeleton width={1000} height={100} />
+                )}
             </div>
         </section>
     );
