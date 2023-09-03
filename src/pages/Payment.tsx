@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import payment_images from '../assets/images/payments';
@@ -11,29 +11,33 @@ const Payment = () => {
     const {
         state: { total },
     } = useLocation();
-    const DETAILS = [
-        {
-            id: 0,
-            label: 'Nhà cung cấp',
-            content: 'Coffee Style',
-        },
-        {
-            id: 1,
-            label: 'Mã đơn hàng',
-            content: uuid(),
-        },
-        {
-            id: 2,
-            label: 'Mô tả',
-            content:
-                'Thanh toán đơn hàng ' + Math.floor(Math.random() * 100000000),
-        },
-        {
-            id: 3,
-            label: 'Số tiền',
-            content: total ? formatCurrency(total, 'VND', 'de-DE') : '--',
-        },
-    ];
+    const DETAILS = useMemo(
+        () => [
+            {
+                id: 0,
+                label: 'Nhà cung cấp',
+                content: 'Coffee Style',
+            },
+            {
+                id: 1,
+                label: 'Mã đơn hàng',
+                content: uuid(),
+            },
+            {
+                id: 2,
+                label: 'Mô tả',
+                content:
+                    'Thanh toán đơn hàng ' +
+                    Math.floor(Math.random() * 100000000),
+            },
+            {
+                id: 3,
+                label: 'Số tiền',
+                content: total ? formatCurrency(total, 'VND', 'de-DE') : '--',
+            },
+        ],
+        [],
+    );
     const navigate = useNavigate();
     const [minute, setMinute] = useState(9);
     const [second, setSecond] = useState(59);
