@@ -101,12 +101,12 @@ const Checkout = () => {
                                 return (
                                     <div
                                         key={item._id}
-                                        className='flex relative items-center bg-black/10 p-4 rounded-md w-full'
+                                        className='flex-col lg:flex-row flex relative items-center bg-black/10 p-4 rounded-md w-full'
                                     >
                                         <input
                                             type='checkbox'
                                             name='products[]'
-                                            className='mr-4'
+                                            className='lg:mr-4 max-lg:mb-2'
                                             checked={
                                                 cloneCart.findIndex(
                                                     (checkedItem) =>
@@ -132,15 +132,15 @@ const Checkout = () => {
                                         <p className='text-xl px-10 font-semibold'>
                                             {item.name}
                                         </p>
-                                        <p>
-                                            {formatCurrency(
-                                                item.price,
-                                                item.unit,
-                                                'de-DE',
-                                            )}
-                                        </p>
-                                        <span className='px-4'>x</span>
-                                        <div className=''>
+                                        <div className='flex'>
+                                            <p>
+                                                {formatCurrency(
+                                                    item.price,
+                                                    item.unit,
+                                                    'de-DE',
+                                                )}
+                                            </p>
+                                            <span className='px-4'>x</span>
                                             <span className='font-semibold'>
                                                 {item.quantityInCart}
                                             </span>

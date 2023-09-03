@@ -292,7 +292,7 @@ const Payment = () => {
                                 )}{' '}
                                 hoặc ứng dụng camera hỗ trợ QR code để quét mã
                             </p>
-                            <p className='whitespace-nowrap pb-2'>
+                            <p className='whitespace-nowrap flex flex-col lg:flex-row pb-2'>
                                 Gặp khó khăn khi thanh toán?{' '}
                                 <button className='text-yellow-400 hover:text-black'>
                                     Xem Hướng dẫn
