@@ -63,7 +63,9 @@ const Payment = () => {
         const favicon: (Element & { href: string }) | null =
             document.querySelector('[rel=icon]');
         if (favicon) favicon.href = payment_images.favicon_momo;
-        document.title = 'Cổng thanh toán điện tử MoMo';
+        document.title =
+            'Cổng thanh toán điện tử ' +
+            method?.toUpperCase().replace(/_/g, ' ');
         return () => {
             if (favicon) favicon.href = '/favicon.png';
             document.title = 'Coffee Style';
