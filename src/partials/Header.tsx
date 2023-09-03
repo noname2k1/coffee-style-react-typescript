@@ -101,7 +101,7 @@ const Header = () => {
                             to={nav.path}
                             className={({ isActive }) =>
                                 classNames(
-                                    'group whitespace-nowrap max-lg:py-[15px] lg:dark:text-white hover:opacity-100 tracking-widest uppercase text-xs font-semibold hover:text-gray-900 ml-8 duration-300',
+                                    'group whitespace-nowrap max-lg:py-[15px] lg:dark:text-white hover:opacity-100 tracking-widest uppercase text-xs font-semibold hover:text-gray-900 lg:ml-8 duration-300',
                                     {
                                         'text-gray-900 opacity-100': isActive,
                                         'text-gray-800 opacity-60': !isActive,

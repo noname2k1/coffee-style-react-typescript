@@ -104,7 +104,7 @@ const Footer = () => {
                         ))}
                     </div>
                 </div>
-                <div className='w-primary flex lg:grid flex-col items-center lg:items-start grid-rows-1 grid-cols-4 gap-8 text-black/50 dark:text-white/50 text-sm tracking-wider'>
+                <div className='lg:w-primary flex lg:grid flex-col items-center lg:items-start grid-rows-1 grid-cols-4 gap-8 text-black/50 dark:text-white/50 text-sm tracking-wider'>
                     <div className='flex justify-center flex-col items-center'>
                         <img
                             src={images.logo}
