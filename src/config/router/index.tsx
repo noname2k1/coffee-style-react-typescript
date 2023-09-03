@@ -11,6 +11,7 @@ import {
     About,
     Auth,
     Settings,
+    History,
 } from '../../pages';
 import { SignIn, SignUp } from '../../components/auth';
 import NotFound from '../../pages/NotFound';
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
             {
                 path: routes.checkOut,
                 element: <Checkout />,
+            },
+            {
+                path: routes.history,
+                element: <History />,
             },
         ],
     },

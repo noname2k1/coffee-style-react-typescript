@@ -53,7 +53,8 @@ const Header = () => {
     };
 
     const userDropdown: DropdownItem[] = [
-        { id: uuid(), text: 'Settings', link: '/settings' },
+        { id: uuid(), text: 'Settings', link: routes.settings },
+        { id: uuid(), text: 'History', link: routes.history },
         {
             id: uuid(),
             text: 'Logout',

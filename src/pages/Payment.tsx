@@ -41,12 +41,16 @@ const Payment = () => {
     const navigate = useNavigate();
     const [minute, setMinute] = useState(9);
     const [second, setSecond] = useState(59);
+    const [showInstruction, setShowInstruction] = useState(false);
 
     const hanldeCopyToClipboard = (content: string) => {
         copy(content);
         alert('Copied to clipboard');
     };
 
+    const handleShowInstruction = (isShow: boolean) => {
+        setShowInstruction(isShow);
+    };
     useEffect(() => {
         if (second === 0) {
             setSecond(59);
@@ -77,6 +81,39 @@ const Payment = () => {
     }, []);
     return (
         <div className=''>
+            {/* instruction */}
+            {showInstruction && (
+                <div className='fixed z-10 text-white flex items-center justify-center inset-0'>
+                    <div className='p-8 px-10 bg-black/80 rounded-xl'>
+                        <h1 className='text-center text-xl font-semibold mb-2 relative'>
+                            Hướng dẫn quét mã QR
+                            <span
+                                className='absolute right-0 hover:scale-125 cursor-pointer duration-150'
+                                onClick={() => handleShowInstruction(false)}
+                            >
+                                x
+                            </span>
+                        </h1>
+                        <div className='flex lg:max-w-[50vw] relative justify-center'>
+                            <img
+                                src={payment_images.qr_instruction}
+                                alt='i-1'
+                                className='w-1/2'
+                            />
+                            <img
+                                src={payment_images.qr_instruction2}
+                                alt='i-2'
+                                className='w-1/2'
+                            />
+                            <img
+                                src={payment_images.qr_arrow}
+                                alt='arrow'
+                                className='absolute top-1/2 -translate-y-1/2 -translate-x-1/2 left-1/2'
+                            />
+                        </div>
+                    </div>
+                </div>
+            )}
             <header className='flex items-center py-3 shadow-lg px-6 lg:px-64'>
                 {method === 'momo' && (
                     <span className='bg-[#a50064] w-[46px] h-[46px] flex items-center p-1 rounded-md mr-4'>
@@ -294,7 +331,10 @@ const Payment = () => {
                             </p>
                             <p className='whitespace-nowrap flex flex-col lg:flex-row pb-2'>
                                 Gặp khó khăn khi thanh toán?{' '}
-                                <button className='text-yellow-400 hover:text-black'>
+                                <button
+                                    className='text-yellow-400 hover:text-black lg:ml-1'
+                                    onClick={() => handleShowInstruction(true)}
+                                >
                                     Xem Hướng dẫn
                                 </button>
                             </p>

@@ -88,7 +88,10 @@ const Footer = () => {
                     <h1 className='text-xl font-semibold'>Members:</h1>
                     <div className='flex flex-col lg:flex-row gap-10'>
                         {MEMBERS.map((member) => (
-                            <div className='flex flex-col' key={member.id}>
+                            <div
+                                className='flex flex-col items-center'
+                                key={member.id}
+                            >
                                 <img src={member.image} alt={member.name} />
                                 <div className=''>
                                     <span className='text-base font-semibold'>

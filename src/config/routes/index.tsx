@@ -9,6 +9,7 @@ const routes = {
     postDetail: '/post/:slug',
     author: '/author/:slug',
     settings: '/settings',
+    history: '/history',
     auth: '/auth',
     signUp: '/auth/sign-up',
     checkOut: '/check-out',
