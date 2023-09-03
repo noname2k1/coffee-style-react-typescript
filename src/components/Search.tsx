@@ -69,6 +69,7 @@ const Search = () => {
                 />
                 {searchBar && (
                     <div
+                        className='bg-white'
                         onClick={(e) => {
                             e.stopPropagation();
                         }}

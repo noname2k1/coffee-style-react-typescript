@@ -31,14 +31,14 @@ const METHODS = [
 
 const Checkout = () => {
     const navigate = useNavigate();
-    const [cart] = useRecoilState<Cart>(cartState);
+    const [cart, setCart] = useRecoilState<Cart>(cartState);
     const [currentMethod, setCurrentMethod] = useState(METHODS[0]);
     const [cloneCart, setCloneCart] = useState([...cart.items]);
 
     const handleToggleCartItemCheckbox = (item: Product) => {
-        if (cloneCart.find((cloneItem) => cloneItem.id === item.id)) {
+        if (cloneCart.find((cloneItem) => cloneItem._id === item._id)) {
             setCloneCart(
-                cloneCart.filter((checkedItem) => checkedItem.id !== item.id),
+                cloneCart.filter((checkedItem) => checkedItem._id !== item._id),
             );
         } else setCloneCart([...cloneCart, item]);
     };
@@ -46,6 +46,48 @@ const Checkout = () => {
         setCurrentMethod(
             METHODS.find((method) => method.value === paymentMethod)!,
         );
+    };
+
+    const handleRemoveProduct = (product: Product) => {
+        setCart((oldCart) => ({
+            ...oldCart,
+            items: oldCart.items.filter((item) => item._id !== product._id),
+            total: oldCart.total - product.price * product.quantityInCart,
+        }));
+        setCloneCart((prevProducts) =>
+            prevProducts.filter(
+                (prevProduct) => prevProduct._id !== product._id,
+            ),
+        );
+    };
+
+    const handleGotoPayment = () => {
+        if (
+            cloneCart.reduce((acc, curr) => {
+                return acc + curr.price * curr.quantityInCart;
+            }, 0) === 0
+        )
+            return;
+        navigate('/payment/' + currentMethod.value, {
+            state: {
+                total:
+                    cloneCart.reduce(
+                        (acc, currentItem) =>
+                            acc +
+                            Number(currentItem.price) *
+                                Number(currentItem.quantityInCart),
+                        0,
+                    ) -
+                    currentMethod.discount *
+                        cloneCart.reduce(
+                            (acc, currentItem) =>
+                                acc +
+                                Number(currentItem.price) *
+                                    Number(currentItem.quantityInCart),
+                            0,
+                        ),
+            },
+        });
     };
 
     return (
@@ -68,8 +110,8 @@ const Checkout = () => {
                                             checked={
                                                 cloneCart.findIndex(
                                                     (checkedItem) =>
-                                                        checkedItem.id ===
-                                                        item.id,
+                                                        checkedItem._id ===
+                                                        item._id,
                                                 ) !== -1
                                                     ? true
                                                     : false
@@ -103,7 +145,12 @@ const Checkout = () => {
                                                 {item.quantityInCart}
                                             </span>
                                         </div>
-                                        <span className='absolute right-4 top-4 px-3 py-1 rounded hover:bg-red-600 duration-200 text-white cursor-pointer text-xl bg-red-800'>
+                                        <span
+                                            onClick={() =>
+                                                handleRemoveProduct(item)
+                                            }
+                                            className='absolute right-4 top-4 px-3 py-1 rounded hover:bg-red-600 duration-200 text-white cursor-pointer text-xl bg-red-800'
+                                        >
                                             x
                                         </span>
                                     </div>
@@ -120,7 +167,7 @@ const Checkout = () => {
                                             Number(currentItem.quantityInCart),
                                     0,
                                 ),
-                                cart.items[0]?.unit,
+                                cart.items[0]?.unit || 'VND',
                                 'de-DE',
                             )}
                         </div>
@@ -192,7 +239,7 @@ const Checkout = () => {
                                                             ),
                                                     0,
                                                 ),
-                                            cart.items[0]?.unit,
+                                            cart.items[0]?.unit || 'VND',
                                             'de-DE',
                                         )}
                                     </span>
@@ -222,7 +269,7 @@ const Checkout = () => {
                                                                 ),
                                                         0,
                                                     ),
-                                            cart.items[0]?.unit,
+                                            cart.items[0]?.unit || 'VND',
                                             'de-DE',
                                         )}
                                     </span>
@@ -230,45 +277,7 @@ const Checkout = () => {
                                 <Button
                                     isDark
                                     size='medium'
-                                    onClick={() =>
-                                        navigate(
-                                            '/payment/' + currentMethod.value,
-                                            {
-                                                state: {
-                                                    total:
-                                                        cloneCart.reduce(
-                                                            (
-                                                                acc,
-                                                                currentItem,
-                                                            ) =>
-                                                                acc +
-                                                                Number(
-                                                                    currentItem.price,
-                                                                ) *
-                                                                    Number(
-                                                                        currentItem.quantityInCart,
-                                                                    ),
-                                                            0,
-                                                        ) -
-                                                        currentMethod.discount *
-                                                            cloneCart.reduce(
-                                                                (
-                                                                    acc,
-                                                                    currentItem,
-                                                                ) =>
-                                                                    acc +
-                                                                    Number(
-                                                                        currentItem.price,
-                                                                    ) *
-                                                                        Number(
-                                                                            currentItem.quantityInCart,
-                                                                        ),
-                                                                0,
-                                                            ),
-                                                },
-                                            },
-                                        )
-                                    }
+                                    onClick={handleGotoPayment}
                                 >
                                     Pay
                                 </Button>
