@@ -5,31 +5,34 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 import { Button } from '../components/commons';
-import routes from '../config/routes';
 import payment_images from '../assets/images/payments/';
+import { formatCurrency } from '../utils';
 
 const METHODS = [
     {
         name: 'Momo',
         value: 'momo',
         img: payment_images.momo,
+        discount: 0.025,
     },
     {
         name: 'VISA',
         value: 'visa',
         img: payment_images.visa,
+        discount: 0.005,
     },
     {
         name: 'DEBIT CARD',
         value: 'debit_card',
         img: payment_images.debit_card,
+        discount: 0.01,
     },
 ];
 
 const Checkout = () => {
     const navigate = useNavigate();
     const [cart] = useRecoilState<Cart>(cartState);
-    const [currentMethod, setCurrentMethod] = useState(METHODS[0].value);
+    const [currentMethod, setCurrentMethod] = useState(METHODS[0]);
     const [cloneCart, setCloneCart] = useState([...cart.items]);
 
     const handleToggleCartItemCheckbox = (item: Product) => {
@@ -40,7 +43,9 @@ const Checkout = () => {
         } else setCloneCart([...cloneCart, item]);
     };
     const handlePaymentMethodChange = (paymentMethod: string) => {
-        setCurrentMethod(paymentMethod);
+        setCurrentMethod(
+            METHODS.find((method) => method.value === paymentMethod)!,
+        );
     };
 
     return (
@@ -58,8 +63,7 @@ const Checkout = () => {
                                     >
                                         <input
                                             type='checkbox'
-                                            name=''
-                                            id=''
+                                            name='products[]'
                                             className='mr-4'
                                             checked={
                                                 cloneCart.findIndex(
@@ -83,13 +87,21 @@ const Checkout = () => {
                                                 className='w-24 h-24 rounded-md'
                                             />
                                         </Link>
-                                        <p className='text-xl px-10'>
+                                        <p className='text-xl px-10 font-semibold'>
                                             {item.name}
                                         </p>
-                                        <p>{item.price}</p>
+                                        <p>
+                                            {formatCurrency(
+                                                item.price,
+                                                item.unit,
+                                                'de-DE',
+                                            )}
+                                        </p>
                                         <span className='px-4'>x</span>
                                         <div className=''>
-                                            <span>{item.quantityInCart}</span>
+                                            <span className='font-semibold'>
+                                                {item.quantityInCart}
+                                            </span>
                                         </div>
                                         <span className='absolute right-4 top-4 px-3 py-1 rounded hover:bg-red-600 duration-200 text-white cursor-pointer text-xl bg-red-800'>
                                             x
@@ -99,13 +111,17 @@ const Checkout = () => {
                             })}
                         </div>
                         <div className='text-2xl font-semibold text-right mt-4'>
-                            subtotal: $
-                            {cloneCart.reduce(
-                                (acc, currentItem) =>
-                                    acc +
-                                    Number(currentItem.price) *
-                                        Number(currentItem.quantityInCart),
-                                0,
+                            subtotal:&nbsp;
+                            {formatCurrency(
+                                cloneCart.reduce(
+                                    (acc, currentItem) =>
+                                        acc +
+                                        Number(currentItem.price) *
+                                            Number(currentItem.quantityInCart),
+                                    0,
+                                ),
+                                cart.items[0]?.unit,
+                                'de-DE',
                             )}
                         </div>
                     </section>
@@ -118,7 +134,8 @@ const Checkout = () => {
                                         'border-2 p-1 rounded-lg cursor-pointer hover:border-red-600 duration-200',
                                         {
                                             'border-red-600':
-                                                method.value === currentMethod,
+                                                method.value ===
+                                                currentMethod.value,
                                         },
                                     )}
                                     key={method.value}
@@ -161,16 +178,97 @@ const Checkout = () => {
                                 </div>
                                 <div className='flex justify-between'>
                                     <span>Discount:</span>
-                                    <span className='text-red-600'>$1000</span>
+                                    <span className='text-red-600'>
+                                        {formatCurrency(
+                                            currentMethod.discount *
+                                                cloneCart.reduce(
+                                                    (acc, currentItem) =>
+                                                        acc +
+                                                        Number(
+                                                            currentItem.price,
+                                                        ) *
+                                                            Number(
+                                                                currentItem.quantityInCart,
+                                                            ),
+                                                    0,
+                                                ),
+                                            cart.items[0]?.unit,
+                                            'de-DE',
+                                        )}
+                                    </span>
                                 </div>
                                 <div className='flex justify-between'>
                                     <span>Total:</span>
-                                    <span className='text-red-600'>$10000</span>
+                                    <span className='text-red-600 font-semibold'>
+                                        {formatCurrency(
+                                            cloneCart.reduce(
+                                                (acc, currentItem) =>
+                                                    acc +
+                                                    Number(currentItem.price) *
+                                                        Number(
+                                                            currentItem.quantityInCart,
+                                                        ),
+                                                0,
+                                            ) -
+                                                currentMethod.discount *
+                                                    cloneCart.reduce(
+                                                        (acc, currentItem) =>
+                                                            acc +
+                                                            Number(
+                                                                currentItem.price,
+                                                            ) *
+                                                                Number(
+                                                                    currentItem.quantityInCart,
+                                                                ),
+                                                        0,
+                                                    ),
+                                            cart.items[0]?.unit,
+                                            'de-DE',
+                                        )}
+                                    </span>
                                 </div>
                                 <Button
                                     isDark
                                     size='medium'
-                                    onClick={() => navigate(routes.momo)}
+                                    onClick={() =>
+                                        navigate(
+                                            '/payment/' + currentMethod.value,
+                                            {
+                                                state: {
+                                                    total:
+                                                        cloneCart.reduce(
+                                                            (
+                                                                acc,
+                                                                currentItem,
+                                                            ) =>
+                                                                acc +
+                                                                Number(
+                                                                    currentItem.price,
+                                                                ) *
+                                                                    Number(
+                                                                        currentItem.quantityInCart,
+                                                                    ),
+                                                            0,
+                                                        ) -
+                                                        currentMethod.discount *
+                                                            cloneCart.reduce(
+                                                                (
+                                                                    acc,
+                                                                    currentItem,
+                                                                ) =>
+                                                                    acc +
+                                                                    Number(
+                                                                        currentItem.price,
+                                                                    ) *
+                                                                        Number(
+                                                                            currentItem.quantityInCart,
+                                                                        ),
+                                                                0,
+                                                            ),
+                                                },
+                                            },
+                                        )
+                                    }
                                 >
                                     Pay
                                 </Button>

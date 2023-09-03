@@ -3,7 +3,38 @@ import images from '../assets/images';
 import { Input, Button, SuccessMessage } from '../components/commons';
 import { headerNavItems } from '../faker';
 import { useState } from 'react';
-
+const MEMBERS = [
+    {
+        id: 0,
+        name: 'Ninh Ngọc Nam',
+        image: '',
+        isLeader: true,
+    },
+    {
+        id: 1,
+        name: 'Vũ Anh Tuấn',
+        image: '',
+        isLeader: false,
+    },
+    {
+        id: 2,
+        name: 'Hoàng Đức Việt',
+        image: '',
+        isLeader: false,
+    },
+    {
+        id: 3,
+        name: 'Nguyễn Văn Đại',
+        image: '',
+        isLeader: false,
+    },
+    {
+        id: 4,
+        name: 'Nguyễn Thành Nam',
+        image: '',
+        isLeader: false,
+    },
+];
 const Footer = () => {
     const [isPending, setIsPending] = useState(false);
     const [sended, setSended] = useState(false);
@@ -31,7 +62,7 @@ const Footer = () => {
                             type='text'
                             isDark
                             size='medium'
-                            placeholder='helloAnhEm'
+                            placeholder='nhóm I xin chào mọi người ^_^'
                             isTransparent
                             minWidth={250}
                         />
@@ -50,9 +81,29 @@ const Footer = () => {
             </div>
             {/* footer texts */}
             <div
-                className='my-[100px] flex justify-center px-5 lg:px-0'
+                className='my-[50px] flex flex-col items-center px-5 lg:px-0'
                 data-aos='fade-up'
             >
+                <div className='team-1 mb-10'>
+                    <h1 className='text-xl font-semibold'>Members:</h1>
+                    <div className='flex flex-col lg:flex-row gap-10'>
+                        {MEMBERS.map((member) => (
+                            <div className='flex flex-col' key={member.id}>
+                                <img src={member.image} alt={member.name} />
+                                <div className=''>
+                                    <span className='text-base font-semibold'>
+                                        {member.name}
+                                    </span>
+                                    {member.isLeader && (
+                                        <span className='bg-red-600 rounded-xl text-white py-1 px-4 ml-2'>
+                                            Leader
+                                        </span>
+                                    )}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
                 <div className='w-primary flex lg:grid flex-col items-center lg:items-start grid-rows-1 grid-cols-4 gap-8 text-black/50 dark:text-white/50 text-sm tracking-wider'>
                     <div className='flex justify-center flex-col items-center'>
                         <img

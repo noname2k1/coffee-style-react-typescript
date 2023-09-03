@@ -12,7 +12,7 @@ const routes = {
     auth: '/auth',
     signUp: '/auth/sign-up',
     checkOut: '/check-out',
-    momo: '/momo-payment',
+    momo: '/payment/:method',
 };
 
 export default routes;

@@ -16,7 +16,7 @@ import { SignIn, SignUp } from '../../components/auth';
 import NotFound from '../../pages/NotFound';
 import PostDetail from '../../pages/PostDetail';
 import Checkout from '../../pages/Checkout';
-import MomoPayment from '../../pages/MomoPayment';
+import Payment from '../../pages/Payment';
 
 const router = createBrowserRouter([
     {
@@ -90,7 +90,7 @@ const router = createBrowserRouter([
     },
     {
         path: routes.momo,
-        element: <MomoPayment />,
+        element: <Payment />,
     },
     {
         path: '*',
