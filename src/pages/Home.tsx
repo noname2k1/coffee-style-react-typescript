@@ -59,12 +59,7 @@ const Home = () => {
             <ImageSection
                 type='product'
                 title={t('home.title1')}
-                items={products
-                    .filter(
-                        (product) =>
-                            product.category === CATEGORY_VALUES.PREMIUM,
-                    )
-                    .slice(0, 2)}
+                items={products.filter((product) => product.onSale).slice(0, 2)}
                 gridCols={2}
             />
             <ImageSection

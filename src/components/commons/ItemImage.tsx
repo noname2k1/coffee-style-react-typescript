@@ -27,14 +27,17 @@ const ItemImage = (props: Props) => {
                 'h-[460px] lg:w-[460px] w-full':
                     props.type === 'product' && props.size === 'medium',
                 'h-[210px] lg:w-[260px] lg:min-w-[260px] w-full':
-                    props.type === 'blog' && props.size === 'medium',
+                    props.type === 'blog' && props.size === 'medium'
             })}
         >
-            {props.item.onSale && props.size !== 'small' && (
-                <span className='text-primary capitalize absolute top-2 right-2 shadow-md bg-white p-2 px-4 font-semibold'>
-                    {t('common.product.on_sale')}
-                </span>
-            )}
+            {(props.item.onSale ||
+                (props.item.oldPrice > 0 &&
+                    props.item.oldPrice > props.item.price)) &&
+                props.size !== 'small' && (
+                    <span className='text-primary capitalize absolute top-2 right-2 shadow-md bg-white p-2 px-4 font-semibold'>
+                        {t('common.product.on_sale')}
+                    </span>
+                )}
             {props.btnText && (
                 <div className='absolute invisible inset-0 group-hover:visible duration-300 opacity-0 group-hover:opacity-100 bg-black/10 dark:bg-white/10'>
                     <div className='absolute bottom-4 right-0 left-0 px-4 translate-y-2 group-hover:translate-y-0 duration-150'>
