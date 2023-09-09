@@ -6,7 +6,7 @@ import { HorizontalSection } from '../components/home';
 import { ParallaxSection, ImageSection, Button } from '../components/commons';
 import { fakeDatas3, fakeDatas4 } from '../faker';
 import { getProducts } from '../services/productService';
-import { CATEGORY_VALUES, Product } from '../types';
+import { Product } from '../types';
 import { useTranslation } from 'react-i18next';
 
 const Home = () => {
@@ -59,13 +59,13 @@ const Home = () => {
             <ImageSection
                 type='product'
                 title={t('home.title1')}
-                items={products.filter((product) => product.onSale).slice(0, 2)}
+                items={products.slice(0, 2)}
                 gridCols={2}
             />
             <ImageSection
                 type='product'
                 title={t('home.title2')}
-                items={products}
+                items={products.slice(3, 12)}
                 gridCols={3}
             />
             <HorizontalSection title={t('home.title3')} items={fakeDatas3} />
