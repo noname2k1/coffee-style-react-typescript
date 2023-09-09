@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { Button } from '../commons';
 import { useNavigate } from 'react-router-dom';
 import routes from '../../config/routes';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
     title: string;
@@ -10,6 +11,7 @@ interface Props {
 }
 
 const HorizontalSection = (props: Props) => {
+    const { t } = useTranslation();
     const navigate = useNavigate();
 
     const handleRedirectToProducts = () => {
@@ -31,14 +33,13 @@ const HorizontalSection = (props: Props) => {
                     <div className='flex items-center justify-center order-2 lg:order-1'>
                         <div className='flex flex-col max-lg:text-center'>
                             <h3 className='tracking-widest text-black/40 dark:text-white/40 font-semibold text-xs mb-5 mt-10 lg:mt-0'>
-                                PREMIUM OFFER
+                                {t('home.title4')}
                             </h3>
                             <h1 className='text-4xl font-medium'>
-                                Get our Coffee Magazine
+                                {t('home.title5')}
                             </h1>
                             <p className='text-black/50 dark:text-white/50 mt-3.5 mb-5'>
-                                The most versatile furniture system ever
-                                created. Designed to fit your life.
+                                {t('home.title6')}
                             </p>
                             <div className='mx-auto lg:mx-0'>
                                 <Button
@@ -47,7 +48,7 @@ const HorizontalSection = (props: Props) => {
                                     fit
                                     onClick={handleRedirectToProducts}
                                 >
-                                    Start Shopping
+                                    {t('home.button2')}
                                 </Button>
                             </div>
                         </div>

@@ -12,6 +12,7 @@ import {
     Auth,
     Settings,
     History,
+    SearchPage,
 } from '../../pages';
 import { SignIn, SignUp } from '../../components/auth';
 import NotFound from '../../pages/NotFound';
@@ -72,6 +73,10 @@ const router = createBrowserRouter([
             {
                 path: routes.history,
                 element: <History />,
+            },
+            {
+                path: routes.search,
+                element: <SearchPage />,
             },
         ],
     },

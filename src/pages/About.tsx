@@ -3,6 +3,7 @@ import images from '../assets/images';
 import ContentWrapper from '../components/commons/ContentWrapper';
 import { authors } from '../faker/person';
 import { ParallaxSection } from '../components/commons';
+import { useTranslation } from 'react-i18next';
 
 const InTernalWrapper = ({
     label,
@@ -52,15 +53,13 @@ const Phase = ({
 };
 
 const About = () => {
+    const { t } = useTranslation();
     return (
         <section className='flex flex-col items-center'>
             <div className='bg-bg-secondary dark:bg-gray-900 dark:text-white text-center relative p-[30px] pb-[200px] md:pt-[100px] md:mx-[30px]'>
-                <h1 className='text-4xl mb-5'>About</h1>
+                <h1 className='text-4xl mb-5'>{t('header.about')}</h1>
                 <p className='text-lg tracking-wider text-black/50 dark:text-white/50 lg:px-[200px]'>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse varius enim in eros elementum tristique. Duis
-                    cursus, mi quis viverra ornare, eros dolor interdum nulla,
-                    ut commodo diam libero vitae erat.
+                    {t('home.greeting3')}
                 </p>
                 <div className='absolute left-[50%] -translate-x-[50%] top-[80%] w-full px-[30px] lg:px-0 lg:w-primary'>
                     <img
@@ -72,15 +71,10 @@ const About = () => {
             </div>
             <div className='mt-[calc(320px+10%)]'></div>
             <ContentWrapper
-                label='INTRODUCTIONS'
-                title='Overlaid the jeepers uselessly much excluding everyday life.'
+                label={t('about.introductions')}
+                title={t('about.title0')}
             >
-                It is a paradisematic country, in which roasted parts of
-                sentences fly into your mouth. Even the all-powerful Pointing
-                has no control about the blind texts it is an almost
-                unorthographic life One day however a small line of blind text
-                by the name of Lorem Ipsum decided to leave for the far World of
-                Grammar.
+                {t('about.content0')}
             </ContentWrapper>
             <div className='flex flex-col lg:w-primary max-lg:px-[30px]'>
                 <div
@@ -89,17 +83,10 @@ const About = () => {
                 >
                     <div className='max-lg:order-2'>
                         <h3 className='text-[24px] mb-[50px] lg:mb-5 dark:text-white'>
-                            Overlaid the jeepers uselessly much excluding
-                            everyday life.
+                            {t('about.title1')}
                         </h3>
                         <p className='text-black/50 dark:text-white/50'>
-                            It is a paradisematic country, in which roasted
-                            parts of sentences fly into your mouth. Even the
-                            all-powerful Pointing has no control about the blind
-                            texts it is an almost unorthographic life One day
-                            however a small line of blind text by the name of
-                            Lorem Ipsum decided to leave for the far World of
-                            Grammar.
+                            {t('about.content1')}
                         </p>
                     </div>
                     <img
@@ -119,21 +106,14 @@ const About = () => {
                     />
                     <div className='max-lg:order-2'>
                         <h3 className='text-[24px] mb-[50px] lg:mb-5 dark:text-white'>
-                            Overlaid the jeepers uselessly much excluding
-                            everyday life.
+                            {t('about.title2')}
                         </h3>
                         <p className='text-black/50 dark:text-white/50'>
-                            It is a paradisematic country, in which roasted
-                            parts of sentences fly into your mouth. Even the
-                            all-powerful Pointing has no control about the blind
-                            texts it is an almost unorthographic life One day
-                            however a small line of blind text by the name of
-                            Lorem Ipsum decided to leave for the far World of
-                            Grammar.
+                            {t('about.content2')}
                         </p>
                     </div>
                 </div>
-                <InTernalWrapper label='INTRODUCTIONS'>
+                <InTernalWrapper label={t('about.introductions')}>
                     <div
                         className='flex items-center justify-center gap-10 lg:gap-5 max-lg:flex-col'
                         data-aos='fade-right'
@@ -160,40 +140,22 @@ const About = () => {
                 <ParallaxSection bgImage={images.paralax_image_2} />
             </div>
             <div className='lg:w-primary max-lg:px-[30px]'>
-                <InTernalWrapper label='HISTORY TIMELINE'>
+                <InTernalWrapper label={t('about.history_timeline')}>
                     <Phase
-                        time='OCTOBER 2018'
-                        title='One day however a small line'
-                    >
-                        It is a paradisematic country, in which roasted parts of
-                        sentences fly into your mouth. Even the all-powerful
-                        Pointing has no control about the blind texts it is an
-                        almost unorthographic life One day however a small line
-                        of blind text by the name of Lorem Ipsum.
-                    </Phase>
+                        time={t('common.months.Sep') + ' 2023'}
+                        title=''
+                    ></Phase>
                     <Phase
-                        time='AUGUST 2018'
-                        title='Overlaid the jeepers uselessly'
-                    >
-                        It is a paradisematic country, in which roasted parts of
-                        sentences fly into your mouth. Even the all-powerful
-                        Pointing has no control about the blind texts it is an
-                        almost unorthographic life One day however a small line
-                        of blind text by the name of Lorem Ipsum.
-                    </Phase>
+                        time={t('common.months.May') + ' 2023'}
+                        title=''
+                    ></Phase>
                     <Phase
-                        time='JUNE 2018'
-                        title='Pointing has no control about'
-                    >
-                        It is a paradisematic country, in which roasted parts of
-                        sentences fly into your mouth. Even the all-powerful
-                        Pointing has no control about the blind texts it is an
-                        almost unorthographic life One day however a small line
-                        of blind text by the name of Lorem Ipsum.
-                    </Phase>
+                        time={t('common.months.Jan') + ' 2023'}
+                        title=''
+                    ></Phase>
                     <Phase
-                        time='november 2017'
-                        title="We've started CoffeeStyle."
+                        time={t('common.months.Nov') + ' 2022'}
+                        title=''
                     ></Phase>
                 </InTernalWrapper>
             </div>

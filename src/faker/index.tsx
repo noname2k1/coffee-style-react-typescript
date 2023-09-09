@@ -1,40 +1,6 @@
-import { Post, CATEGORY_VALUES, HeaderNav } from '../types';
+import { Post, CATEGORY_VALUES } from '../types';
 import images from '../assets/images';
 import { v4 as uuid } from 'uuid';
-import routes from '../config/routes';
-
-export const headerNavItems: HeaderNav[] = [
-    {
-        id: 0,
-        name: 'home',
-        path: routes.home,
-    },
-    {
-        id: 1,
-        name: 'our products',
-        path: routes.products,
-    },
-    {
-        id: 2,
-        name: 'blog',
-        path: routes.blog,
-    },
-    {
-        id: 3,
-        name: 'about',
-        path: routes.about,
-    },
-    {
-        id: 4,
-        name: 'contact',
-        path: routes.contact,
-    },
-    {
-        id: 'login',
-        name: 'login',
-        path: routes.auth,
-    },
-];
 
 export const fakeDatas3: any[] = [
     {

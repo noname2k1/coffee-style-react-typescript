@@ -7,12 +7,14 @@ import images from '../../assets/images';
 import classNames from 'classnames';
 import Modal from '../commons/Modal';
 import ChangePassword from './ChangePassword';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
     data: any;
 }
 
 const UserSettings = ({ data }: Props) => {
+    const { t } = useTranslation();
     const inputRef = useRef<HTMLInputElement>(null);
     const [avatar, setAvatar] = useState<string>(data.photoURL ?? '');
     const [preview, setPreview] = useState<string>('');
@@ -101,7 +103,9 @@ const UserSettings = ({ data }: Props) => {
 
     return (
         <div className='dark:text-white'>
-            <h1 className='text-2xl font-semibold mb-4'>User Settings</h1>
+            <h1 className='text-2xl font-semibold mb-4 capitalize'>
+                {t('user-dropdown.settings')} - {t('common.user')}
+            </h1>
             <div className='mb-5 flex items-center flex-col lg:flex-row'>
                 <span>User ID: </span>
                 <span className='italic text-black/60 ml-1 dark:text-white/60'>
@@ -147,13 +151,13 @@ const UserSettings = ({ data }: Props) => {
                             onClick={handleRemovePreview}
                             className='bg-red-600 text-white max-lg:mt-2 px-4 py-0.5 hover:brightness-75 rounded-sm duration-150'
                         >
-                            Cancel
+                            {t('common.cancel')}
                         </button>
                     )}
                 </div>
             </div>
             <Input
-                label='Name'
+                label={t('common.name')}
                 size='medium'
                 name='name'
                 type='text'
@@ -209,7 +213,7 @@ const UserSettings = ({ data }: Props) => {
                         isDark
                         onClick={() => handleSetIsChangePwdModalOpen(true)}
                     >
-                        Change Password
+                        {t('auth.change_password')}
                     </Button>
                 )}
                 <div className='mt-4'></div>
@@ -221,7 +225,8 @@ const UserSettings = ({ data }: Props) => {
                     }
                     onClick={handleSaveChanges}
                 >
-                    Save Changes {isPending && <Loading className='ml-1' />}
+                    {t('common.apply')}{' '}
+                    {isPending && <Loading className='ml-1' />}
                 </Button>
             </div>
         </div>

@@ -1,18 +1,16 @@
+import { useTranslation } from 'react-i18next';
 import images from '../assets/images';
 import { ContactForm } from '../components/contact';
 
 const Contact = () => {
+    const { t } = useTranslation();
     return (
         <section className='flex flex-col items-center'>
             <div className='bg-bg-secondary dark:bg-gray-900 text-center dark:text-white relative p-[30px] lg:pb-[200px] md:pt-[100px] md:mx-[30px]'>
-                <h1 className='text-4xl mb-5'>Let's Connect</h1>
-                <p className='text-lg tracking-wider text-black/50 dark:text-white/50 lg:px-[200px]'>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse varius enim in eros elementum tristique. Duis
-                    cursus, mi quis.
-                </p>
+                <h1 className='text-4xl mb-5'> {t('contact.main_title')}</h1>
+                <p className='text-lg tracking-wider text-black/50 dark:text-white/50 lg:px-[200px]'></p>
                 <div className='uppercase text-black/50 dark:text-white/50 text-sm tracking-widest font-semibold mt-[100px]'>
-                    OUR OFFICES
+                    {t('contact.title0')}
                 </div>
                 <div className='lg:absolute lg:left-[50%] flex flex-col lg:flex-row max-lg:mt-10 max-lg:gap-10 lg:-translate-x-[50%] gap-x-5 top-[80%] w-full px-[30px] lg:px-0 lg:w-primary'>
                     <div className=''>
@@ -38,16 +36,17 @@ const Contact = () => {
                                 E14 5NY
                             </h3>
                             <div className='uppercase text-black/50 dark:text-white/50 text-sm tracking-widest font-semibold mt-6 mb-3'>
-                                OPENING TIMES
+                                {t('contact.opening_times')}
                             </div>
                             <h2 className='text-md text-black/50 dark:text-white/50'>
-                                Mon - Fri 08:00 to 22:00
+                                {t('common.day_of_week.mon')} -{' '}
+                                {t('common.day_of_week.fri')} 08:00 to 22:00
                             </h2>
                             <h2 className='text-md text-black/50 dark:text-white/50'>
-                                Sat - 09:00 to 20:00
+                                {t('common.day_of_week.sat')} - 09:00 to 20:00
                             </h2>
                             <h2 className='text-md text-black/50 dark:text-white/50'>
-                                Sun - 12:00 to 18:00
+                                {t('common.day_of_week.sun')} - 12:00 to 18:00
                             </h2>
                         </div>
                     </div>
@@ -74,16 +73,18 @@ const Contact = () => {
                                 91733
                             </h3>
                             <div className='uppercase text-black/50 dark:text-white/50 text-sm tracking-widest font-semibold mt-6 mb-3'>
-                                OPENING TIMES
+                                {t('contact.opening_times')}
                             </div>
                             <h2 className='text-md text-black/50 dark:text-white/50'>
-                                Mon - Wed 09:00 to 21:00
+                                {t('common.day_of_week.mon')} -{' '}
+                                {t('common.day_of_week.wed')} 09:00 to 21:00
                             </h2>
                             <h2 className='text-md text-black/50 dark:text-white/50'>
-                                Thu - Sat 09:00 to 22:00
+                                {t('common.day_of_week.thu')} -{' '}
+                                {t('common.day_of_week.sat')} 09:00 to 22:00
                             </h2>
                             <h2 className='text-md text-black/50 dark:text-white/50'>
-                                Sun - 10:00 to 19:00
+                                {t('common.day_of_week.sun')} - 10:00 to 19:00
                             </h2>
                         </div>
                     </div>
@@ -102,7 +103,9 @@ const Contact = () => {
                 }}
             >
                 <iframe
-                    src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.1249521886966!2d105.79743647484901!3d21.02768578781622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab5ccaeb6819%3A0x5386f5be871602a!2zMTE5NCDEkC4gTMOhbmcsIEzDoW5nIFRoxrDhu6NuZywgxJDhu5FuZyDEkGEsIEjDoCBO4buZaSAxMDAwMDAsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1689613250175!5m2!1svi!2s'
+                    src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.9936294855893!2d105.89108577491477!3d20.992892480647434!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135aeb74b57cbd9%3A0xa6c793b0bd878e!2zMTQgTmcuIDc1MyDEkC4gTmd1eeG7hW4gS2hvw6FpLCBUaGFuaCBUcsOsLCBIYWkgQsOgIFRyxrBuZywgSMOgIE7hu5lpLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1694163065497!5m2!1svi!2s'
+                    width='600'
+                    height='450'
                     style={{
                         border: 0,
                         width: '100%',

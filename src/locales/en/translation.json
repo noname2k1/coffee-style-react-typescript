@@ -1,0 +1,154 @@
+{
+    "header": {
+        "home": "Home",
+        "products": "Out products",
+        "blog": "Blog",
+        "about": "About",
+        "contact": "contact"
+    },
+    "user-dropdown": {
+        "settings": "settings",
+        "history": "history"
+    },
+    "common": {
+        "cart": {
+            "cart": "cart",
+            "your-cart": "your cart",
+            "empty": "cart is empty",
+            "continue-to-checkout": "continue to checkout"
+        },
+        "remove": "remove",
+        "subtotal": "subtotal",
+        "checkout": "checkout",
+        "see_more": "See more...",
+        "please_wait": "Please wait...",
+        "product": {
+            "on_sale": "on sale",
+            "explore_mug": "explore mug"
+        },
+        "user": "user",
+        "theme": "theme",
+        "language": "language",
+        "apply": "save changes",
+        "cancel": "Cancel",
+        "name": "name",
+        "form": "form",
+        "email_address": "Email address",
+        "your_message": "Your message",
+        "call_us": "Call us",
+        "email_us": "Email us",
+        "send": "Send",
+        "message": "Message",
+        "success_message": "Thank you! Your submission has been received!",
+        "months": {
+            "Jan": "January",
+            "Feb": "February",
+            "Mar": "March",
+            "Apr": "April",
+            "May": "May",
+            "Jun": "June",
+            "Jul": "July",
+            "Aug": "August",
+            "Sep": "September",
+            "Oct": "October",
+            "Nov": "November",
+            "Dec": "December"
+        },
+        "day_of_week": {
+            "mon": "monday",
+            "tue": "tuesday",
+            "wed": "wednesday",
+            "thu": "thursday",
+            "fri": "friday",
+            "sat": "saturday",
+            "sun": "sunday"
+        },
+        "have": "have",
+        "have_not": "have not"
+    },
+    "auth": {
+        "login": "login",
+        "logout": "logout",
+        "change_password": "Change password"
+    },
+    "home": {
+        "greeting1": "best place to by design",
+        "greeting2": "coffee mugs",
+        "greeting3": "The most versatile furniture system ever created. Designed to fit your life, made to move and grow.",
+        "button1": "explore out products",
+        "title1": "featured mugs",
+        "title2": "more products",
+        "title3": "BUY 2 MUGS AND GET A COFFEE MAGAZINE FREE",
+        "title4": "Premium offers",
+        "title5": "Get our Coffee Magazine",
+        "title6": "The most versatile furniture system ever created. Designed to fit your life.",
+        "button2": "Start shopping",
+        "title7": "BEHIND THE MUGS, LIFESTYLE STORIES"
+    },
+    "about": {
+        "introductions": "introductions",
+        "title0": "Welcome to our website!",
+        "content0": "Our mission is to provide our customers with the best selection of cups that combine style, functionality, and durability. We understand that a good cup enhances the overall drinking experience, and that's why we meticulously curate our collection to bring you only the finest options.",
+        "title1": "Extensive Variety",
+        "content1": "We offer a diverse range of cups in various sizes, shapes, and designs. Whether you prefer classic and elegant styles or trendy and modern designs, you'll find something that suits your taste.",
+        "title2": "Premium Quality",
+        "content2": "We prioritize quality and source our cups from trusted manufacturers. Each cup is crafted with attention to detail, using premium materials that are safe, eco-friendly, and built to last.",
+        "title3": "Customer Satisfaction",
+        "content3": "We value our customers and strive to provide excellent service. From a user-friendly website to prompt shipping and responsive customer support, we're here to ensure your satisfaction every step of the way.",
+        "history_timeline": "history timeline"
+    },
+    "contact": {
+        "main_title": "Let's Connect",
+        "title0": "Out Offices",
+        "opening_times": "Opening times",
+        "form_title": " Drop us your message and I'll get back to you as soon as possible."
+    },
+    "footer": {
+        "suggested_title": "SIGN UP AND GET FREE COFFEE BAGS",
+        "contribute": "Contribute",
+        "subcribe": "subcribe",
+        "members": "members",
+        "about_content": "Delivering the best coffee life since 1996. From coffee geeks to the real ones.",
+        "follow_us": "follow us",
+        "contact_us": "contact us",
+        "contact_content": "We're always happy to help",
+        "leader": "leader"
+    },
+    "language": {
+        "en": "English",
+        "vi": "Vietnamese"
+    },
+    "placeholder": {
+        "contact_form": "hello. I have an idea about..."
+    },
+    "filter": {
+        "color": "Color",
+        "characteristic": "Characteristic",
+        "handler": "Handler",
+        "brand": "Brand",
+        "material": "Material",
+        "diameter": "Diameter",
+        "height": "Height",
+        "materials": {
+            "ceramic": "Ceramic",
+            "glass": "Glass",
+            "crystal": "Crystal",
+            "metal": "Metal"
+        },
+        "colors": {
+            "white": "White",
+            "black": "Black",
+            "brown": "Brown",
+            "gray": "Gray",
+            "green": "Green",
+            "blue": "Blue",
+            "red": "Red",
+            "yellow": "Yellow",
+            "orange": "Orange",
+            "pink": "Pink",
+            "purple": "Purple"
+        },
+        "pattern": "Pattern",
+        "size": "Size"
+    }
+}

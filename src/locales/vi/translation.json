@@ -1,0 +1,154 @@
+{
+    "header": {
+        "home": "Trang chủ",
+        "products": "Sản phẩm",
+        "blog": "Blog",
+        "about": "Giới thiệu",
+        "contact": "Liên hệ"
+    },
+    "user-dropdown": {
+        "settings": "Cài đặt",
+        "history": "Lịch sử"
+    },
+    "common": {
+        "cart": {
+            "cart": "Giỏ hàng",
+            "your-cart": "Giỏ hàng của bạn",
+            "empty": "Không có sản phẩm nào",
+            "continue-to-checkout": "Tiếp tục thủ tục thanh toán"
+        },
+        "remove": "Xóa bỏ",
+        "subtotal": "Tổng tiền",
+        "checkout": "Thanh toán",
+        "see_more": "Xem thêm...",
+        "please_wait": "Vui lòng đợi",
+        "product": {
+            "on_sale": "Khuyến mãi",
+            "explore_mug": "Xem Chi Tiết"
+        },
+        "user": "Người dùng",
+        "theme": "Giao diện",
+        "language": "Ngôn ngữ",
+        "apply": "Áp dụng",
+        "cancel": "Hủy bỏ",
+        "name": "Họ Tên",
+        "form": "Mẫu",
+        "email_address": "Địa chỉ email",
+        "your_message": "Tin nhắn của bạn",
+        "call_us": "Số liên lạc",
+        "email_us": "email liên lạc",
+        "send": "Gửi",
+        "message": "Tin nhắn",
+        "success_message": "Cảm ơn! Nội dung bạn nhập đã được gửi đi",
+        "months": {
+            "Jan": "Tháng một",
+            "Feb": "Tháng hai",
+            "Mar": "Tháng ba",
+            "Apr": "Tháng tư",
+            "May": "Tháng năm",
+            "Jun": "Tháng sáu",
+            "Jul": "Tháng bảy",
+            "Aug": "Tháng tám",
+            "Sep": "Tháng chín",
+            "Oct": "Tháng mười",
+            "Nov": "Tháng mười một",
+            "Dec": "Tháng mười hai"
+        },
+        "day_of_week": {
+            "mon": "Thứ hai",
+            "tue": "Thứ ba",
+            "wed": "Thứ tư",
+            "thu": "Thứ năm",
+            "fri": "Thứ sáu",
+            "sat": "Thứ bảy",
+            "sun": "Chủ nhật"
+        },
+        "have": "Có",
+        "have_not": "Không có"
+    },
+    "auth": {
+        "login": "Đăng nhập",
+        "logout": "Đăng xuất",
+        "change_password": "Thay đổi mật khẩu"
+    },
+    "home": {
+        "greeting1": "cung cấp những bản thiết kế tuyệt vời",
+        "greeting2": "Những sản phẩm chất lượng",
+        "greeting3": "Hệ thống sản phẩm được thiết kế linh hoạt, phù hợp với sở thích, nhu cầu của bạn. Chúng tôi đang cố gắng không ngừng đổi mới và phát triển.",
+        "button1": "Cùng khám phá những sản phẩm của chúng tôi",
+        "title1": "Sản phẩm nổi bật",
+        "title2": "Xem thêm nhiều sản phẩm",
+        "title3": "Mua 2 sản phẩm và nhận ngay một cuốn tạp chí miễn phí",
+        "title4": "Ưu đãi hấp dẫn",
+        "title5": "Những cuốn tạp chí thú vị đang đợi bạn",
+        "title6": "Nội dung được xây dựng linh động, thiết kế giành riêng cho bạn",
+        "button2": "Bắt đầu mua sắm",
+        "title7": "Nhâm nhy tách cà phê và suy ngẫm những câu chuyện thú vị"
+    },
+    "about": {
+        "introductions": "Giới thiệu",
+        "title0": "Chào mừng bạn đến với trang web của chúng tôi!",
+        "content0": "Sứ mệnh của chúng tôi là cung cấp cho khách hàng lựa chọn tốt nhất về các loại cốc kết hợp giữa phong cách, tính năng và độ bền. Chúng tôi hiểu rằng một chiếc cốc tốt sẽ làm tăng trải nghiệm uống nước và vì vậy, chúng tôi chọn lọc kỹ lưỡng để mang đến cho bạn những lựa chọn tốt nhất.",
+        "title1": "Sự đa dạng phong phú",
+        "content1": "Chúng tôi cung cấp một loạt các loại cốc với nhiều kích thước, hình dạng và thiết kế khác nhau. Cho dù bạn thích phong cách cổ điển và thanh lịch hay thiết kế hiện đại và thời thượng, chúng tôi đều có sản phẩm phù hợp với gu của bạn.",
+        "title2": "Chất lượng cao cấp",
+        "content2": "Chúng tôi đặt chất lượng lên hàng đầu và chọn các nhà sản xuất đáng tin cậy để cung cấp cốc. Mỗi chiếc cốc được chế tạo với sự chú trọng đến từng chi tiết, sử dụng các vật liệu cao cấp, an toàn, thân thiện với môi trường và bền bỉ.",
+        "title3": "Sự hài lòng của khách hàng",
+        "content3": "Chúng tôi coi trọngsự hài lòng của khách hàng và luôn nỗ lực cung cấp dịch vụ tuyệt vời. Từ trang web dễ sử dụng đến giao hàng nhanh chóng và hỗ trợ khách hàng nhanh nhạy, chúng tôi luôn ở đây để đảm bảo sự hài lòng của bạn.",
+        "history_timeline": "Dòng Thời Gian"
+    },
+    "contact": {
+        "main_title": "Liên hệ",
+        "title0": "Văn Phòng",
+        "opening_times": "Giờ làm việc",
+        "form_title": "Để lại tin nhắn của bạn. Chúng tôi sẽ phản hồi sớm nhất có thể"
+    },
+    "footer": {
+        "suggested_title": "đăng ký để nhận những phần quà hấp dẫn",
+        "contribute": "Đóng góp ý kiến",
+        "subcribe": "Gửi góp ý",
+        "members": "Danh sách thành viên",
+        "about_content": "Cảm ơn sự ủng hộ của các bạn đối với các sản phẩm, dịch vụ của chúng tôi.",
+        "follow_us": "Theo dõi chúng tôi",
+        "contact_us": "Thông tin liên lạc",
+        "contact_content": "Mọi thông tin chi tiết, vui lòng liên hệ",
+        "leader": "nhóm trưởng"
+    },
+    "language": {
+        "en": "Tiếng anh",
+        "vi": "Tiếng việt"
+    },
+    "placeholder": {
+        "contact_form": "Chào bạn tôi muốn..."
+    },
+    "filter": {
+        "color": "Màu sắc",
+        "characteristic": "Đặc điểm",
+        "handler": "Tay cầm",
+        "brand": "Nhãn hiệu",
+        "size": "Kích thước",
+        "material": "Nguyên liệu",
+        "diameter": "Đường kính",
+        "height": "Chiều cao",
+        "materials": {
+            "ceramic": "Gốm Sứ",
+            "glass": "Thủy tinh",
+            "crystal": "Pha lê",
+            "metal": "Kim loại"
+        },
+        "colors": {
+            "white": "trắng",
+            "black": "đen",
+            "brown": "nâu",
+            "gray": "xám",
+            "green": "xanh lá cây",
+            "blue": "xanh dương",
+            "red": "đỏ",
+            "yellow": "vàng",
+            "orange": "cam",
+            "pink": "hồng",
+            "purple": "tím"
+        },
+        "pattern": "Hoa văn"
+    }
+}

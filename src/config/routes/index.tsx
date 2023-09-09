@@ -6,6 +6,7 @@ const routes = {
     contact: '/contact',
     blog: '/blog',
     blogCategory: '/blog/:category',
+    search: '/search',
     postDetail: '/post/:slug',
     author: '/author/:slug',
     settings: '/settings',

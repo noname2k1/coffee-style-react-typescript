@@ -1,7 +1,8 @@
-export interface HeaderNav {
+export interface NavItem {
     id: string | number;
     name: string;
     path: string;
+    isShow: boolean;
     [key: string]: any;
 }
 
@@ -14,9 +15,14 @@ export interface Product {
     description: string;
     quantity: number;
     details: string;
-    dimensions: number[];
-    category: CATEGORY_VALUES;
     slug: string;
+    material: string;
+    brand: string;
+    color: string;
+    hasHandle: boolean;
+    diameter: number;
+    height: number;
+    pattern: boolean;
     oldPrice?: number;
     onSale?: boolean;
     quantityInCart: number;
@@ -37,12 +43,6 @@ export interface Post {
 }
 
 export enum CATEGORY_VALUES {
-    ALL_PRODUCTS = 'All Products',
-    COFFEE_MUGS = 'Coffee mugs',
-    OTHERS = 'Others',
-    PREMIUM = 'Premium',
-    TEA_MUGS = 'Tea mugs',
-    // post category
     ALL_POSTS = '',
     BARISTA = 'barista',
     COFFEE = 'coffee',
@@ -50,13 +50,12 @@ export enum CATEGORY_VALUES {
     MUGS = 'mugs',
 }
 
-export interface Category {
-    id: string;
-    name: string;
+export interface filterItem {
+    id: string | number;
     title: string;
-    slogan: string;
-    value: CATEGORY_VALUES;
-    [key: string]: any;
+    value: string;
+    children?: filterItem[];
+    multiChoice?: boolean;
 }
 
 export interface PostCategory {

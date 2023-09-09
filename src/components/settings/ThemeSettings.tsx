@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface Theme {
     name: string;
@@ -8,6 +9,7 @@ interface Theme {
 }
 
 const ThemeSettings = () => {
+    const { t } = useTranslation();
     const THEMES: Theme[] = [
         {
             name: 'Light',
@@ -152,7 +154,9 @@ const ThemeSettings = () => {
 
     return (
         <div className='flex flex-col py-10 dark:text-white'>
-            <h1 className='text-2xl font-semibold mb-4'>Theme Settings</h1>
+            <h1 className='text-2xl font-semibold mb-4'>
+                {t('user-dropdown.settings')} - {t('common.theme')}
+            </h1>
             <div className='flex gap-5 flex-wrap justify-center'>
                 {THEMES.map((theme) => {
                     return (

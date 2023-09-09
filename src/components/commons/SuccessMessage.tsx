@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import images from '../../assets/images';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
     direction?: 'row' | 'col';
@@ -11,11 +12,12 @@ interface Props {
 
 const SuccessMessage = ({
     direction = 'row',
-    message = 'Thank you! Your submission has been received!',
+    message = '',
     isTransparent = false,
     isDark = false,
     border = false,
 }: Props) => {
+    const { t } = useTranslation();
     return (
         <div
             className={classNames('flex text-center items-center', {
@@ -38,7 +40,7 @@ const SuccessMessage = ({
                     'mt-1': direction === 'col',
                 })}
             >
-                {message}
+                {message || t('contact.form_title')}
             </h3>
         </div>
     );

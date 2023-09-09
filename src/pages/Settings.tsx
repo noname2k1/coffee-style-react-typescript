@@ -4,9 +4,15 @@ import { v4 as uuid } from 'uuid';
 import routes from '../config/routes';
 import { useFirebaseAuth } from '../hooks';
 import { Loading } from '../components/commons';
-import { UserSettings, ThemeSettings } from '../components/settings';
+import {
+    UserSettings,
+    ThemeSettings,
+    LanguageSettings,
+} from '../components/settings';
+import { useTranslation } from 'react-i18next';
 
 const Settings = () => {
+    const { t } = useTranslation();
     const { pathname, state } = useLocation();
     const navigate = useNavigate();
     const { user, isPending } = useFirebaseAuth();
@@ -29,15 +35,20 @@ const Settings = () => {
 
     const SIDEBAR_LIST: {
         id: string;
-        text: 'user' | 'theme';
+        text: string;
         isShow: boolean;
     }[] = [
-        { id: uuid(), text: 'user', isShow: Object.keys(user).length > 0 },
-        { id: uuid(), text: 'theme', isShow: true },
+        {
+            id: uuid(),
+            text: t('common.user'),
+            isShow: Object.keys(user).length > 0,
+        },
+        { id: uuid(), text: t('common.theme'), isShow: true },
+        { id: uuid(), text: t('common.language'), isShow: true },
     ];
 
     return (
-        <div className='min-h-screen lg:p-4 pb-0 flex flex-col dark:text-white'>
+        <div className='settings-wrapper min-h-screen lg:p-4 pb-0 flex flex-col dark:text-white'>
             <header className='pb-4 pt-4 lg:pt-0 pl-4 lg:pl-0 border-b border-border-light'>
                 <button
                     onClick={handleGoBack}
@@ -92,16 +103,18 @@ const Settings = () => {
                     {isPending && <Loading width={60} height={60} />}
                     {!isPending && (
                         <div className='w-full'>
-                            {(searchParams.get('tab') === 'user' ||
+                            {(searchParams.get('tab') === t('common.user') ||
                                 !searchParams.get('tab')) &&
                                 Object.keys(user).length > 0 && (
                                     <UserSettings data={user} />
                                 )}
-                            {(searchParams.get('tab') === 'theme' ||
+                            {(searchParams.get('tab') === t('common.theme') ||
                                 (!searchParams.get('tab') &&
                                     Object.keys(user).length === 0)) && (
                                 <ThemeSettings />
                             )}
+                            {searchParams.get('tab') ===
+                                t('common.language') && <LanguageSettings />}
                         </div>
                     )}
                 </section>

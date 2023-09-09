@@ -2,6 +2,7 @@ import { Post as PostType, Product as ProductType } from '../../types';
 import { Post } from '../commons';
 import Product from '../commons/Product';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
     title?: string;
@@ -12,6 +13,7 @@ interface Props {
 }
 
 const ImageSection = (props: Props) => {
+    const { t } = useTranslation();
     return (
         <section className='flex justify-center mb-[100px]' data-aos='fade-up'>
             <div
@@ -49,7 +51,9 @@ const ImageSection = (props: Props) => {
                                         <Product
                                             key={item._id}
                                             item={item}
-                                            btnText={'explore mug'}
+                                            btnText={t(
+                                                'common.product.explore_mug',
+                                            )}
                                             cols={props.gridCols}
                                         />
                                     </div>
@@ -59,7 +63,7 @@ const ImageSection = (props: Props) => {
                                 <Product
                                     item={item}
                                     key={item._id}
-                                    btnText={'explore mug'}
+                                    btnText={t('common.product.explore_mug')}
                                     cols={props.gridCols}
                                 />
                             );

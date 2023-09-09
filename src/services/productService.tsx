@@ -3,12 +3,17 @@ const getProducts = async (
     skip: number = 0,
     limit: number = 0,
     name: string = '',
-    category: string = '',
     random = '', //  `${slug}*${randomSize}`
+    material: string = '',
+    color: string = '',
+    characteristic: string = '',
+    brand: string = '',
+    diameter: number = 0,
+    height: number = 0
 ) => {
     try {
         const res = await baseURL.productInstance.get(
-            `?skip=${skip}&limit=${limit}&name=${name}&category=${category}&random=${random}`,
+            `?skip=${skip}&limit=${limit}&name=${name}&material=${material}&random=${random}&color=${color}&brand=${brand}&characteristic=${characteristic}&diameter=${diameter}&height=${height}&height=${height}`
         );
         return res.data;
     } catch (error) {

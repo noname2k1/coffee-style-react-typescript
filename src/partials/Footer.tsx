@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
 import images from '../assets/images';
 import { Input, Button, SuccessMessage } from '../components/commons';
-import { headerNavItems } from '../faker';
 import { useState } from 'react';
+import useGlobalConstans from '../hooks/useGlobalConstants';
+import { useTranslation } from 'react-i18next';
 const MEMBERS = [
     {
         id: 0,
@@ -36,6 +37,8 @@ const MEMBERS = [
     },
 ];
 const Footer = () => {
+    const { t } = useTranslation();
+    const { NAV_LIST } = useGlobalConstans();
     const [isPending, setIsPending] = useState(false);
     const [sended, setSended] = useState(false);
 
@@ -53,9 +56,9 @@ const Footer = () => {
                 className='bg-gray-900 px-[50px] py-[80px] mx-0 lg:mx-[30px] lg:py-[100px] text-white flex flex-col items-center dark:border-y border-border-color'
             >
                 <h3 className='opacity-60 text-xs uppercase tracking-widest font-semibold'>
-                    SIGN UP AND GET FREE COFFEE BAGS
+                    {t('footer.suggested_title')}
                 </h3>
-                <h1 className='text-4xl py-5'>Coffee Updates</h1>
+                <h1 className='text-4xl py-5'>{t('footer.contribute')}</h1>
                 <div className='flex items-center flex-col sm:flex-row'>
                     {!sended && (
                         <Input
@@ -73,7 +76,9 @@ const Footer = () => {
                             <SuccessMessage isTransparent isDark />
                         ) : (
                             <Button size='medium' hFull onClick={handleSend}>
-                                {isPending ? 'please wait...' : 'subcribe'}
+                                {isPending
+                                    ? t('common.please_wait')
+                                    : t('footer.subcribe')}
                             </Button>
                         )}
                     </div>
@@ -85,7 +90,9 @@ const Footer = () => {
                 data-aos='fade-up'
             >
                 <div className='team-1 mb-10'>
-                    <h1 className='text-xl font-semibold'>Members:</h1>
+                    <h1 className='text-xl font-semibold text-center mb-5'>
+                        {t('footer.members')}:
+                    </h1>
                     <div className='flex flex-col lg:flex-row gap-10'>
                         {MEMBERS.map((member) => (
                             <div
@@ -98,8 +105,8 @@ const Footer = () => {
                                         {member.name}
                                     </span>
                                     {member.isLeader && (
-                                        <span className='bg-red-600 rounded-xl text-white py-1 px-4 ml-2'>
-                                            Leader
+                                        <span className='bg-red-600 capitalize rounded-xl text-white py-1 px-4 ml-2'>
+                                            {t('footer.leader')}
                                         </span>
                                     )}
                                 </div>
@@ -115,8 +122,7 @@ const Footer = () => {
                             className='w-[111px] mb-2 dark:invert'
                         />
                         <div className='text-center'>
-                            Delivering the best coffee life since 1996. From
-                            coffee geeks to the real ones.
+                            {t('footer.about_content')}
                         </div>
                         <div className='flex'>
                             <span className='hover:text-primary text-xs h-fit block mt-auto whitespace-nowrap'>
@@ -129,20 +135,22 @@ const Footer = () => {
                         <div className='tracking-widest text-xs font-semibold'>
                             MENU
                         </div>
-                        {headerNavItems.map((item) => (
-                            <Link
-                                to={item.path}
-                                key={item.id}
-                                className='hover:text-primary text-sm inline-block'
-                            >
-                                {item.name}
-                            </Link>
-                        ))}
+                        {NAV_LIST.map((item) =>
+                            item.isShow ? (
+                                <Link
+                                    to={item.path}
+                                    key={item.id}
+                                    className='hover:text-primary text-sm inline-block'
+                                >
+                                    {item.name}
+                                </Link>
+                            ) : null,
+                        )}
                     </div>
 
                     <div className='flex flex-col gap-3 text-center'>
                         <div className='tracking-widest text-xs font-semibold'>
-                            FOLLOW US
+                            {t('footer.follow_us')}
                         </div>
                         {[
                             'facebook.com',
@@ -163,10 +171,10 @@ const Footer = () => {
 
                     <div className='flex flex-col items-center'>
                         <div className='tracking-widest text-xs font-semibold'>
-                            CONTACT US
+                            {t('footer.contact_us')}
                         </div>
-                        <h3 className='mb-auto mt-5'>
-                            We’re Always Happy to Help
+                        <h3 className='mb-auto mt-5 text-center'>
+                            {t('footer.contact_content')}
                         </h3>
                         <h2 className='text-gray-900 dark:text-white text-2xl mb-5'>
                             us@coffeestyle.io

@@ -7,9 +7,11 @@ import { Button, Input, ItemImage } from '.';
 import { formatCurrency } from '../../utils';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import routes from '../../config/routes';
 
 const Cart = () => {
+    const { t } = useTranslation();
     const navigate = useNavigate();
     const [cart, setCart] = useRecoilState<CartType>(cartState);
 
@@ -93,7 +95,7 @@ const Cart = () => {
             >
                 <header className='border-b border-border-color py-[30px] px-10 flex justify-between items-center text-white'>
                     <h1 className='uppercase text-xs font-semibold tracking-widest opacity-60'>
-                        your cart
+                        {t('common.cart.your-cart')}
                     </h1>
                     <img
                         className='h-3 w-3 opacity-60 hover:opacity-100 cursor-pointer'
@@ -120,13 +122,8 @@ const Cart = () => {
                                 alt='cart-empty-icon'
                             />
                             <h1 className='capitalize my-2.5 text-xl'>
-                                your cart is empty
+                                {t('common.cart.empty')}
                             </h1>
-                            <p className='opacity-60'>
-                                It is a paradisematic country, in which roasted
-                                parts of sentences fly into your mouth. Even the
-                                all-powerful.
-                            </p>
                         </div>
                     )}
                     {/* cart items */}
@@ -154,7 +151,7 @@ const Cart = () => {
                                         onClick={() => handleRemoveItem(item)}
                                         className='uppercase my-2 tracking-widest text-white/60 hover:text-white text-xs font-semibold'
                                     >
-                                        Remove
+                                        {t('common.remove')}
                                     </button>
                                 </div>
                                 <Input
@@ -178,7 +175,9 @@ const Cart = () => {
                 {cart.items.length > 0 && (
                     <footer className='border-t border-border-color p-10'>
                         <div className='flex items-center justify-between mb-8'>
-                            <h2 className='text-white text-xl'>Subtotal</h2>
+                            <h2 className='text-white text-xl'>
+                                {t('common.subtotal')}:
+                            </h2>
                             <span className='text-white text-xl'>
                                 {cart.total > 0
                                     ? formatCurrency(
@@ -195,7 +194,7 @@ const Cart = () => {
                                 navigate(routes.checkOut);
                             }}
                         >
-                            continue to checkout
+                            {t('common.cart.continue-to-checkout')}
                         </Button>
                     </footer>
                 )}

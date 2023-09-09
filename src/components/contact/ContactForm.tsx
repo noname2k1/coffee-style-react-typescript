@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { Button, Input, TextArea } from '../commons';
 import { SuccessMessage } from '../commons';
+import { useTranslation } from 'react-i18next';
 
 const ContactForm = () => {
+    const { t } = useTranslation();
     const [isPending, setIsPending] = useState(false);
     const [sended, setSended] = useState(false);
 
@@ -19,15 +21,12 @@ const ContactForm = () => {
                     <div className='text-sm uppercase tracking-widest text-black/50 dark:text-white/50 font-semibold'>
                         contact form
                     </div>
-                    <h2 className='text-lg'>
-                        Drop us your message and I'll get back to you as soon as
-                        possible.
-                    </h2>
+                    <h2 className='text-lg'>{t('contact.form_title')}</h2>
                     {!sended && (
                         <>
                             <Input
                                 type='text'
-                                label='name'
+                                label={t('common.name')}
                                 size='medium'
                                 isDark={false}
                                 isTransparent
@@ -35,18 +34,18 @@ const ContactForm = () => {
                             />
                             <Input
                                 type='email'
-                                label='email address'
+                                label={t('common.email_address')}
                                 size='medium'
                                 isDark={false}
                                 isTransparent
                                 placeholder='jamescoffee@gmail.com'
                             />
                             <TextArea
-                                label='YOUR MESSAGE'
+                                label={t('common.your_message')}
                                 size='medium'
                                 isDark={false}
                                 isTransparent
-                                placeholder='Hi ! I would like to ask something about mugs.'
+                                placeholder={t('placeholder.contact_form')}
                             />
                             <div className='max-lg:flex justify-center'>
                                 <Button
@@ -56,8 +55,10 @@ const ContactForm = () => {
                                     onClick={handleSend}
                                 >
                                     {isPending
-                                        ? 'please wait...'
-                                        : 'Send Message'}
+                                        ? t('common.please_wait')
+                                        : `${t('common.send')} ${t(
+                                              'common.message',
+                                          )}`}
                                 </Button>
                             </div>
                         </>
@@ -82,13 +83,13 @@ const ContactForm = () => {
                         Australia
                     </h3>
                     <div className='text-sm uppercase mt-5 tracking-widest text-black/50 dark:text-white/50 font-semibold'>
-                        call us
+                        {t('common.call_us')}
                     </div>
                     <h2 className='text-lg'>
                         <a href='tel:+14155551212'>+1 (415) 555-1212</a>
                     </h2>
                     <div className='text-sm uppercase mt-5 tracking-widest text-black/50 dark:text-white/50 font-semibold'>
-                        EMAIL US
+                        {t('common.email_us')}
                     </div>
                     <h2 className='text-lg'>
                         <a href='mailto:us@coffeestyle.io'>us@coffeestyle.io</a>

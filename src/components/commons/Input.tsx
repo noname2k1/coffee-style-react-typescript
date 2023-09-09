@@ -47,7 +47,7 @@ const Input = (props: Props) => {
                             props.isTransparent &&
                             props.isDark &&
                             props.type !== 'number',
-                        'bg-gray-100 text-black dark:text-white border-border-light hover:border-black/50 focus:border-black/50 dark:hover:border-white/50 dark:focus:border-white/50':
+                        'bg-gray-100 text-black border-border-light hover:border-black/50 focus:border-black/50 dark:hover:border-white/50 dark:focus:border-white/50':
                             !props.isDark &&
                             !props.isTransparent &&
                             props.type !== 'number',

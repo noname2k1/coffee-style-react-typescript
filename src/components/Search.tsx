@@ -1,11 +1,19 @@
 import { useEffect, useState } from 'react';
 import searchIcon from '../assets/images/search.svg';
 import classNames from 'classnames';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { getProducts } from '../services/productService';
 import { useDebounceValue } from '../hooks';
+import routes from '../config/routes';
+import { useTranslation } from 'react-i18next';
 
-const Search = () => {
+const Search = ({
+    setHeader = () => {},
+}: {
+    setHeader: (bool: boolean) => void;
+}) => {
+    const { t } = useTranslation();
+    const navigate = useNavigate();
     const [searchBar, setSearchBar] = useState(false);
     const [searchInput, setSearchInput] = useState('');
     const debouncedValue = useDebounceValue(searchInput, 500);
@@ -17,6 +25,10 @@ const Search = () => {
         } else {
             setSearchBar((prev) => !prev);
         }
+    };
+
+    const handleHeaderCollapse = () => {
+        setHeader(false);
     };
 
     useEffect(() => {
@@ -39,6 +51,20 @@ const Search = () => {
         }
     }, [searchInput]);
 
+    useEffect(() => {
+        const headerCollapse = (e: any) => {
+            if (
+                !!e.target!.closest('.mobile-btn') ||
+                !!e.target!.closest('.header-nav')
+            ) {
+                return;
+            }
+            handleHeaderCollapse();
+        };
+        document.addEventListener('click', headerCollapse);
+        return () => document.removeEventListener('click', headerCollapse);
+    }, []);
+
     return (
         <div
             className={classNames('cursor-pointer', {
@@ -60,8 +86,8 @@ const Search = () => {
                 <img
                     src={searchIcon}
                     alt='search-img'
-                    className={classNames('order-1 w-8 h-8 dark:invert mx-8', {
-                        'max-lg:mr-0': !searchBar,
+                    className={classNames('order-1 w-8 h-8 dark:invert ml-8', {
+                        'max-lg:mx-auto': !searchBar,
                     })}
                     onClick={() => {
                         handleSearchBar(true);
@@ -108,6 +134,7 @@ const Search = () => {
                                         onClick={() => {
                                             setSearchBar(false);
                                             setSearchInput('');
+                                            handleHeaderCollapse();
                                         }}
                                         className='flex items-center'
                                     >
@@ -123,6 +150,17 @@ const Search = () => {
                                 </li>
                             ))}
                         </ul>
+                        <div
+                            className='text-center hover:bg-opacity-40 duration-200 hover:underline font-semibold border-t'
+                            onClick={() => {
+                                setSearchBar(false);
+                                setSearchInput('');
+                                navigate(routes.search + `?key=${searchInput}`);
+                                handleHeaderCollapse();
+                            }}
+                        >
+                            {t('common.see_more')}
+                        </div>
                     </div>
                 )}
             </div>

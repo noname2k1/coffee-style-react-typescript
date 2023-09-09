@@ -1,5 +1,6 @@
 import { Post, Product } from '../../types';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 import { Button } from '.';
 
 interface Props {
@@ -12,6 +13,7 @@ interface Props {
 }
 
 const ItemImage = (props: Props) => {
+    const { t } = useTranslation();
     return (
         <div
             className={classNames('relative group', {
@@ -29,8 +31,8 @@ const ItemImage = (props: Props) => {
             })}
         >
             {props.item.onSale && props.size !== 'small' && (
-                <span className='text-primary absolute top-2 right-2 shadow-md bg-white p-2 px-4 font-semibold'>
-                    On Sale.
+                <span className='text-primary capitalize absolute top-2 right-2 shadow-md bg-white p-2 px-4 font-semibold'>
+                    {t('common.product.on_sale')}
                 </span>
             )}
             {props.btnText && (

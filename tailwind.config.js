@@ -21,17 +21,17 @@ export default {
                 'border-qrcode':
                     "url('/src/assets/images/payments/border-qrcode.svg')",
             },
-        },
-        animation: {
-            down: 'down 3s linear infinite',
-        },
-        keyframes: {
-            down: {
-                '0%': {
-                    transform: 'translateY(0)',
-                },
-                '100%': {
-                    transform: 'translateY(100%)',
+            animation: {
+                down: 'down 3s linear infinite',
+            },
+            keyframes: {
+                down: {
+                    '0%': {
+                        transform: 'translateY(0)',
+                    },
+                    '100%': {
+                        transform: 'translateY(100%)',
+                    },
                 },
             },
         },

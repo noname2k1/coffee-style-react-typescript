@@ -13,12 +13,12 @@ interface Props {
 
 const Product = (props: Props) => {
     return (
-        <div className='flex flex-col max-md:px-[10px]'>
+        <div className='product flex flex-col max-md:px-[10px]'>
             <Link
                 to={'/product/' + props.item.slug}
                 className={classNames('relative group inline-block', {
                     'min-h-[300px] md:min-h-[540px]': props.cols === 2,
-                    'min-h-[380px]': props.cols === 3,
+                    'min-h-[380px]': props.cols === 3
                 })}
             >
                 <ItemImage
@@ -39,21 +39,21 @@ const Product = (props: Props) => {
                     <div
                         className={classNames({
                             'text-sm': !props.item.oldPrice,
-                            'text-lg text-primary': props.item.oldPrice,
+                            'text-lg text-primary': props.item.oldPrice
                         })}
                     >
                         {formatCurrency(
                             props.item.price,
                             props.item.unit,
-                            'de-DE',
+                            'de-DE'
                         )}
                     </div>
-                    {props.item.onSale && (
+                    {(props.item.onSale || props.item.oldPrice! > 0) && (
                         <div className='text-sm line-through ml-4'>
                             {formatCurrency(
                                 props.item.oldPrice!,
                                 props.item.unit,
-                                'de-DE',
+                                'de-DE'
                             )}
                         </div>
                     )}
