@@ -84,8 +84,8 @@ const Products = () => {
                 <h1 className='text-4xl mt-[50px] dark:text-white'>
                     {t('header.products')}
                 </h1>
-                <div className='flex flex-col max-md:w-full justify-center items-center gap-2.5 mb-[100px] mt-10'>
-                    <div className='flex items-center gap-4 pb-3 border-b-2 w-full flex-wrap justify-center'>
+                <div className='flex flex-col max-md:w-full justify-center items-center gap-2 md:gap-4 mb-[100px] mt-10'>
+                    <div className='flex items-center gap-2 md:gap-4 pb-3 border-b-2 w-full flex-wrap justify-center'>
                         {PRODUCTS_FILTER_PARENT.map((filterItem) => (
                             <div
                                 className={classNames(
@@ -134,8 +134,8 @@ const Products = () => {
                             </div>
                         ))}
                         {/* filter by inputs */}
-                        <div className='flex items-center gap-4'>
-                            <div className='flex items-center border border-black/50 dark:text-black'>
+                        <div className='flex items-center gap-2 md:gap-4 flex-wrap'>
+                            <div className='flex max-md:w-full items-center border border-black/50 dark:text-black'>
                                 <input
                                     type='text'
                                     name='brand'
@@ -153,7 +153,7 @@ const Products = () => {
                                     </button>
                                 )}
                             </div>
-                            <div className='flex items-center border border-black/50 dark:text-black'>
+                            <div className='flex max-md:w-full items-center border border-black/50 dark:text-black'>
                                 <input
                                     type='text'
                                     name='diameter'
@@ -173,7 +173,7 @@ const Products = () => {
                                     </button>
                                 )}
                             </div>
-                            <div className='flex items-center border border-black/50 dark:text-black'>
+                            <div className='flex max-md:w-full items-center border border-black/50 dark:text-black'>
                                 <input
                                     type='text'
                                     name='height'
@@ -204,7 +204,7 @@ const Products = () => {
                             </div>
                         )}
                     </div>
-                    <div className='flex items-center gap-4 px-10 justify-center flex-wrap'>
+                    <div className='flex items-center gap-2 md:gap-4 md:px-10 justify-center flex-wrap'>
                         {currentFilterItem.children?.map((item) => (
                             <div
                                 className={classNames(

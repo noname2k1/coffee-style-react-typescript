@@ -40,10 +40,10 @@ const Home = () => {
                         <h3 className='uppercase primary-typo'>
                             {t('home.greeting1')}
                         </h3>
-                        <h1 className='text-5xl my-3 capitalize'>
+                        <h1 className='text-2xl md:text-5xl my-3 capitalize'>
                             {t('home.greeting2')}
                         </h1>
-                        <p className='text-lg opacity-80 font-medium mb-[30px]'>
+                        <p className='text-base md:text-lg px-2 opacity-80 font-medium mb-[30px]'>
                             {t('home.greeting3')}
                         </p>
                         <Button
