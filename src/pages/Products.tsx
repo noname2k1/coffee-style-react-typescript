@@ -52,6 +52,9 @@ const Products = () => {
 
     const handleClear = () => {
         setSelectedItems(keys);
+        setBrand('');
+        setDiameter('');
+        setHeight('');
     };
 
     // console.log(selectedItems);
@@ -139,7 +142,7 @@ const Products = () => {
                                 <input
                                     type='text'
                                     name='brand'
-                                    className='outline-none py-1.5 px-3'
+                                    className='outline-none flex-1 py-1.5 px-3'
                                     placeholder={t('filter.brand')}
                                     value={brand}
                                     onChange={(e) => setBrand(e.target.value)}
@@ -157,7 +160,7 @@ const Products = () => {
                                 <input
                                     type='text'
                                     name='diameter'
-                                    className='outline-none py-1.5 px-3'
+                                    className='outline-none flex-1 py-1.5 px-3'
                                     placeholder={t('filter.diameter')}
                                     value={diameter}
                                     onChange={(e) =>
@@ -177,7 +180,7 @@ const Products = () => {
                                 <input
                                     type='text'
                                     name='height'
-                                    className='outline-none py-1.5 px-3'
+                                    className='outline-none flex-1 py-1.5 px-3'
                                     placeholder={t('filter.height')}
                                     value={height}
                                     onChange={(e) => setHeight(e.target.value)}
@@ -193,7 +196,10 @@ const Products = () => {
                             </div>
                         </div>
                         {/* clear btn */}
-                        {Object.values(selectedItems).join('') !== '' && (
+                        {(Object.values(selectedItems).join('') !== '' ||
+                            brand ||
+                            diameter ||
+                            height) && (
                             <div
                                 className={classNames(
                                     'cursor-pointer border text-center hover:border-red-700 hover:bg-red-700 hover:text-white py-2.5 w-full max-md:text-center dark:text-white px-4 text-xs font-semibold uppercase duration-100'
