@@ -81,7 +81,7 @@ const Products = () => {
     return (
         <section className='flex justify-center'>
             <div className='w-primary flex flex-col px-[30px] md:px-0 items-center'>
-                <h1 className='text-4xl mt-[100px] dark:text-white'>
+                <h1 className='text-4xl mt-[50px] dark:text-white'>
                     {t('header.products')}
                 </h1>
                 <div className='flex flex-col max-md:w-full justify-center items-center gap-2.5 mb-[100px] mt-10'>
@@ -91,7 +91,7 @@ const Products = () => {
                                 className={classNames(
                                     'py-2.5 text-center whitespace-nowrap max-md:text-center dark:text-white px-4 text-xs tracking-[0.2rem] font-semibold uppercase duration-100',
                                     {
-                                        'cursor-pointer border hover:text-primary':
+                                        'cursor-pointer border border-black dark:border-white hover:text-primary':
                                             filterItem.id !==
                                             currentFilterItem.id,
                                         'cursor-default border border-primary text-primary':
@@ -135,7 +135,7 @@ const Products = () => {
                         ))}
                         {/* filter by inputs */}
                         <div className='flex items-center gap-4'>
-                            <div className='flex items-center border'>
+                            <div className='flex items-center border border-black/50 dark:text-black'>
                                 <input
                                     type='text'
                                     name='brand'
@@ -153,7 +153,7 @@ const Products = () => {
                                     </button>
                                 )}
                             </div>
-                            <div className='flex items-center border'>
+                            <div className='flex items-center border border-black/50 dark:text-black'>
                                 <input
                                     type='text'
                                     name='diameter'
@@ -173,7 +173,7 @@ const Products = () => {
                                     </button>
                                 )}
                             </div>
-                            <div className='flex items-center border'>
+                            <div className='flex items-center border border-black/50 dark:text-black'>
                                 <input
                                     type='text'
                                     name='height'
@@ -196,7 +196,7 @@ const Products = () => {
                         {Object.values(selectedItems).join('') !== '' && (
                             <div
                                 className={classNames(
-                                    'cursor-pointer border text-center hover:text-primary hover:border-primary py-2.5 w-full max-md:text-center dark:text-white px-4 text-xs font-semibold uppercase duration-100'
+                                    'cursor-pointer border text-center hover:border-red-700 hover:bg-red-700 hover:text-white py-2.5 w-full max-md:text-center dark:text-white px-4 text-xs font-semibold uppercase duration-100'
                                 )}
                                 onClick={handleClear}
                             >
@@ -210,7 +210,7 @@ const Products = () => {
                                 className={classNames(
                                     'py-2.5 rounded-md whitespace-nowrap max-md:text-center dark:text-white px-4 text-xs tracking-[0.2rem] font-semibold uppercase duration-100',
                                     {
-                                        'cursor-pointer border hover:text-primary':
+                                        'cursor-pointer border border-black hover:text-primary dark:border-white':
                                             item.value !==
                                                 selectedItems[
                                                     currentFilterItem.value

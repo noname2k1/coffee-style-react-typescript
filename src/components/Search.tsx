@@ -8,7 +8,7 @@ import routes from '../config/routes';
 import { useTranslation } from 'react-i18next';
 
 const Search = ({
-    setHeader = () => {},
+    setHeader = () => {}
 }: {
     setHeader: (bool: boolean) => void;
 }) => {
@@ -68,16 +68,16 @@ const Search = ({
     return (
         <div
             className={classNames('cursor-pointer', {
-                'fixed inset-0 bg-black/30 flex justify-center': searchBar,
+                'fixed inset-0 bg-black/30 flex justify-center': searchBar
             })}
             onClick={() => handleSearchBar()}
         >
             <div
                 className={classNames(
-                    'flex items-center h-fit relative bg-transparent focus-within:border-blue-600 border border-transparent ',
+                    'flex items-center h-fit relative bg-transparent ',
                     {
-                        'mt-10': searchBar,
-                    },
+                        'mt-10': searchBar
+                    }
                 )}
                 onClick={(e) => {
                     e.stopPropagation();
@@ -87,7 +87,7 @@ const Search = ({
                     src={searchIcon}
                     alt='search-img'
                     className={classNames('order-1 w-8 h-8 dark:invert ml-8', {
-                        'max-lg:mx-auto': !searchBar,
+                        'max-lg:mx-auto': !searchBar
                     })}
                     onClick={() => {
                         handleSearchBar(true);

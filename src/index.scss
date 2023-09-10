@@ -9,7 +9,7 @@
 }
 
 html {
-    font-family: Karla, sans-serif;
+    font-family: ttf_r, Karla, sans-serif;
 }
 
 .primary-typo {
@@ -25,7 +25,7 @@ html {
 }
 
 @font-face {
-    font-family: Karla_italic;
-    src: url('./assets/fonts/karla_italic.woff2');
+    font-family: ttf_r;
+    src: url('./assets/fonts/ttf_regular.woff2');
     font-weight: 400;
 }
