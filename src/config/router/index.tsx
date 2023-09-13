@@ -13,6 +13,7 @@ import {
     Settings,
     History,
     SearchPage,
+    HistoryDetail
 } from '../../pages';
 import { SignIn, SignUp } from '../../components/auth';
 import NotFound from '../../pages/NotFound';
@@ -32,53 +33,57 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <Home />,
+                element: <Home />
             },
             {
                 path: routes.products,
-                element: <Products />,
+                element: <Products />
             },
             {
                 path: routes.product,
-                element: <ProductDetail />,
+                element: <ProductDetail />
             },
             {
                 path: routes.blog,
-                element: <Blog />,
+                element: <Blog />
             },
             {
                 path: routes.blogCategory,
-                element: <Blog />,
+                element: <Blog />
             },
             {
                 path: routes.author,
-                element: <Blog />,
+                element: <Blog />
             },
             {
                 path: routes.postDetail,
-                element: <PostDetail />,
+                element: <PostDetail />
             },
             {
                 path: routes.about,
-                element: <About />,
+                element: <About />
             },
             {
                 path: routes.contact,
-                element: <Contact />,
+                element: <Contact />
             },
             {
                 path: routes.checkOut,
-                element: <Checkout />,
+                element: <Checkout />
             },
             {
                 path: routes.history,
-                element: <History />,
+                element: <History />
+            },
+            {
+                path: routes.historyDetail,
+                element: <HistoryDetail />
             },
             {
                 path: routes.search,
-                element: <SearchPage />,
-            },
-        ],
+                element: <SearchPage />
+            }
+        ]
     },
     {
         path: routes.auth,
@@ -86,26 +91,26 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <SignIn />,
+                element: <SignIn />
             },
             {
                 path: routes.signUp,
-                element: <SignUp />,
-            },
-        ],
+                element: <SignUp />
+            }
+        ]
     },
     {
         path: routes.settings,
-        element: <Settings />,
+        element: <Settings />
     },
     {
         path: routes.momo,
-        element: <Payment />,
+        element: <Payment />
     },
     {
         path: '*',
-        element: <NotFound />,
-    },
+        element: <NotFound />
+    }
 ]);
 
 export default router;

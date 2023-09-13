@@ -56,7 +56,7 @@ export interface Order {
     method: string;
     total: number;
     disabled: boolean;
-    isPaid: boolean;
+    ispaid: boolean;
 }
 
 export enum CATEGORY_VALUES {

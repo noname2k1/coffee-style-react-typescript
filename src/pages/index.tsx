@@ -9,3 +9,4 @@ export { default as Auth } from './Auth';
 export { default as Settings } from './Settings';
 export { default as History } from './History';
 export { default as SearchPage } from './SearchPage';
+export { default as HistoryDetail } from './HistoryDetail';

@@ -5,6 +5,7 @@ import { getOrder } from '../services/orderService';
 import { useFirebaseAuth } from '../hooks';
 import Skeleton from 'react-loading-skeleton';
 import { formatCurrency } from '../utils';
+import { Link } from 'react-router-dom';
 
 const History = () => {
     const { t } = useTranslation();
@@ -33,10 +34,11 @@ const History = () => {
                 {t('user-dropdown.history')}
             </h1>
             {!isLoading ? (
-                <div className='flex flex-col mb-4'>
+                <div className='flex flex-col mb-4 gap-4'>
                     {myOrders.map((order) => (
-                        <div
-                            className='border px-4 py-2 flex flex-col'
+                        <Link
+                            to={`/history/${order._id}`}
+                            className='border px-4 py-2 flex flex-col shadow-xl hover:bg-black/30 duration-200'
                             key={order._id}
                         >
                             <h2 className='text-xl font-bold mb-2'>
@@ -80,18 +82,22 @@ const History = () => {
                                 </div>
                                 <div className=''>
                                     Trạng thái:{' '}
-                                    {order.isPaid ? (
-                                        'Đã thanh toán'
+                                    {order.ispaid ? (
+                                        <span className='bg-green-600 text-white font-semibold py-1 px-1.5'>
+                                            Đã thanh toán
+                                        </span>
                                     ) : order.disabled ? (
                                         <span className='bg-red-700 text-white font-semibold py-1 px-1.5'>
                                             Thanh toán thất bại
                                         </span>
                                     ) : (
-                                        'Đang xử lý...'
+                                        <span className='bg-gray-600 text-white font-semibold py-1 px-1.5'>
+                                            Đang xử lý...
+                                        </span>
                                     )}
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     ))}
                 </div>
             ) : (
