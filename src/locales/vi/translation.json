@@ -64,7 +64,8 @@
             "sun": "Chủ nhật"
         },
         "have": "Có",
-        "have_not": "Không có"
+        "have_not": "Không có",
+        "address": "Địa chỉ"
     },
     "auth": {
         "login": "Đăng nhập",
@@ -88,7 +89,7 @@
     "about": {
         "introductions": "Giới thiệu",
         "title0": "Chào mừng bạn đến với trang web của chúng tôi!",
-        "content0": "Sứ mệnh của chúng tôi là cung cấp cho khách hàng lựa chọn tốt nhất về các loại cốc kết hợp giữa phong cách, tính năng và độ bền. Chúng tôi hiểu rằng một chiếc cốc tốt sẽ làm tăng trải nghiệm uống nước và vì vậy, chúng tôi chọn lọc kỹ lưỡng để mang đến cho bạn những lựa chọn tốt nhất.",
+        "content0": "Sứ mệnh của chúng tôi là cung cấp cho khách hàng lựa chọn tốt nhất về các loại sản phẩm kết hợp giữa phong cách, tính năng và độ bền. Chúng tôi hiểu rằng một sản phẩm tốt sẽ làm tăng trải nghiệm của khách hàng và vì vậy, chúng tôi chọn lọc kỹ lưỡng để mang đến cho bạn những lựa chọn tốt nhất.",
         "title1": "Sự đa dạng phong phú",
         "content1": "Chúng tôi cung cấp một loạt các loại cốc với nhiều kích thước, hình dạng và thiết kế khác nhau. Cho dù bạn thích phong cách cổ điển và thanh lịch hay thiết kế hiện đại và thời thượng, chúng tôi đều có sản phẩm phù hợp với gu của bạn.",
         "title2": "Chất lượng cao cấp",
@@ -122,6 +123,7 @@
         "contact_form": "Chào bạn tôi muốn..."
     },
     "filter": {
+        "all": "Tất cả sản phẩm",
         "color": "Màu sắc",
         "characteristic": "Đặc điểm",
         "handler": "Tay cầm",
@@ -150,5 +152,24 @@
             "purple": "tím"
         },
         "pattern": "Hoa văn"
+    },
+    "main_title": {
+        "checkout": "Thanh toán"
+    },
+    "checkout": {
+        "payments": "Các phương thức thanh toán",
+        "bill_details": "Chi tiết đơn hàng",
+        "discount": "Giảm giá",
+        "total": "Tổng thanh toán",
+        "pay": "Thanh toán"
+    },
+    "productdetails": {
+        "more": "Các sản phẩm khác giành cho bạn",
+        "details": "Thông tin",
+        "characteristics": "Đặc điểm"
+    },
+    "validate": {
+        "address": "Địa chỉ có độ dài tối thiểu 10 ký tự và là địa chỉ hợp lệ",
+        "contact": "số điện thoại liên hệ phải 10 hoặc 11 số và là số điện thoại hợp lệ"
     }
 }

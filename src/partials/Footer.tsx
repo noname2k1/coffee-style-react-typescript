@@ -9,32 +9,32 @@ const MEMBERS = [
         id: 0,
         name: 'Ninh Ngọc Nam',
         image: '',
-        isLeader: true,
+        isLeader: true
     },
     {
         id: 1,
         name: 'Vũ Anh Tuấn',
         image: '',
-        isLeader: false,
+        isLeader: false
     },
     {
         id: 2,
         name: 'Hoàng Đức Việt',
         image: '',
-        isLeader: false,
+        isLeader: false
     },
     {
         id: 3,
         name: 'Nguyễn Văn Đại',
         image: '',
-        isLeader: false,
+        isLeader: false
     },
     {
         id: 4,
         name: 'Nguyễn Thành Nam',
         image: '',
-        isLeader: false,
-    },
+        isLeader: false
+    }
 ];
 const Footer = () => {
     const { t } = useTranslation();
@@ -55,7 +55,7 @@ const Footer = () => {
                 data-aos='fade-up'
                 className='bg-gray-900 px-[50px] py-[80px] mx-0 lg:mx-[30px] lg:py-[100px] text-white flex flex-col items-center dark:border-y border-border-color'
             >
-                <h3 className='opacity-60 text-xs uppercase tracking-widest font-semibold'>
+                <h3 className='text-center opacity-60 text-xs uppercase tracking-widest font-semibold'>
                     {t('footer.suggested_title')}
                 </h3>
                 <h1 className='text-4xl py-5'>{t('footer.contribute')}</h1>
@@ -91,7 +91,7 @@ const Footer = () => {
             >
                 <div className='team-1 mb-10'>
                     <h1 className='text-xl font-semibold text-center mb-5'>
-                        {t('footer.members')}:
+                        {t('footer.members')} <span>Team 1</span>:
                     </h1>
                     <div className='flex flex-col lg:flex-row gap-10'>
                         {MEMBERS.map((member) => (
@@ -105,7 +105,7 @@ const Footer = () => {
                                         {member.name}
                                     </span>
                                     {member.isLeader && (
-                                        <span className='bg-red-600 capitalize rounded-xl text-white py-1 px-4 ml-2'>
+                                        <span className='bg-red-600 lowercase rounded-xl text-white py-1 px-4 ml-2'>
                                             {t('footer.leader')}
                                         </span>
                                     )}
@@ -126,7 +126,7 @@ const Footer = () => {
                         </div>
                         <div className='flex'>
                             <span className='hover:text-primary text-xs h-fit block mt-auto whitespace-nowrap'>
-                                CoffeeStyle Inc. © 1996
+                                CoffeeStyle Inc. © 2023
                             </span>
                         </div>
                     </div>
@@ -144,7 +144,7 @@ const Footer = () => {
                                 >
                                     {item.name}
                                 </Link>
-                            ) : null,
+                            ) : null
                         )}
                     </div>
 
@@ -156,7 +156,7 @@ const Footer = () => {
                             'facebook.com',
                             'twitter.com',
                             'instagram.com',
-                            'pinterest.com',
+                            'pinterest.com'
                         ].map((item) => (
                             <a
                                 href={`https://${item}`}
@@ -177,7 +177,9 @@ const Footer = () => {
                             {t('footer.contact_content')}
                         </h3>
                         <h2 className='text-gray-900 dark:text-white text-2xl mb-5'>
-                            us@coffeestyle.io
+                            <a href='mailto: ninhnamyb2001@gmail.com'>
+                                ninhnamyb2001@gmail.com
+                            </a>
                         </h2>
                     </div>
                 </div>

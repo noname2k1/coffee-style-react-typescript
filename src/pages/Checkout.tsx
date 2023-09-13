@@ -7,44 +7,55 @@ import classNames from 'classnames';
 import { Button } from '../components/commons';
 import payment_images from '../assets/images/payments/';
 import { formatCurrency } from '../utils';
+import { useTranslation } from 'react-i18next';
+import { createOrder } from '../services/orderService';
+import { useFirebaseAuth } from '../hooks';
 
 const METHODS = [
     {
         name: 'Momo',
         value: 'momo',
         img: payment_images.momo,
-        discount: 0.025,
+        discount: 0.025
     },
     {
         name: 'VISA',
         value: 'visa',
         img: payment_images.visa,
-        discount: 0.005,
+        discount: 0.005
     },
     {
         name: 'DEBIT CARD',
         value: 'debit_card',
         img: payment_images.debit_card,
-        discount: 0.01,
-    },
+        discount: 0.01
+    }
 ];
 
 const Checkout = () => {
+    const { t } = useTranslation();
+    const { user } = useFirebaseAuth();
     const navigate = useNavigate();
     const [cart, setCart] = useRecoilState<Cart>(cartState);
     const [currentMethod, setCurrentMethod] = useState(METHODS[0]);
     const [cloneCart, setCloneCart] = useState([...cart.items]);
+    const [address, setAddress] = useState('');
+    const [contact, setContact] = useState('');
+    const [error, setError] = useState({
+        address: '',
+        contact: ''
+    });
 
     const handleToggleCartItemCheckbox = (item: Product) => {
         if (cloneCart.find((cloneItem) => cloneItem._id === item._id)) {
             setCloneCart(
-                cloneCart.filter((checkedItem) => checkedItem._id !== item._id),
+                cloneCart.filter((checkedItem) => checkedItem._id !== item._id)
             );
         } else setCloneCart([...cloneCart, item]);
     };
     const handlePaymentMethodChange = (paymentMethod: string) => {
         setCurrentMethod(
-            METHODS.find((method) => method.value === paymentMethod)!,
+            METHODS.find((method) => method.value === paymentMethod)!
         );
     };
 
@@ -52,55 +63,73 @@ const Checkout = () => {
         setCart((oldCart) => ({
             ...oldCart,
             items: oldCart.items.filter((item) => item._id !== product._id),
-            total: oldCart.total - product.price * product.quantityInCart,
+            total: oldCart.total - product.price * product.quantityInCart
         }));
         setCloneCart((prevProducts) =>
             prevProducts.filter(
-                (prevProduct) => prevProduct._id !== product._id,
-            ),
+                (prevProduct) => prevProduct._id !== product._id
+            )
         );
     };
+    // console.log(user);
 
-    const handleGotoPayment = () => {
+    const handleGotoPayment = async () => {
         if (
             cloneCart.reduce((acc, curr) => {
                 return acc + curr.price * curr.quantityInCart;
             }, 0) === 0
         )
             return;
-        navigate('/payment/' + currentMethod.value, {
-            state: {
-                total:
-                    cloneCart.reduce(
-                        (acc, currentItem) =>
-                            acc +
-                            Number(currentItem.price) *
-                                Number(currentItem.quantityInCart),
-                        0,
-                    ) -
-                    currentMethod.discount *
-                        cloneCart.reduce(
-                            (acc, currentItem) =>
-                                acc +
-                                Number(currentItem.price) *
-                                    Number(currentItem.quantityInCart),
-                            0,
-                        ),
-            },
-        });
+        if (!/^[a-zA-Z0-9\s\-\,\#\/]{10,}$/.test(address)) {
+            return setError((oldErrors) => ({
+                ...oldErrors,
+                address: t('validate.address')
+            }));
+        }
+        if (
+            !/^(0|\+84)(3[2-9]|5[2689]|7[06789]|8[1-689]|9[0-9])\d{7}$/.test(
+                contact
+            )
+        ) {
+            return setError((oldErrors) => ({
+                ...oldErrors,
+                contact: t('validate.contact')
+            }));
+        }
+        try {
+            const res = await createOrder(
+                user.uid,
+                address,
+                contact,
+                cart.items.map((item) => item._id),
+                cart.items.map((item) => item.quantityInCart),
+                currentMethod.value
+            );
+            navigate('/payment/' + currentMethod.value, {
+                state: { order: res.data }
+            });
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     return (
         <div className='flex lg:justify-center'>
             <div className='w-screen lg:w-primary max-lg:px-6'>
-                <h1 className='font-bold text-2xl'>Check Out</h1>
+                <h1 className='font-bold text-2xl mt-4'>
+                    {t('main_title.checkout')}
+                </h1>
                 <div className='flex max-lg:flex-col'>
                     <section className='flex-1 py-4 flex flex-col lg:mr-4'>
                         <div className='flex-1 overflow-y-auto flex flex-col gap-4 max-h-[560px]'>
                             {cart.items.map((item) => {
                                 return (
                                     <div
-                                        key={item._id}
+                                        key={
+                                            item._id +
+                                            item.size?.diameter +
+                                            item.size?.height
+                                        }
                                         className='flex-col lg:flex-row flex relative items-center bg-black/10 p-4 rounded-md w-full'
                                     >
                                         <input
@@ -111,14 +140,14 @@ const Checkout = () => {
                                                 cloneCart.findIndex(
                                                     (checkedItem) =>
                                                         checkedItem._id ===
-                                                        item._id,
+                                                        item._id
                                                 ) !== -1
                                                     ? true
                                                     : false
                                             }
                                             onChange={() =>
                                                 handleToggleCartItemCheckbox(
-                                                    item,
+                                                    item
                                                 )
                                             }
                                         />
@@ -129,21 +158,33 @@ const Checkout = () => {
                                                 className='w-24 h-24 rounded-md'
                                             />
                                         </Link>
-                                        <p className='text-xl px-10 font-semibold'>
+                                        <p className='text-xl px-10 font-semibold mt-2'>
                                             {item.name}
                                         </p>
-                                        <div className='flex'>
-                                            <p>
-                                                {formatCurrency(
-                                                    item.price,
-                                                    item.unit,
-                                                    'de-DE',
-                                                )}
-                                            </p>
-                                            <span className='px-4'>x</span>
-                                            <span className='font-semibold'>
-                                                {item.quantityInCart}
-                                            </span>
+                                        <div className='flex max-lg:flex-col items-center'>
+                                            <div className='flex justify-center'>
+                                                <p>
+                                                    {formatCurrency(
+                                                        item.price,
+                                                        item.unit,
+                                                        'de-DE'
+                                                    )}
+                                                </p>
+                                                <span className='px-1'>x</span>
+                                                <span className='font-semibold'>
+                                                    {item.quantityInCart}
+                                                </span>
+                                            </div>
+                                            <div className='flex flex-col lg:ml-4 items-center'>
+                                                <span>
+                                                    {t('filter.diameter')}:{' '}
+                                                    {item.size?.diameter} cm
+                                                </span>
+                                                <span>
+                                                    {t('filter.height')}:{' '}
+                                                    {item.size?.height} cm
+                                                </span>
+                                            </div>
                                         </div>
                                         <span
                                             onClick={() =>
@@ -158,22 +199,24 @@ const Checkout = () => {
                             })}
                         </div>
                         <div className='text-2xl font-semibold text-right mt-4'>
-                            subtotal:&nbsp;
+                            {t('common.subtotal')}:&nbsp;
                             {formatCurrency(
                                 cloneCart.reduce(
                                     (acc, currentItem) =>
                                         acc +
                                         Number(currentItem.price) *
                                             Number(currentItem.quantityInCart),
-                                    0,
+                                    0
                                 ),
                                 cart.items[0]?.unit || 'VND',
-                                'de-DE',
+                                'de-DE'
                             )}
                         </div>
                     </section>
                     <aside>
-                        <h2 className='text-xl font-semibold'>Payments</h2>
+                        <h2 className='text-xl font-semibold'>
+                            {t('checkout.payments')}
+                        </h2>
                         <div className='flex items-center gap-4 py-4'>
                             {METHODS.map((method) => (
                                 <div
@@ -182,8 +225,8 @@ const Checkout = () => {
                                         {
                                             'border-red-600':
                                                 method.value ===
-                                                currentMethod.value,
-                                        },
+                                                currentMethod.value
+                                        }
                                     )}
                                     key={method.value}
                                     onClick={() =>
@@ -198,33 +241,71 @@ const Checkout = () => {
                                 </div>
                             ))}
                         </div>
-                        <form action=''>
+                        {/* form */}
+                        <form action='' onSubmit={(e) => e.preventDefault()}>
                             <h2 className='text-xl font-semibold'>
-                                Billing Details
+                                {t('checkout.bill_details')}
                             </h2>
                             <div className='flex gap-4 py-4 flex-col'>
                                 <div className='flex flex-col'>
-                                    <label htmlFor='address'>Address</label>
+                                    <label htmlFor='address'>
+                                        {t('common.address')}
+                                    </label>
                                     <input
                                         id='address'
                                         type='text'
                                         name='address'
-                                        placeholder='address'
+                                        value={address}
+                                        onChange={(e) =>
+                                            setAddress(e.target.value)
+                                        }
+                                        placeholder={t('common.address')}
                                         className='p-2 outline-none border'
+                                        onFocus={() =>
+                                            setError((oldErrors) => ({
+                                                ...oldErrors,
+                                                address: ''
+                                            }))
+                                        }
                                     />
+                                    {error.address && (
+                                        <p className='text-red-700 font-semibold'>
+                                            {error.address}
+                                        </p>
+                                    )}
                                 </div>
                                 <div className='flex flex-col'>
-                                    <label htmlFor='contact'>Contact</label>
+                                    <label htmlFor='contact'>
+                                        {t('header.contact')}
+                                    </label>
                                     <input
                                         id='contact'
                                         type='text'
                                         name='contact'
-                                        placeholder='contact'
+                                        value={contact}
+                                        onChange={(e) =>
+                                            setContact(e.target.value)
+                                        }
+                                        placeholder={
+                                            t('header.contact') +
+                                            '    ex: 09xxxxxxxx'
+                                        }
                                         className='p-2 outline-none border'
+                                        onFocus={() =>
+                                            setError((oldErrors) => ({
+                                                ...oldErrors,
+                                                contact: ''
+                                            }))
+                                        }
                                     />
+                                    {error.contact && (
+                                        <p className='text-red-700 font-semibold'>
+                                            {error.contact}
+                                        </p>
+                                    )}
                                 </div>
                                 <div className='flex justify-between'>
-                                    <span>Discount:</span>
+                                    <span>{t('checkout.discount')}:</span>
                                     <span className='text-red-600'>
                                         {formatCurrency(
                                             currentMethod.discount *
@@ -232,20 +313,20 @@ const Checkout = () => {
                                                     (acc, currentItem) =>
                                                         acc +
                                                         Number(
-                                                            currentItem.price,
+                                                            currentItem.price
                                                         ) *
                                                             Number(
-                                                                currentItem.quantityInCart,
+                                                                currentItem.quantityInCart
                                                             ),
-                                                    0,
+                                                    0
                                                 ),
                                             cart.items[0]?.unit || 'VND',
-                                            'de-DE',
+                                            'de-DE'
                                         )}
                                     </span>
                                 </div>
                                 <div className='flex justify-between'>
-                                    <span>Total:</span>
+                                    <span>{t('checkout.total')}:</span>
                                     <span className='text-red-600 font-semibold'>
                                         {formatCurrency(
                                             cloneCart.reduce(
@@ -253,24 +334,24 @@ const Checkout = () => {
                                                     acc +
                                                     Number(currentItem.price) *
                                                         Number(
-                                                            currentItem.quantityInCart,
+                                                            currentItem.quantityInCart
                                                         ),
-                                                0,
+                                                0
                                             ) -
                                                 currentMethod.discount *
                                                     cloneCart.reduce(
                                                         (acc, currentItem) =>
                                                             acc +
                                                             Number(
-                                                                currentItem.price,
+                                                                currentItem.price
                                                             ) *
                                                                 Number(
-                                                                    currentItem.quantityInCart,
+                                                                    currentItem.quantityInCart
                                                                 ),
-                                                        0,
+                                                        0
                                                     ),
                                             cart.items[0]?.unit || 'VND',
-                                            'de-DE',
+                                            'de-DE'
                                         )}
                                     </span>
                                 </div>
@@ -279,7 +360,7 @@ const Checkout = () => {
                                     size='medium'
                                     onClick={handleGotoPayment}
                                 >
-                                    Pay
+                                    {t('checkout.pay')}
                                 </Button>
                             </div>
                         </form>

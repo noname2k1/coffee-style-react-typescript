@@ -64,7 +64,8 @@
             "sun": "sunday"
         },
         "have": "have",
-        "have_not": "have not"
+        "have_not": "have not",
+        "address": "Address"
     },
     "auth": {
         "login": "login",
@@ -122,6 +123,7 @@
         "contact_form": "hello. I have an idea about..."
     },
     "filter": {
+        "all": "all products",
         "color": "Color",
         "characteristic": "Characteristic",
         "handler": "Handler",
@@ -150,5 +152,24 @@
         },
         "pattern": "Pattern",
         "size": "Size"
+    },
+    "main_title": {
+        "checkout": "Checkout"
+    },
+    "checkout": {
+        "payments": "Payments",
+        "bill_details": "Bill Details",
+        "discount": "Discount",
+        "total": "Total",
+        "pay": "Pay"
+    },
+    "productdetails": {
+        "more": "You might also like these",
+        "details": "Details",
+        "characteristics": "Characteristics"
+    },
+    "validate": {
+        "address": "address must be at least 6 characters long and must be a valid address",
+        "contact": "contact number must be 10 or 11 characters long and must be a valid phone number"
     }
 }

@@ -20,12 +20,16 @@ export interface Product {
     brand: string;
     color: string;
     hasHandle: boolean;
-    diameter: number;
-    height: number;
+    diameter: Array<number>;
+    height: Array<number>;
     pattern: boolean;
     oldPrice?: number;
     onSale?: boolean;
     quantityInCart: number;
+    size?: {
+        diameter: number;
+        height: number;
+    };
     [key: string]: any;
 }
 
@@ -42,12 +46,25 @@ export interface Post {
     author: string;
 }
 
+export interface Order {
+    _id: string;
+    userid: string;
+    address: string;
+    contact: string;
+    products: Product[];
+    quantities: Number[];
+    method: string;
+    total: number;
+    disabled: boolean;
+    isPaid: boolean;
+}
+
 export enum CATEGORY_VALUES {
     ALL_POSTS = '',
     BARISTA = 'barista',
     COFFEE = 'coffee',
     LIFESTYLE = 'lifestyle',
-    MUGS = 'mugs',
+    MUGS = 'mugs'
 }
 
 export interface filterItem {

@@ -1,6 +1,6 @@
 import {
     auth,
-    googleProvider,
+    googleProvider
     // facebookProvider
 } from '../../config/firebase';
 import { signInWithPopup, signInWithEmailAndPassword } from 'firebase/auth';
@@ -19,7 +19,7 @@ const SignIn = () => {
     const [cart, setCart] = useRecoilState<Cart>(cartState);
     const [value, setValue] = useState({
         email: '',
-        password: '',
+        password: ''
     });
     const [isHidePassword, setIsHidePassword] = useState(true);
     const [isLoading, setIsLoading] = useState(false);
@@ -43,8 +43,9 @@ const SignIn = () => {
                     (acc: number, product: Product) => {
                         return acc + product.price * product.quantityInCart;
                     },
-                    0,
+                    0
                 );
+                console.log(res.data);
                 setCart({ ...cart, items: res.data, total });
             } catch (error) {
                 console.log(error);

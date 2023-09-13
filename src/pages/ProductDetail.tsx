@@ -5,9 +5,9 @@ import {
     Input,
     ItemImage,
     ImageSection,
-    Banner,
+    Banner
 } from '../components/commons';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import classNames from 'classnames';
 import { useRecoilState } from 'recoil';
 import { cartState } from '../store/atoms';
@@ -16,22 +16,26 @@ import { getProducts, showProduct } from '../services/productService';
 import { useFirebaseAuth } from '../hooks';
 import routes from '../config/routes';
 import Skeleton from 'react-loading-skeleton';
+import { useTranslation } from 'react-i18next';
 
 const ProductDetail = () => {
+    const { t } = useTranslation();
     const navigate = useNavigate();
+    const { user } = useFirebaseAuth();
     const { slug } = useParams<{ slug: string }>();
     const [product, setProduct] = useState<Product>();
     const [moreProducts, setMoreProducts] = useState<Product[]>([]);
     const [cart, setCart] = useRecoilState<Cart>(cartState);
     const [isAdding, setIsAdding] = useState(false);
     const [quantity, setQuantity] = useState(1);
-    const { user } = useFirebaseAuth();
+    const diameterRef = useRef<HTMLSelectElement>(null);
+    const heightRef = useRef<HTMLSelectElement>(null);
 
     useEffect(() => {
         window.scrollTo(0, 0);
         (async () => {
             try {
-                const moreProds = await getProducts(0, 0, '', '', `${slug}*3`);
+                const moreProds = await getProducts(0, 0, '', `${slug}*3`);
                 const getPro = await showProduct(slug!);
                 setProduct(getPro.data);
                 setMoreProducts(moreProds.data);
@@ -53,22 +57,29 @@ const ProductDetail = () => {
         }
         const existedProductIndex = cart.items.findIndex(
             (item) =>
-                item.image === product.image && item.name === product.name,
+                item._id === product._id &&
+                item.size?.diameter === +diameterRef.current!.value &&
+                item.size?.height === +heightRef.current!.value
         );
+        // console.log(existedProductIndex);
         if (existedProductIndex !== -1) {
             quantityToAdd += cart.items[existedProductIndex].quantityInCart;
             const newCart = [...cart.items];
             newCart[existedProductIndex] = {
                 ...product,
                 quantityInCart: quantityToAdd,
+                size: {
+                    diameter: +diameterRef.current!.value,
+                    height: +heightRef.current!.value
+                }
             };
             setCart({
                 ...cart,
                 items: newCart,
                 total: newCart.reduce(
                     (acc, item) => acc + item.price * item.quantityInCart,
-                    0,
-                ),
+                    0
+                )
             });
         } else {
             setCart((oldCart) => {
@@ -79,9 +90,13 @@ const ProductDetail = () => {
                         {
                             ...product,
                             quantityInCart: quantityToAdd,
-                        },
+                            size: {
+                                diameter: +diameterRef.current!.value,
+                                height: +heightRef.current!.value
+                            }
+                        }
                     ],
-                    total: oldCart.total + product.price * quantityToAdd,
+                    total: oldCart.total + product.price * quantityToAdd
                 };
             });
         }
@@ -91,7 +106,7 @@ const ProductDetail = () => {
             setCart((oldCart) => {
                 return {
                     ...oldCart,
-                    isShow: true,
+                    isShow: true
                 };
             });
         }, 500);
@@ -112,7 +127,7 @@ const ProductDetail = () => {
                             <Skeleton width={460} height={460} />
                         )}
                     </div>
-                    <div className='product-detail lg:ml-[60px] text-center lg:text-left'>
+                    <div className='product-detail lg:ml-[60px] text-center'>
                         <h1 className='text-4xl mt-[50px]'>
                             {product?.name || (
                                 <Skeleton height={40} width={420} />
@@ -131,13 +146,13 @@ const ProductDetail = () => {
                                         'text-2xl text-left max-sm:w-full':
                                             !product.oldPrice,
                                         'text-3xl text-primary':
-                                            product.oldPrice,
+                                            product.oldPrice
                                     })}
                                 >
                                     {formatCurrency(
                                         product.price,
                                         product.unit,
-                                        'de-DE',
+                                        'de-DE'
                                     )}
                                 </div>
                             ) : (
@@ -148,10 +163,40 @@ const ProductDetail = () => {
                                     {formatCurrency(
                                         product.oldPrice!,
                                         product.unit,
-                                        'de-DE',
+                                        'de-DE'
                                     )}
                                 </div>
                             )}
+                        </div>
+                        {/* diameter & height */}
+                        <div className='flex items-center justify-center py-2'>
+                            <label htmlFor=''>{t('filter.diameter')}:</label>
+                            <select
+                                name='diameter'
+                                id=''
+                                className='border-2 border-black'
+                                ref={diameterRef}
+                            >
+                                {product?.diameter.map((d) => (
+                                    <option value={d} key={d}>
+                                        {d} cm
+                                    </option>
+                                ))}
+                            </select>
+                            <div className='mx-1'></div>
+                            <label htmlFor=''>{t('filter.height')}:</label>
+                            <select
+                                name='height'
+                                id=''
+                                className='border-2 border-black'
+                                ref={heightRef}
+                            >
+                                {product?.height.map((h) => (
+                                    <option value={h} key={h}>
+                                        {h} cm
+                                    </option>
+                                ))}
+                            </select>
                         </div>
                         {/* quantity */}
                         <div className='flex items-center justify-center flex-col sm:flex-row mt-5'>
@@ -191,54 +236,75 @@ const ProductDetail = () => {
                 <div className='flex lg:w-primary text-center lg:text-left px-[30px] lg:px-0 gap-x-32 mb-[100px] flex-col lg:flex-row'>
                     {/* details */}
                     <div className='flex flex-col flex-1'>
-                        <h3 className='primary-typo uppercase mb-5'>Details</h3>
+                        <h3 className='uppercase mb-5 font-semibold text-xl'>
+                            {t('productdetails.details')}
+                        </h3>
                         <p className='font-thin text-black/50 dark:text-white/50 space-y-3 tracking-wide lg:px-[30px]'>
                             {product?.details || (
                                 <Skeleton width={400} height={400} />
                             )}
                         </p>
                     </div>
-                    {/* dimensions */}
+                    {/* characteritics */}
                     <div className='flex flex-col flex-1 mt-[50px] lg:mt-0'>
-                        <h3 className='primary-typo uppercase mb-5'>
-                            Dimensions
+                        <h3 className='uppercase mb-5 font-semibold text-xl'>
+                            {t('productdetails.characteristics')}
                         </h3>
-                        <ul className='lg:list-disc space-y-2'>
-                            {product?.dimensions ? (
-                                product.dimensions.map((item, index) => (
-                                    <li
-                                        key={index}
-                                        className='font-thin space-y-3 whitespace-nowrap'
-                                    >
-                                        {index === 0 && (
-                                            <span className='font-thin text-black/50 dark:text-white/50'>
-                                                Lenght (in):&nbsp;
-                                            </span>
-                                        )}
-                                        {index === 1 && (
-                                            <span className='font-thin text-black/50 dark:text-white/50'>
-                                                Height (in):&nbsp;
-                                            </span>
-                                        )}{' '}
-                                        {index === 2 && (
-                                            <span className='font-thin text-black/50 dark:text-white/50'>
-                                                Width (in):&nbsp;
-                                            </span>
-                                        )}{' '}
-                                        {index === 3 && (
-                                            <span className='font-thin text-black/50 dark:text-white/50'>
-                                                Weight (oz):&nbsp;
-                                            </span>
-                                        )}
+                        {product ? (
+                            <div className='lg:list-disc space-y-2'>
+                                <ul className='font-thin space-y-3 whitespace-nowrap'>
+                                    <li className='font-semibold text-black/50 dark:text-white/50'>
+                                        {t('filter.brand')}:{' '}
                                         <span className='font-thin'>
-                                            {item.toFixed(1)}
+                                            {product?.brand &&
+                                            product.brand !== 'none'
+                                                ? product.brand
+                                                : 'Không có nhãn hiệu'}
                                         </span>
                                     </li>
-                                ))
-                            ) : (
-                                <Skeleton count={4} />
-                            )}
-                        </ul>
+
+                                    <li className='font-semibold text-black/50 dark:text-white/50'>
+                                        {t('filter.color')}:{' '}
+                                        <span className='font-thin'>
+                                            {product?.color}
+                                        </span>
+                                    </li>
+
+                                    <li className='font-semibold text-black/50 dark:text-white/50'>
+                                        {t('filter.diameter')}:{' '}
+                                        <span className='font-thin'>
+                                            {product?.diameter.join(', ')} (cm)
+                                        </span>
+                                    </li>
+
+                                    <li className='font-semibold text-black/50 dark:text-white/50'>
+                                        {t('filter.height')}:
+                                        <span className='font-thin'>
+                                            {' '}
+                                            {product?.height.join(', ')} (cm)
+                                        </span>
+                                    </li>
+
+                                    <li className='font-semibold text-black/50 dark:text-white/50'>
+                                        {t('filter.pattern')}:{' '}
+                                        <span className='font-thin'>
+                                            {product?.pattern ? 'có' : 'không'}
+                                        </span>
+                                    </li>
+
+                                    <li className='font-semibold text-black/50 dark:text-white/50'>
+                                        {t('filter.handler')}:{' '}
+                                        <span className='font-thin'>
+                                            {product?.hasHandle
+                                                ? 'có'
+                                                : 'không'}
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        ) : (
+                            <Skeleton count={4} />
+                        )}
                     </div>
                 </div>
                 {/* banner */}
@@ -248,7 +314,7 @@ const ProductDetail = () => {
                     <ImageSection
                         type='product'
                         gridCols={3}
-                        title='YOU MIGHT ALSO LIKE THESE'
+                        title={t('productdetails.more')}
                         items={moreProducts}
                     />
                 ) : (

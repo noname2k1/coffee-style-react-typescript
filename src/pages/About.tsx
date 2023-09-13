@@ -1,13 +1,13 @@
 import React from 'react';
 import images from '../assets/images';
 import ContentWrapper from '../components/commons/ContentWrapper';
-import { authors } from '../faker/person';
+// import { authors } from '../faker/person';
 import { ParallaxSection } from '../components/commons';
 import { useTranslation } from 'react-i18next';
 
 const InTernalWrapper = ({
     label,
-    children,
+    children
 }: {
     label: string;
     children: React.ReactNode;
@@ -28,7 +28,7 @@ const InTernalWrapper = ({
 const Phase = ({
     time,
     title,
-    children,
+    children
 }: {
     time: string;
     title: string;
@@ -113,7 +113,7 @@ const About = () => {
                         </p>
                     </div>
                 </div>
-                <InTernalWrapper label={t('about.introductions')}>
+                {/* <InTernalWrapper label={t('about.introductions')}>
                     <div
                         className='flex items-center justify-center gap-10 lg:gap-5 max-lg:flex-col'
                         data-aos='fade-right'
@@ -134,7 +134,7 @@ const About = () => {
                             </div>
                         ))}
                     </div>
-                </InTernalWrapper>
+                </InTernalWrapper> */}
             </div>
             <div className='w-full'>
                 <ParallaxSection bgImage={images.paralax_image_2} />

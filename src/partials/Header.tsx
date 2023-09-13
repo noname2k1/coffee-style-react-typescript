@@ -36,7 +36,7 @@ const Header = () => {
     const handleShowCart = () => {
         setCart((oldCart) => ({
             ...oldCart,
-            isShow: true,
+            isShow: true
         }));
     };
 
@@ -46,7 +46,16 @@ const Header = () => {
         try {
             await updateCart(
                 user.uid,
-                cart.items.map((item) => item._id + '*' + item.quantityInCart),
+                cart.items.map(
+                    (item) =>
+                        item._id +
+                        '*' +
+                        item.quantityInCart +
+                        '*' +
+                        item.size?.diameter +
+                        '*' +
+                        item.size?.height
+                )
             );
             setCart({ isShow: false, items: [], total: 0 });
         } catch (error) {
@@ -58,7 +67,7 @@ const Header = () => {
         {
             id: uuid(),
             text: t('user-dropdown.settings'),
-            link: routes.settings,
+            link: routes.settings
         },
         { id: uuid(), text: t('user-dropdown.history'), link: routes.history },
         {
@@ -66,15 +75,15 @@ const Header = () => {
             text: t('auth.logout'),
             onClick: handleLogout,
             danger: true,
-            separator: true,
-        },
+            separator: true
+        }
     ];
 
     useEffect(() => {
         setCart((prevCart) => {
             return {
                 ...prevCart,
-                isShow: false,
+                isShow: false
             };
         });
     }, [pathname]);
@@ -97,12 +106,12 @@ const Header = () => {
                         {
                             'max-lg:h-0 max-lg:invisible': !isMobileMenuOpen,
                             'max-lg:h-[340px] max-lg:visible max-lg:py-2':
-                                isMobileMenuOpen,
-                        },
+                                isMobileMenuOpen
+                        }
                     )}
                 >
                     {NAV_LIST.filter(
-                        (navItem) => navItem.path !== routes.auth,
+                        (navItem) => navItem.path !== routes.auth
                     ).map((nav) => {
                         if (!nav.isShow) return null;
                         return (
@@ -118,8 +127,8 @@ const Header = () => {
                                                 isActive,
                                             'text-gray-800 opacity-60':
                                                 !isActive,
-                                            'lg:hidden': nav.id === 'login',
-                                        },
+                                            'lg:hidden': nav.id === 'login'
+                                        }
                                     )
                                 }
                             >
@@ -168,7 +177,7 @@ const Header = () => {
                                 <div
                                     className={classNames('w-8 h-8', {
                                         'rounded-full border border-border-light overflow-hidden':
-                                            user.photoURL,
+                                            user.photoURL
                                     })}
                                 >
                                     <img
@@ -197,7 +206,7 @@ const Header = () => {
                                 <Link
                                     to={routes.settings}
                                     state={{
-                                        returnURL: pathname,
+                                        returnURL: pathname
                                     }}
                                     className='hover:text-gray-900 text-gray-400 dark:hover:text-gray-200 duration-150'
                                 >

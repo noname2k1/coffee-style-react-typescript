@@ -15,10 +15,13 @@ interface Props {
 const ImageSection = (props: Props) => {
     const { t } = useTranslation();
     return (
-        <section className='flex justify-center mb-[100px]' data-aos='fade-up'>
+        <section
+            className='image-section flex justify-center mb-10'
+            data-aos='fade-up'
+        >
             <div
                 className={classNames('lg:w-primary max-lg:px-7', {
-                    'max-lg:px-[30px]': props.gridCols === 2,
+                    'max-lg:px-[30px]': props.gridCols === 2
                 })}
             >
                 {props.title && (
@@ -33,8 +36,8 @@ const ImageSection = (props: Props) => {
                             'grid-cols-1': props.gridCols === 1,
                             'grid-cols-2': props.gridCols === 2,
                             'lg:grid-cols-3 md:grid-cols-2':
-                                props.gridCols === 3,
-                        },
+                                props.gridCols === 3
+                        }
                     )}
                 >
                     {props.items.map((item, index: number) => {
@@ -52,7 +55,7 @@ const ImageSection = (props: Props) => {
                                             key={item._id}
                                             item={item}
                                             btnText={t(
-                                                'common.product.explore_mug',
+                                                'common.product.explore_mug'
                                             )}
                                             cols={props.gridCols}
                                         />

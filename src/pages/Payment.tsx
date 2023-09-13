@@ -1,42 +1,50 @@
 import classNames from 'classnames';
 import { useEffect, useState, useMemo } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { v4 as uuid } from 'uuid';
 import payment_images from '../assets/images/payments';
 import copy from 'copy-text-to-clipboard';
 import { formatCurrency } from '../utils';
+import { Order } from '../types';
+// import { useFirebaseAuth } from '../hooks';
 
 const Payment = () => {
     const { method } = useParams();
     const {
-        state: { total },
-    } = useLocation();
+        state: { order }
+    }: { state: { order: Order } } = useLocation();
+
     const DETAILS = useMemo(
         () => [
             {
                 id: 0,
                 label: 'Nhà cung cấp',
-                content: 'Coffee Style',
+                content: 'Coffee Style'
             },
             {
                 id: 1,
                 label: 'Mã đơn hàng',
-                content: uuid(),
+                content: order?._id
             },
             {
                 id: 2,
                 label: 'Mô tả',
                 content:
                     'Thanh toán đơn hàng ' +
-                    Math.floor(Math.random() * 100000000),
+                    order?._id +
+                    ', Địa chỉ: ' +
+                    order?.address +
+                    ', Liên hệ: ' +
+                    order?.contact
             },
             {
                 id: 3,
                 label: 'Số tiền',
-                content: total ? formatCurrency(total, 'VND', 'de-DE') : '--',
-            },
+                content: order?.total
+                    ? formatCurrency(order?.total, 'VND', 'de-DE')
+                    : '--'
+            }
         ],
-        [],
+        []
     );
     const navigate = useNavigate();
     const [minute, setMinute] = useState(9);
@@ -83,7 +91,7 @@ const Payment = () => {
         <div className=''>
             {/* instruction */}
             {showInstruction && (
-                <div className='fixed z-10 text-white flex items-center justify-center inset-0'>
+                <div className='fixed z-10 text-white flex items-center justify-center inset-10'>
                     <div className='p-8 px-10 bg-black/80 rounded-xl'>
                         <h1 className='text-center text-xl font-semibold mb-2 relative'>
                             Hướng dẫn quét mã QR
@@ -94,7 +102,7 @@ const Payment = () => {
                                 x
                             </span>
                         </h1>
-                        <div className='flex lg:max-w-[50vw] relative justify-center'>
+                        <div className='flex lg:w-[40vw] lg:max-h-[80vh] relative justify-center'>
                             <img
                                 src={payment_images.qr_instruction}
                                 alt='i-1'
@@ -172,13 +180,13 @@ const Payment = () => {
                                             className={classNames(
                                                 'font-semibold line-clamp-2 cursor-pointer',
                                                 {
-                                                    'text-2xl': item.id === 3,
-                                                },
+                                                    'text-2xl': item.id === 3
+                                                }
                                             )}
                                             title={item.content}
                                             onClick={() =>
                                                 hanldeCopyToClipboard(
-                                                    item.content,
+                                                    item.content
                                                 )
                                             }
                                         >
@@ -199,8 +207,8 @@ const Payment = () => {
                                             'text-[#454fdd] bg-[#e9ebff]':
                                                 method === 'debit_card' ||
                                                 (method !== 'momo' &&
-                                                    method !== 'visa'),
-                                        },
+                                                    method !== 'visa')
+                                        }
                                     )}
                                 >
                                     <p className='text-center mt-4 text-base whitespace-nowrap'>
@@ -219,8 +227,8 @@ const Payment = () => {
                                                         method ===
                                                             'debit_card' ||
                                                         (method !== 'momo' &&
-                                                            method !== 'visa'),
-                                                },
+                                                            method !== 'visa')
+                                                }
                                             )}
                                         >
                                             <span className='font-semibold'>
@@ -240,8 +248,8 @@ const Payment = () => {
                                                         method ===
                                                             'debit_card' ||
                                                         (method !== 'momo' &&
-                                                            method !== 'visa'),
-                                                },
+                                                            method !== 'visa')
+                                                }
                                             )}
                                         >
                                             <span className='font-semibold'>
@@ -260,8 +268,8 @@ const Payment = () => {
                                             'text-[#454fdd]':
                                                 method === 'debit_card' ||
                                                 (method !== 'momo' &&
-                                                    method !== 'visa'),
-                                        },
+                                                    method !== 'visa')
+                                        }
                                     )}
                                     onClick={() => navigate(-1)}
                                 >
@@ -279,9 +287,8 @@ const Payment = () => {
                                         method === 'visa',
                                     'from-[#447cff] to-[#431be1]':
                                         method === 'debit_card' ||
-                                        (method !== 'momo' &&
-                                            method !== 'visa'),
-                                },
+                                        (method !== 'momo' && method !== 'visa')
+                                }
                             )}
                         >
                             <h2 className='font-semibold text-xl whitespace-nowrap mb-8 text-center'>

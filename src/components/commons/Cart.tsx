@@ -5,7 +5,7 @@ import { cartState } from '../../store/atoms';
 import { Cart as CartType, Product } from '../../types';
 import { Button, Input, ItemImage } from '.';
 import { formatCurrency } from '../../utils';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import routes from '../../config/routes';
@@ -18,13 +18,15 @@ const Cart = () => {
     const handleHideCart = () => {
         setCart((oldCart) => ({
             ...oldCart,
-            isShow: false,
+            isShow: false
         }));
     };
 
+    // console.log(cart.items);
+
     const handleChangeQuantity = (
         e: React.ChangeEvent<HTMLInputElement>,
-        item: Product,
+        item: Product
     ) => {
         let restValue: number = 0;
         let total = 0;
@@ -55,12 +57,12 @@ const Cart = () => {
                     if (product._id === item._id) {
                         return {
                             ...product,
-                            quantityInCart: value,
+                            quantityInCart: value
                         };
                     }
                     return product;
                 }),
-                total,
+                total
             };
         });
     };
@@ -68,14 +70,25 @@ const Cart = () => {
     const handleRemoveItem = (productToRemove: Product) => {
         setCart((oldCart) => ({
             ...oldCart,
-            items: oldCart.items.filter(
-                (item) => item._id !== productToRemove._id,
-            ),
+            items: oldCart.items.filter((item) => {
+                return item !== productToRemove;
+            }),
             total:
                 oldCart.total -
-                productToRemove.price * productToRemove.quantityInCart,
+                productToRemove.price * productToRemove.quantityInCart
         }));
     };
+
+    useEffect(() => {
+        if (cart.items.length === 0) {
+            setCart((oldcart) => {
+                return {
+                    ...oldcart,
+                    total: 0
+                };
+            });
+        }
+    }, [cart.items]);
 
     return (
         <>
@@ -89,8 +102,8 @@ const Cart = () => {
                 className={classnames(
                     'fixed flex flex-col right-0 z-10 top-0 bottom-0 h-screen bg-gray-900 max-w-[480px] duration-200 dark:border-l border-border-color',
                     {
-                        'translate-x-full': !cart.isShow,
-                    },
+                        'translate-x-full': !cart.isShow
+                    }
                 )}
             >
                 <header className='border-b border-border-color py-[30px] px-10 flex justify-between items-center text-white'>
@@ -109,8 +122,8 @@ const Cart = () => {
                         'flex flex-col flex-1 items-center p-8 pb-0 m-h-[480px] overflow-y-auto overflow-x-hidden',
                         {
                             'justify-center': cart.items.length === 0,
-                            'gap-8': cart.items.length > 0,
-                        },
+                            'gap-8': cart.items.length > 0
+                        }
                     )}
                 >
                     {/* empty cart */}
@@ -131,7 +144,13 @@ const Cart = () => {
                         cart.items.map((item) => (
                             <div
                                 className='flex flex-col sm:flex-row items-center justify-center text-white'
-                                key={item._id}
+                                key={
+                                    item._id +
+                                    '-' +
+                                    item.size?.diameter +
+                                    '-' +
+                                    item.size?.height
+                                }
                             >
                                 <ItemImage
                                     item={item}
@@ -144,9 +163,23 @@ const Cart = () => {
                                         {formatCurrency(
                                             item.price,
                                             item.unit,
-                                            'de-DE',
+                                            'de-DE'
                                         )}
                                     </span>
+                                    <div className='flex items-center border'>
+                                        <div className='border-r px-1'>
+                                            {t('filter.diameter')}
+                                            <span className='border-t block text-center'>
+                                                {item.size?.diameter}
+                                            </span>
+                                        </div>
+                                        <div className='px-1'>
+                                            {t('filter.height')}
+                                            <span className='border-t block text-center'>
+                                                {item.size?.height}
+                                            </span>
+                                        </div>
+                                    </div>
                                     <button
                                         onClick={() => handleRemoveItem(item)}
                                         className='uppercase my-2 tracking-widest text-white/60 hover:text-white text-xs font-semibold'
@@ -162,7 +195,7 @@ const Cart = () => {
                                         item.quantityInCart?.toString() || '1'
                                     }
                                     onChange={(
-                                        e: React.ChangeEvent<HTMLInputElement>,
+                                        e: React.ChangeEvent<HTMLInputElement>
                                     ) => handleChangeQuantity(e, item)}
                                     max={item.quantity}
                                     maxWidth={100}
@@ -183,7 +216,7 @@ const Cart = () => {
                                     ? formatCurrency(
                                           cart.total,
                                           cart.items[0].unit,
-                                          'de-DE',
+                                          'de-DE'
                                       )
                                     : '--'}
                             </span>
