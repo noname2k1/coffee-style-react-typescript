@@ -47,9 +47,18 @@ const Checkout = () => {
     });
 
     const handleToggleCartItemCheckbox = (item: Product) => {
-        if (cloneCart.find((cloneItem) => cloneItem._id === item._id)) {
+        if (
+            cloneCart.find(
+                (cloneItem) =>
+                    JSON.stringify(cloneItem) === JSON.stringify(item)
+            )
+        ) {
+            // console.log('existed');
             setCloneCart(
-                cloneCart.filter((checkedItem) => checkedItem._id !== item._id)
+                cloneCart.filter(
+                    (checkedItem) =>
+                        JSON.stringify(checkedItem) !== JSON.stringify(item)
+                )
             );
         } else setCloneCart([...cloneCart, item]);
     };
@@ -62,7 +71,7 @@ const Checkout = () => {
     const handleRemoveProduct = (product: Product) => {
         setCart((oldCart) => ({
             ...oldCart,
-            items: oldCart.items.filter((item) => item._id !== product._id),
+            items: oldCart.items.filter((item) => item !== product),
             total: oldCart.total - product.price * product.quantityInCart
         }));
         setCloneCart((prevProducts) =>
@@ -137,11 +146,13 @@ const Checkout = () => {
                                             name='products[]'
                                             className='lg:mr-4 max-lg:mb-2'
                                             checked={
-                                                cloneCart.findIndex(
+                                                cloneCart.find(
                                                     (checkedItem) =>
-                                                        checkedItem._id ===
-                                                        item._id
-                                                ) !== -1
+                                                        JSON.stringify(
+                                                            checkedItem
+                                                        ) ===
+                                                        JSON.stringify(item)
+                                                )
                                                     ? true
                                                     : false
                                             }
